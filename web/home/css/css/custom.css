@@ -1,0 +1,383 @@
+﻿
+.margintop_100{
+    margin-top:100px;
+}
+
+.margintop_20{
+    margin-top:20px;
+}
+
+.margintop_10{
+    margin-top:10px;
+}
+
+.margintop_50{
+    margin-top:50px;
+}
+.fancyradio{
+     width: 19px;
+  height: 25px;
+  padding: 0 5px 0 0;
+  
+  display: block;
+  clear: left;
+  float: left;
+}
+
+ #spinner {
+       position: absolute;
+       left: 0;
+       top: 0;
+       height: 100%;
+       text-align: center;
+       width: 100%;
+       z-index: 9999;
+       opacity:1;
+           
+   }
+
+
+input.ng-invalid {
+  /*border: 1px solid red;*/
+}
+input.ng-valid {
+  border: 1px solid green;
+}
+
+.help-block{
+    color:red;
+}
+
+/*//mobile css*/
+ @media only screen and (max-width: 500px) {
+           .desktop {
+               display: none;
+           }
+           .mobile {
+               display: block;
+           }
+
+           #spinner div {
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-box-shadow: #0094ff 1px 1px 2px;
+                -webkit-box-shadow: #0094ff 1px 1px 2px;
+                box-shadow: #0094ff 1px 1px 2px;
+                background-color: #FFF;
+                border: 1px solid #0094ff;
+                font-size: 1.3em;
+                line-height: 1.3em;
+                margin: 47% auto 0 auto;
+                padding: 25px;
+                text-align: center;
+               
+
+            }
+
+           
+
+
+           
+       }
+
+/*//desktop*/
+ @media only screen and (min-width: 900px) {
+           .desktop {
+               display: block;
+           }
+
+           .mobile {
+               display: none;
+               
+           }
+
+           #spinner div {
+                border-radius: 5px;
+                -moz-border-radius: 5px;
+                -webkit-border-radius: 5px;
+                -moz-box-shadow: #0094ff 1px 1px 2px;
+                -webkit-box-shadow: #0094ff 1px 1px 2px;
+                box-shadow: #0094ff 1px 1px 2px;
+                background-color: #FFF;
+                border: 1px solid #0094ff;
+                font-size: 1.3em;
+                line-height: 1.3em;
+                margin: 250px auto 0 auto;
+                padding: 25px;
+                text-align: center;
+                width: 575px;
+
+            }
+
+            #spinner div img {
+                   float:left;
+                    margin: auto;
+                }
+
+
+       }
+
+
+       /* Smartphones (portrait and landscape) ----------- */
+       @media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+           /* Styles */
+       }
+
+       /* Smartphones (landscape) ----------- */
+       @media only screen and (min-width : 321px) {
+           /* Styles */
+       }
+
+       /* Smartphones (portrait) ----------- */
+       @media only screen and (max-width : 320px) {
+           /* Styles */
+       }
+
+       /* combine min and max ----------- */
+       @media screen and (min-width: 800px) and (max-width: 1200px) {
+           
+       }
+
+
+       /*Flexible Images*/
+        img {
+           max-width: 100%;
+       }
+       
+  
+
+  /*//fancy checkbox and radio*/    
+   
+ /* Hiding default checkbox and Radio button design */
+input[type=checkbox],input[type=radio] {
+    opacity: 0;
+    position: absolute;
+    z-index: 12;
+    width: 18px;
+    height: 18px;
+}
+
+/* Disable outline when clicked*/
+input[type=checkbox]:checked,input[type=radio]:checked,input[type=checkbox]:focus,input[type=radio]:focus {
+    outline: none !important;
+}
+
+input[type=checkbox]+.lbl,input[type=radio]+.lbl {
+    position: relative;
+    z-index: 11;
+    display: inline-block;
+    margin: 0;
+    line-height: 20px;
+    min-height: 14px;
+    min-width: 14px;
+    font-weight: normal;
+}
+
+
+input[type=checkbox]+.lbl.padding-16::before,input[type=radio]+.lbl.padding-16::before {
+    margin-right: 16px;
+}
+
+input[type=checkbox]+.lbl.padding-12::before,input[type=radio]+.lbl.padding-12::before {
+    margin-right: 12px;
+}
+
+input[type=checkbox]+.lbl.padding-8::before,input[type=radio]+.lbl.padding-8::before {
+    margin-right: 8px;
+}
+
+input[type=checkbox]+.lbl.padding-4::before,input[type=radio]+.lbl.padding-4::before {
+    margin-right: 4px;
+}
+
+input[type=checkbox]+.lbl.padding-0::before,input[type=radio]+.lbl.padding-0::before {
+    margin-right: 0px;
+}
+
+
+/* Basic Checkbox styles */
+input[type=checkbox]+.lbl::before,input[type=radio]+.lbl::before {
+  font-family: fontAwesome;
+  font-weight: normal;
+  font-size: 11px;
+  color: #2091cf;
+  content: "\a0";
+  background-color: #FAFAFA;
+  border: 1px solid #CCC;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+  border-radius: 0;
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  height: 13px;
+  line-height: 13px;
+  min-width: 13px;
+  margin-right: 1px;
+  margin-top: -5px;
+}
+
+/* Checked state styles */
+input[type=checkbox]:checked+.lbl::before,input[type=radio]:checked+.lbl::before {
+  display: inline-block;
+  content: '\f00c';
+  background-color: #F5F8FC;
+  border-color: #adb8c0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),inset 0px -15px 10px -12px rgba(0, 0, 0, 0.05),inset 15px 10px -12px rgba(255, 255, 255, 0.1);
+}
+
+/* Hover state styles */
+input[type=checkbox]:hover+.lbl::before,input[type=radio]:hover+.lbl::before,input[type=checkbox]+.lbl:hover::before,input[type=radio]+.lbl:hover::before {
+  border-color: #1c7aad;
+}
+
+/* Shadow when checked or Active */
+input[type=checkbox]:active+.lbl::before,input[type=radio]:active+.lbl::before,input[type=checkbox]:checked:active+.lbl::before,input[type=radio]:checked:active+.lbl::before {
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05),inset 0px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+/* Disabled state styles */
+input[type=checkbox]:disabled+.lbl::before,input[type=radio]:disabled+.lbl::before,input[type=checkbox][disabled]+.lbl::before,input[type=radio][disabled]+.lbl::before,input[type=checkbox].disabled+.lbl::before,input[type=radio].disabled+.lbl::before {
+  background-color: #DDD !important;
+  border-color: #CCC !important;
+  box-shadow: none !important;
+  color: #BBB;
+}
+
+/* Styles for Radio button */
+input[type=radio]+.lbl::before {
+  border-radius: 32px;
+  font-family: Arial,Helvetica,sans-serif;
+  font-size: 36px;
+}
+
+input[type=radio]:checked+.lbl::before {
+  content: "\2022";
+}
+
+
+/*projects boxes*/
+.projects{
+    /*border-bottom:1px solid #9c9b9b;*/
+    /*padding:20px;*/
+   
+}
+.projects .wrap
+{
+  border-top:1px solid #9c9b9b;
+  margin-bottom:20px;
+  padding-top:20px;
+}
+.professionals .date , .professionals .nav li a
+{
+    color:#b9b6b6;
+}
+
+.professionals .date{
+   
+}
+
+.professionals .taskname{
+    color:#212121;
+    margin-left:20px;
+}
+
+.providers{
+    padding:5px;
+    background:#ebe7e7;
+}
+
+.media img+span.badge {
+    position: relative;
+    top: -8px;
+    left: -20px;
+}
+
+
+ .ta-editor {
+    min-height: 300px;
+    height: auto;
+    overflow: auto;
+    font-family: inherit;
+    font-size: 100%;
+    margin:20px 0;
+ }
+
+ /*custom icons*/
+
+ .iconrow {
+    margin-top: 10px;
+}
+
+.iconlabel {
+    display: inline;
+    position: relative;
+    top: 7px;
+    margin-left: 10px;
+    vertical-align: top;
+}
+
+/* custom icons
+   copy the styles below into icons-dashboard-sprites.css */
+
+[class^="icon-dashboard-"],
+[class*=" icon-dashboard-"] {
+    background-image: url("https://app.10000ft.com/images/compSpritesButtonsIcons.png");
+    background-repeat: no-repeat;
+    display: inline-block;
+}
+
+.icon-dashboard-logo { background-position : -550px -690px; width : 120px; height : 120px;  }
+.icon-dashboard-intheoffice { background-position: -395px -60px; width: 24px; height: 24px  } 
+.icon-dashboard-edit { background-position: -765px -200px; width: 24px; height: 29px  } 
+
+
+.main-header {
+  margin-bottom: 50px;
+}
+.main-header h2 {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  *vertical-align: auto;
+  zoom: 1;
+  *display: inline;
+  border-right: 1px solid #ccc;
+  margin: 0;
+  padding-right: 10px;
+  margin-right: 10px;
+}
+@media screen and (max-width: 768px) {
+  .main-header h2 {
+    display: block;
+    border-right: none;
+  }
+}
+.main-header em {
+  color: #bbbbbb;
+}
+
+/*rating*/
+
+.rating{
+  color: #a9a9a9;
+  margin: 0;
+  padding: 0;
+}
+
+ul.rating {
+  display: inline-block;
+}
+
+.rating li {
+  list-style-type: none;
+  display: inline-block;
+  padding: 1px;
+  text-align: center;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.rating .filled {
+  color: #21568b;
+}

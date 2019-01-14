@@ -1,0 +1,179 @@
+﻿
+<div class="row" >
+    <!--main area-->
+   
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        <div class="main-header margintop_20" >
+            <h2>My Schedules</h2>
+            <em>View your Schedules</em>
+        </div>
+       
+        <!--<a href="" class="btn btn-info" ng-click="openProfile(1,'p')">Open profile</a>-->
+      
+        <!--<div ng-init="vv=getReviewByProviderId(15);">
+            <div ng-if="Starvalue[0].stars>0" ng-init="star=Starvalue[0].stars">
+                <div class="star-rating" star-rating rating-value="star"
+                     data-max="5"></div>
+            </div>
+        </div>-->
+        
+       
+        
+        <!--paging-->
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="my-controller bg-success well">
+
+                    <div class="row">
+
+                        <div class="col-xs-6">
+                            <label for="search">Search:</label>
+                            <div class="input-group input-group add-on">
+                                <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="search">items per page:</label>
+                            <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+
+            </div>
+        </div>
+        <!--//paging-->
+        <!--projects-->
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 projects ">
+
+                <div class="wrap container-fluid" dir-paginate="service in ServicesPostedTillToday | orderBy:'service_Id':true | orderBy:'service_Id':true | filter:q | itemsPerPage: pageSize">
+                    <div class="row">
+
+                        <div class="professionals col-lg-12 text-danger desktop btn-block  bg-primary" style="padding:5px;color:#fff">
+                            <div class="col-md-12 col-sm-12">
+                                Service: <span class="date"><i>Posted Date:</i> {{FormatDate(service.createdOn)}}</span>
+                                <strong class="taskname" style="color:#fff"><i style="font-weight:normal;color:#fff">Title: </i>&nbsp; {{service.title}}</strong>
+                            </div>
+                        </div>
+
+                        <div class="professionals col-lg-12 text-danger mobile">
+                            <div class="col-md-12 col-xs-12">
+                                <strong class="text-left">{{service.title}}</strong>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <span class="date">{{FormatDate(service.createdOn)}}</span>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <!--provides list-->
+
+                    <label class="label-default margintop_10">Scedules:</label>
+                    <div class="providers col-lg-12" ng-repeat="schedule in Schedules=( Schedules | filter:{service_Id:service.service_Id}) " style="border-bottom:1px solid #fff">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12  {{schedule.scheduled  ? 'bg-success': 'well'}} ">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h5>Start Time</h5>
+                                <h5 class="text-success">{{schedule.startAt}}</h5>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h5>End Time</h5>
+                                <h5 class="text-success">{{schedule.entAt}}</h5>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <!--<h5>Status</h5>
+                    <h5 class="text-success text-info">{{schedule.scheduled  ? "Confirmed" : "Pending"}}</h5>-->
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h5>Service Provider</h5>
+                                <div ng-repeat="p in Proposals | filter:{appointment_Id:schedule.appointment_Id}">
+                                    <div ng-repeat="professional in Professionals | filter:{serviceProvider_Id:p.serviceProvider_Id}">
+                                        <h5><a href="" style="text-decoration:underline" ng-click="openProfile(p.serviceProvider_Id,'p')" data-id="p.serviceProvider_Id"> {{professional.name}}</a></h5>
+                                        <a class="btn btn-block btn-success btn-sm" href="" data-serviceproviderid="{{p.serviceProvider_Id}}" data-serviceid="{{service.service_Id}}" data-customerid="{{service.customer_Id}}" data-reviewtype="customer" ng-click="openReviewPopup($event.target)"><span class="glyphicon glyphicon-stats"></span>&nbsp; Submit Review</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <!--//provides list-->
+                    <!--button-->
+
+                    <div class="clearfix"></div>
+
+                    <div class="">
+
+                        <p ng-repeat="schedule in Schedules=( Schedules | filter:{service_Id:service.service_Id})">
+                            <div class="col-md-12 col-sm-12">
+                                <div ng-show="!Schedules.length">
+                        <p class="text-warning">No Schedule Found</p>
+                    </div>
+                </div>
+
+                </p>
+                <div class="col-md-6 col-sm-6 pull-left">
+                    <div class="col-md-6 col-sm-6">
+
+                        <label class="label label-info pull-left margintop_20"><b>Status:</b> {{service.status==1  ? "Open" : "Closed"}}</label>
+
+                    </div>
+
+
+                </div>
+                <div ng-show="!ServicesPostedTillToday.length">
+                    <p class="text-warning">No Data Found</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!--//projects-->
+
+    </div>
+
+    <!--paging-->
+</div>
+        <!--// row-->
+            <div class="other-controller">
+
+                <div class="text-center">
+
+                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/app/views/dirPagination.html"></dir-pagination-controls>
+                </div>
+            </div>
+
+
+        </div>
+    <!--end main area-->
+    <!--promotions-->
+    <!--promotions-->
+    <div class="col-md-4 col-sm-6">
+        <h3>Promotions</h3>
+        <div class="col-md-12 col-sm-12 margintop_10">
+            <p><b>Promotion Title</b></p>
+            <img src="../../../images/promotion.png" class="img-responsive" />
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+    </div>
+    <!--end promotions-->
+</div>

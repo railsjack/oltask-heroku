@@ -1,0 +1,57 @@
+/*!
+ * Yamm!3 - Yet another megamenu for Bootstrap 3
+ * http://geedmo.github.com/yamm3
+ * 
+ * @geedmo - Licensed under the MIT license
+ */
+.yamm .nav,
+.yamm .collapse,
+.yamm .dropup,
+.yamm .dropdown {
+  position: static;
+}
+.yamm .container {
+  position: relative;
+}
+.yamm .dropdown-menu {
+  left: auto;
+  width: 100%;
+}
+.yamm .yamm-content {
+  padding: 20px 30px;
+  position: relative;
+  width: 100%;
+}
+.yamm .dropdown.yamm-fw .dropdown-menu {
+  left: 0 !important;
+  right: 0 !important;
+  margin-left: 0 !important;
+  width: auto !important;
+  min-width: 0 !important;
+  max-width: none !important;
+}
+.yamm .dropdown.yamm-fw span.scroll-up, .yamm .dropdown.yamm-fw span.scroll-down {
+  left: 0 !important;
+  right: 0 !important;
+  margin-left: 0 !important;
+}
+.yamm .dropdown.yamm-fw .dropdown-menu, .yamm .dropdown.yamm-fw .dropdown-menu * {
+  -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+.yamm .dropdown-menu > li {
+    list-style: none;
+} 
+
+body{
+    width: 100%;
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow-x: hidden; 
+}  
+
+
+

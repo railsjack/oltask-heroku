@@ -1,0 +1,73 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-1.10.2.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.5/angular.min.js"></script>
+    <script>
+
+      var app = angular.module('QuizApp', []);
+      app.controller('QuizCtrl', function ($scope, $http) {
+          $scope.sendAnswer = function (option) {
+              $scope.working = false;
+              var tokenKey = 'accessToken';
+              var loginData = {
+                  grant_type: 'password',
+                  username: "cust041@gmail.com",
+                  password: "123456"
+              };
+
+              $.ajax({
+                  type: 'POST',
+                  url: 'http://consvita.w06.wh-2.com/oltaskapi/api/token',
+                  data: loginData
+              }).done(function (data) {
+                  alert(data.access_token);
+                  // Cache the access token in session storage.
+                  sessionStorage.setItem(tokenKey, data.access_token);
+                  var token = data.access_token;
+                  var udata = { "serviceProvider_Id": 2 };
+                  var headers = {};
+                  if (token) {
+                      headers.Authorization = 'Bearer ' + token;
+                  }
+
+                  $.ajax({
+                      type: 'GET',
+                      //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/customers',
+                      //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/ServiceProviders?serviceProvider_Id=2',
+                      //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/account?email=cust041@gmail.com',
+                      url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/api/ServiceProviderAddresses?serviceProvider_Id=2',
+                      //data:udata,
+                      headers: headers
+                  }).done(function (data) {
+                      //get token
+                      var token = sessionStorage.getItem(tokenKey);
+                      $scope.my = "thghg";
+                      
+                  }).fail();
+              }
+
+              ).fail(function (data) {
+                  alert("error");
+              });
+
+          }
+      });
+        
+    </script>
+    
+    
+</head>
+<body ng-app="QuizApp">
+    <div ng-controller="QuizCtrl">
+
+        {{my}}
+       
+        <button ng-click="sendAnswer(option)">Register</button>
+        <button ng-click="sendLogin(option)">Login</button>
+    </div>
+    
+</body>
+
+</html>

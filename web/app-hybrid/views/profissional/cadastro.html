@@ -1,0 +1,217 @@
+﻿<div data-role="view"
+     data-model="CadastroModel"
+     data-title="Cadastro"
+     data-init="CadastroModel.initCadastroProfissional"
+     data-show="CadastroModel.show"
+     data-layout="default-back-layout"
+     data-use-native-scrolling="true">
+
+    <div class="container" style="padding-top:10px;">
+
+        <div class="row cadastro-header">
+
+            <div class="col-xs-4 image">
+                <img src="images/profissional_icon_on.png" alt="" />
+            </div>
+
+            <div class="col-xs-8 title">
+                <label class="text-green text-larger">
+                    <i><b>Cadastro de Profissional</b></i>
+                </label>
+            </div>
+
+        </div>
+
+        <form id="cadastroProfissionalForm" style="margin-top: 10px;" data-role="validator">
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h3>Dados Pessoais</h3>
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <input type="text" id="firstname" name="name" data-bind="value: novoUsuario.Name" class="form-control" placeholder="Nome" required="required">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 hidden">
+                    <div class="form-group">
+                        <input type="text" id="lastname" name="lastname" 
+                        data-bind="value: novoUsuario.LastName" class="form-control" 
+                        placeholder="SobreNome" arequired="required">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 hidden">
+                    <div class="form-group">
+                        <input type="date" id="Nascimento" name="Nascimento" 
+                        data-bind="value: novoUsuario.Nascimento" class="form-control" 
+                        original-placeholder="Nascimento" arequired="required">
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="input-group">
+                        <span class="input-group-addon" id="sizing-addon2">
+                            <i class="fa fa-phone"></i>
+                        </span>
+                        <input type="text" name="telefone" data-bind="value: novoUsuario.PhoneNumber" class="form-control" placeholder="Telefone" required="required">
+                    </div>
+                </div>
+
+
+                <div class="col-lg-6 col-md-6 col-sm-12 hidden">
+                    <div class="form-group">
+                        <input type="text" name="celular" 
+                        data-bind="value: novoUsuario.Celular" class="form-control" 
+                        placeholder="Celular" arequired="required">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 hidden">
+                <div class="form-group">
+                    <select id="gender" placeholder="Sexo" class="form-control" data-bind="value: novoUsuario.Gender" arequired="required">
+                        <option value="male">M</option>
+                        <option value="female">F</option>
+                    </select>
+                </div>
+                </div>
+
+
+            </div>
+
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h3>Dados de Localização</h3>
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    <input id="cadastroProfissionalEstados" class="form-control" placeholder="Estado" required="required">
+                </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                <div class="form-group">
+                    <input id="cadastroProfissionalCidades" disabled="disabled" placeholder="Cidade" class="form-control" required="required">
+                </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 hidden">
+                <div class="form-group">
+                    <input id="cadastroProfissionalBairros" data-bind="value: novoUsuario.neighborhoodId" disabled="disabled" placeholder="Bairro" class="form-control" arequired="required">
+                </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 hidden">
+                <div class="form-group">
+                    <input type="text" data-bind="value: novoUsuario.street" class="form-control" placeholder="Rua / Av. / Praça" arequired="required">
+                </div>
+                </div>
+
+                <div class="clearfix"></div>
+
+                <div class="col-lg-4 col-md-4 col-sm-12 hidden">
+                    <div class="form-group">
+                        <input type="text" data-bind="value: novoUsuario.complement" class="form-control" placeholder="Complemento">
+                    </div>
+                </div>
+
+                <div class="col-lg-2 col-md-2 col-sm-12 hidden">
+                    <div class="form-group">
+                        <input type="number" data-bind="value: novoUsuario.number" class="form-control" placeholder="N°" arequired="required">
+                    </div>
+                </div>
+
+                <div class="col-lg-6 col-md-6 col-sm-12 hidden">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="CEP" data-bind="value: novoUsuario.CEP" arequired="required">
+                </div>
+                </div>
+
+            </div>
+
+
+            <div class="clearfix"></div>
+
+            <div class="col-lg-12 col-md-12 col-sm-12">
+                <h3>Categorias de Serviços</h3>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <ul id="cadastro-profissional-categorias" data-role="listview" data-template="categorias-profissional-template" data-source="CadastroModel.categorias" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="clearfix"></div>
+
+
+            <div class="col-lg-6 col-md-6 col-sm-12">
+                <h3>Dados de Acesso</h3>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <input type="text" data-bind="value: novoUsuario.Email" class="form-control" placeholder="E-mail" data-required-if-notexternalprovider>
+                    </div>
+                </div>
+                <div class="col-lg-12 col-md-12 col-sm-12">
+                    <div class="form-group">
+                        <input type="text" data-bind="value: emailConfirmacao" class="form-control" placeholder="Confirmar E-mail" data-required-if-notexternalprovider>
+                    </div>
+                </div>
+
+
+            </div>
+
+            <div class="col-lg-6 col-md-6 col-sm-12 ">
+                <h3>&nbsp;</h3>
+                <div data-bind="invisible: externalProvider" class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <input type="password" data-bind="value: novoUsuario.password" class="form-control" placeholder="Senha" data-required-if-notexternalprovider>
+                    </div>
+                </div>
+
+                <div data-bind="invisible: externalProvider" class="col-lg-6 col-md-6 col-sm-12">
+                    <div class="form-group">
+                        <input type="password" data-bind="value: novoUsuario.confirmPassword" class="form-control" placeholder="Confirmar Senha" data-required-if-notexternalprovider>
+                    </div>
+                </div>
+
+            </div>
+
+
+
+            <div class="checkbox col-lg-6 col-md-6 col-sm-12">
+
+                <div class="col-lg-8 col-md-8 col-sm-12">
+                    <label class="cadastro-termos">
+                        <input id="checkboxTermosDeUso" type="checkbox" value="">
+                        Li e concordo com os <a class="text-blue" data-role="button" href="termosDeUso.html"><i>termos de uso</i></a>. Estou ciente de meus direitos e deveres quanto usuário desta plataforma web.
+
+                    </label>
+                </div>
+
+
+                <div class=" col-lg-4 col-md-4 col-sm-12" astyle="padding-left: 0;">
+                    <button data-role="button" class="btn btn-block btn-green" data-bind="click: cadastraProfissional">cadastrar</button>
+                </div>
+            
+            </div>
+
+        </form>
+    </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="categorias-profissional-template">
+    <label style="width:100%">
+        <input name="categorie" type="checkbox" value="#: categorie_Id #">#: categorie # <br />
+    </label>
+</script>
+
+
+<style>
+    @media (min-width: 781px){
+        #cadastro-profissional-categorias li{
+            width: 50% !important;
+            float: left !important;
+        }
+    }
+</style>

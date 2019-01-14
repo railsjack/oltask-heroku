@@ -1,0 +1,67 @@
+﻿<div id="avaliarClienteView"
+     data-role="view"
+     data-init="AvaliarClienteModel.init"
+     data-show="AvaliarClienteModel.show"
+     data-model="AvaliarClienteModel"
+     data-title="Avaliar Cliente"
+     data-layout="profissional-back-layout"
+     data-transition="overlay:up">
+
+    <div data-role="footer" style="background-color:white; display: block!important;">
+        <div class="col-xs-12">
+            <a data-role="button" data-bind="click:enviar"
+               class="btn btn-green btn-block" style="font-family:UbuntuM; padding: 10px 0 10px 0 !important; margin-bottom:5px; margin-top:5px;">
+                <b>Enviar Avaliação</b>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <div class="item" style="margin-top:20px;">
+
+            <div class="row">
+                <span class="col-xs-12">
+                    <label class="title" data-bind="text: propostaSelecionada.title"></label>
+                </span>
+            </div>
+
+            <div class="pessoa item-row">
+                <div class="table-cell">
+                    <div class="thumbnail">
+                        <img data-bind="attr: { src: photo }" onerror="imageError(this)" />
+                    </div>
+                </div>
+                <span class="nome table-cell">
+                    <label>
+                        <b data-bind="text: propostaSelecionada.customer_Name"></b>
+                    </label>
+                </span>
+            </div>
+
+            <div class="item-row text-center">
+                <label class="horario" data-bind="text: date">
+                </label>
+            </div>
+
+            <div class="text-center item-row">
+                <label class="valor">
+                    Visita: <b data-bind="text: visitValue"></b>
+                </label>
+            </div>
+
+            <div class="text-center notafinal" style="margin-top:10px; padding-bottom:1em;">
+                <input id="cliente-nota" class="rating" data-glyphicon="false" data-rating-class="rating-fa" data-symbol="&#xf005;" data-size="sm"/>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+        $(".rating").rating({
+            clearButton: '<i class="fa fa-minus-circle"></i>'
+        });
+    </script>
+
+</div>

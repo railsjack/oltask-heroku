@@ -1,0 +1,50 @@
+﻿    <div class="row">
+        
+        <h3 class="form-login-heading text-center">Edit</h3>
+        <form name="formdata" novalidate>
+            <div class="col-md-12">
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </div>
+
+            <div class="col-md-12">
+               
+                <select class="form-control task" name="state" ng-init="registration.state=Professional.state" ng-model="registration.state" ng-options="c.state1 for c in states track by c.state_Id" ng-change="getCitiesFilter(registration.state.state_Id)" required>
+                    <option value="">Select State</option>
+                </select>
+                <span class="help-block " ng-show="formdata.state.$error.required">This field is required.</span>
+
+            </div>
+           
+
+            <div class="col-md-12 margintop_20">
+                <select class="form-control task" name="city" ng-init="registration.city=Professional.city" ng-model="registration.city" ng-options="s.city1 for s in CityList track by s.city_Id" required>
+                    <option value="">Select City</option>
+                </select>
+
+                <span class="help-block " ng-show="formdata.city.$error.required">This field is required.</span>
+
+            </div>
+
+            <div class="col-md-12 margintop_20">
+                <input type="text" class="form-control task" ng-init="registration.street=Professional.street" name="street" ng-model="registration.street" placeholder="Rua / Avenida / Praça" required />
+
+                <span class="help-block " ng-show="formdata.street.$error.required">This field is required.</span>
+
+            </div>
+
+            <div class="col-md-12 margintop_20">
+               
+                <input type="text" class="form-control task" ng-init="registration.zip=Professional.zip" name="zip" ng-minlength="2" ng-model="registration.zip" placeholder="CEP" required />
+                    <span class="help-block " ng-show="formdata.zip.$error.required">This field is required.</span>
+                    <span class="help-block " ng-show="formdata.zip.$error.minlength">Invalid Zip.</span>
+               
+            </div>
+
+            <div class="col-md-12 margintop_20">
+                <button type="submit" class="btn btn-sm btn-block btn-primary">Save Changes</button>
+            </div>
+            </form>
+
+</div>

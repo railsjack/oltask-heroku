@@ -1,0 +1,205 @@
+﻿
+
+<div class="row">
+    <!--main area-->
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="main-header margintop_20">
+            <h2>Proposals</h2>
+            <em></em>
+        </div>
+
+        <!--paging-->
+
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="my-controller bg-success well">
+
+                    <div class="row">
+
+                        <div class="col-xs-6">
+                            <label for="search">Search:</label>
+                            <div class="input-group input-group add-on">
+                                <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="search">items per page:</label>
+                            <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!--//paging-->
+
+        <!--projects-->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12  projects ">
+
+                <div ng-show="!ProposalSendedTillToday.length">
+                    <p class="text-warning">No Data Found</p>
+                </div>
+
+                <div class="wrap container-fluid" dir-paginate="proposal in ProposalSendedTillToday | orderBy:'createdOn':true | filter:q | itemsPerPage: pageSize" >
+                    <div class="row">
+                        <div class="professionals col-lg-12 desktop">
+                            <div class="col-md-6 col-sm-6">
+                                <span class="date">{{FormatDate(proposal.createdOn)}}</span>
+                                <strong class="taskname text-success" ng-repeat="service in Services | filter:{service_Id:proposal.service_Id}" ng-hide="!isrowFirst(service, $index)">{{service.title}}</strong>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+
+                                
+                            </div>
+                        </div>
+
+                        <!--mobile-->
+                        <div class="professionals col-lg-12 col-xs-12 mobile">
+                            <div class="row">
+                                <div class="col-md-12 col-xs-12">
+
+                                    <strong class="text-left" ng-repeat="service in Services | filter:{service_Id:proposal.service_Id}" ng-hide="!isrowFirst(service, $index)">{{service.title}}</strong>
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+                                    <span class="date">{{FormatDate(proposal.createdOn)}}</span>
+
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+
+                                   
+                                </div>
+                                <div class="col-md-4 col-xs-4">
+
+                                    
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <div class="clearfix"></div>
+
+                        <!--provides list-->
+                        <div class="providers col-lg-12">
+                            <div class="col-md-4 col-sm-4">
+
+                                <div class="media pull-right">
+                                    <a class="pull-left" href="#">
+                                        <span style="display:none; position: relative; top: 40px; right: 55px;" class="badge badge-success pull-right firstbadge">9</span>
+                                        <img src="../../../images/128-2.jpg" style="max-height:50px;max-width:50px" class="img-circle img-responsive media-object" />
+                                       
+                                    </a>
+                                    <div class="media-body">
+                                        <i ng-repeat="service in Services | filter:{service_Id:proposal.service_Id}" ng-hide="!isrowFirst(service, $index)">
+                                            <h4 class="media-heading" ng-repeat="client in Clients | filter:{customer_Id:service.customer_Id} " ng-hide="!isrowFirst(client, $index)">{{client.name}}</h4>
+                                        </i>
+
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h5>Visits</h5>
+                                <h5 class="text-success">R$ {{proposal.visitValue}}</h5>
+                            </div>
+                            <div class="col-md-4 col-sm-4">
+                                <h5>hours</h5>
+                                <p ng-repeat="appt in Appointments |filter:{appointment_Id:proposal.appointment_Id}" ng-hide="!isrowFirst(appt, $index)">
+                                    {{appt.startAt}}-{{appt.entAt}}
+                                </p>
+                            </div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12 col-sm-12">
+                            <i ng-repeat="service in Services | filter:{service_Id:proposal.service_Id}" ng-hide="!isrowFirst(service, $index)">
+                                <div class="col-md-10 col-sm-10" ng-bind-html="renderHtml(service.description)"></div>
+                            </i>
+
+                        </div>
+                        <!--//provides list-->
+                        <!--button-->
+
+                        <div class="clearfix"></div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="col-md-6 col-sm-6">
+                                <i ng-repeat="service in Services | filter:{service_Id:proposal.service_Id}" ng-hide="!isrowFirst(service, $index)">
+
+                                    <label ng-show="service.status==1" class="label label-info pull-left margintop_20"><b>Status:</b> Open Waiting for proposals</label>
+                                   
+                                    <label ng-show="service.status==3" class="label label-info pull-left margintop_20"><b>Status:</b> Closed</label>
+                                    <label ng-show="service.status==4" class="label label-info pull-left margintop_20"><b>Status:</b> Cancled</label>
+                                    <label ng-show="service.status==6" class="label label-info pull-left margintop_20"><b>Status:</b> Overdue</label>
+                                    
+                                    
+                                </i>
+                            </div>
+                           
+
+                        </div>
+
+                        <div class="col-md-6 col-sm-6">
+                            <div class="col-md-6 col-sm-6">
+                                <i ng-repeat="service in Services | filter:{service_Id:proposal.service_Id}" ng-hide="!isrowFirst(service, $index)">
+
+                                    
+                                    <button ng-show="proposal.status==1" class="btn btn-success pull-left margintop_20"><b>Proposal Selected</b></button>
+
+                                </i>
+                            </div>
+
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+                <!--//projects-->
+
+            </div>
+        </div>
+        <div class="other-controller">
+
+            <div class="text-center">
+
+                <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/app/views/dirPagination.html"></dir-pagination-controls>
+            </div>
+        </div>
+
+    </div>
+    <!--end main area-->
+    <!--promotions-->
+    <!--promotions-->
+    <div class="col-md-4 col-sm-6">
+        <h3>Promotions</h3>
+        <div class="col-md-12 col-sm-12 margintop_10">
+            <p><b>Promotion Title</b></p>
+            <img src="../../../images/promotion.png" class="img-responsive"  />
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+    </div>
+    <!--end promotions-->
+</div>

@@ -1,0 +1,27 @@
+﻿    <div class="row">
+        
+        <h3 class="form-login-heading text-center">Submit Review</h3>
+        <form name="formdata" novalidate>
+            <div class="col-md-12">
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </div>
+            <div class="col-md-12">
+                <select name="star" ng-model="registration.star" class="form-control" required>
+                    <option value="" disabled selected>Select Star</option>
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                <span class="help-block " ng-show="formdata.star.$error.required">This field is required.</span>
+            </div>
+           
+            <div class="col-md-12 margintop_20">
+                <button type="submit" ng-click="saveReview()" ng-disabled="formdata.$invalid" class="btn btn-sm btn-block btn-primary">Save</button>
+            </div>
+            </form>
+
+</div>

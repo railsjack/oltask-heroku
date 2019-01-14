@@ -1,0 +1,34 @@
+﻿.menu {
+    height:100px;
+    border-top:5px solid #45adf8;
+    padding-top:40px;
+}
+.menu ul{
+    list-style:none;
+    width:80%;
+    margin-left:10%;
+}
+.menu ul li{
+    float:left;
+    border-right:1px solid #fff;
+    height:25px;
+    padding-right:15px;
+    padding-left:15px;
+    position:relative;
+}
+
+.menu ul li:last-child{
+    border-right:none;
+}
+
+.menu ul li a{
+    color:#fff;
+    font-size:1.2em;
+    padding:8px 5px 10px 0px;
+}
+
+.menu ul li a:hover{
+    background:#0f578a;
+    
+    text-decoration:none;
+}

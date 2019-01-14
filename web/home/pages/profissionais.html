@@ -1,0 +1,1663 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+
+    <!-- Mirrored from oltask.com../pages/profissionais.html by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 01 Apr 2015 03:45:12 GMT -->
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>OLTask</title>
+
+        <link href="../theme/css/bootstrap.min.css" rel="stylesheet" />
+        <link href="../theme/css/bootstrap-theme.min.css" rel="stylesheet" />
+        <link href="../theme/css/bootstrap.css" rel="stylesheet" />
+
+        <link href="../css/style_background.css" rel="stylesheet" />
+        <link href="../css/yamm.css" rel="stylesheet" />
+        <link href="../css/profissionais.css" rel="stylesheet" />
+        <link href="../css/font-awesome.min.css" rel="stylesheet" />
+        <link href="../css/custom.css" rel="stylesheet" />
+
+        <!-- Kendo UI -->
+        <link rel="stylesheet" href="../styles/kendo.common.min.css" />
+        <link rel="stylesheet" href="../styles/kendo.default.min.css" />
+        <link rel="stylesheet" href="../styles/kendo.dataviz.min.css" />
+        <link rel="stylesheet" href="../styles/kendo.dataviz.default.min.css" />
+        <link rel="stylesheet" href="../styles/kendo.default.mobile.min.css" />
+
+        <!-- JS -->
+        <script src="../js/jquery.min.js">               </script>
+        <script src="../js/kendo.all.min.js">            </script>
+        <script src="../js/jssor.js">                    </script>
+        <script src="../js/jssor.slider.js">             </script>
+        <script src="../js/cidades-estados-1.2-utf8.js"> </script>
+        <script src="jquery.raty.js"></script>
+
+        <script>
+
+            function hover(element) {
+                element.setAttribute('src', '../images/icones/menu/app_site_top-menu_home_on.html');
+            }
+            function unhover(element) {
+                element.setAttribute('src', '../images/icones/menu/app_site_top-menu_home_off.html');
+            }
+
+            $(document).ready(function(){
+                new dgCidadesEstados({
+                    cidade: document.getElementById('cidade'),
+                    estado: document.getElementById('estado'),
+                    change: true
+                });
+
+                $("#horario-1").kendoMaskedTextBox({
+                    mask: "00:00 ás 00:00"
+                });
+                $("#horario-2").kendoMaskedTextBox({
+                    mask: "00:00 ás 00:00"
+                });
+            });
+
+        </script>
+
+
+
+
+
+    <!--<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>-->
+    <script src="../js/jquery.min.js"></script>
+    <!-- Include jQuery Popup Overlay -->
+    <script src="../js/plugins/responsive-popup/jquery.popupoverlay.js"></script>
+    <!--<script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>-->
+
+    <script>
+        $(document).ready(function () {
+
+            // Initialize the plugin
+
+            $.fn.popup.defaults.transition = 'all 0.3s';
+            //$.fn.popup.defaults.pagecontainer = '.container';
+
+            $('#my_popup').popup({
+               
+                    opacity: 0.3,
+                    transition: 'all 0.3s'
+               
+            });
+
+            $('#searchmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#contactmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#registermenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#professionalmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#createtaskmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+            
+           
+        });
+    </script>
+    </head>
+
+
+    <body>
+
+        <header>
+            <div class="desktop">
+                <div class="header">
+
+                    <div class="row">
+
+                        <div class="col-md-6 col-sm-6 logo">
+                            <a href="../../home" target="_self" original-href="/index.html" style="text-decoration:none"><img src="../images/logo/oltask_site_logo_top.png" alt="OLTask.com" /></a>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="login">
+                                <a id="user-name-btn" href="../../app" target="_self" origianl-href="../pages/login.html">Login <img id="user-img" src="../images/icones/app_site_top_icon_connect_off.png" /> </a>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="mobile">
+
+                <div class="container">
+                    <div class="row">
+
+                        <div class="col-sm-6 col-md-6">
+                            <a href="../../home" target="_self" original-href="/index.html" style="text-decoration:none"><img style="margin-top:20px" src="../images/logo/oltask_site_logo_top.png" /></a>
+                        </div>
+
+                        <div class="col-sm-6 col-md-6">
+
+                            <a style="margin-top:-35px" href="#" class="navbar-toggle" data-toggle="collapse" data-target="#myLoginBar">
+                                <span class="glyphicon glyphicon-user dropdown-toggle"><i class="glyphicon caret"></i></span>
+                            </a>
+                            <div class="clearfix"></div>
+
+                            <div class="collapse navbar-collapse pull-right" id="myLoginBar" style="  margin-top: -25px;">
+                                <ul class="nav navbar-nav">
+                                    <li class="active"><a href="../../app" original-href="/sociallogin/#/login">Login</a></li>
+                                    <!--<li><a href="#">Page 1</a></li>-->
+                                </ul>
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <nav class="navbar navbar-inverse">
+
+                    <div class="container-fluid">
+
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                                 <span class="icon-bar"></span>
+                                 <span class="icon-bar"></span>
+                                 <span class="icon-bar"></span>
+                            </button>
+                            <a href="#" class="navbar-brand">Menu</a>
+                        </div>
+                        <div class="collapse navbar-collapse navbar-form" id="myNavbar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a original-class="createtaskmenu_open" href="../../app"
+                                original-href="/customer.html#/cst/postjob">Publicar Tarefa</a></li>
+                                <li><a class="professionalmenu_open" href="#">Profissionais</a></li>
+                                <li><a original-class="registermenu_open" href="../../app/index.html#choice.html">Cadastrar</a></li>
+                                <li><a href="../../home../pages/parceiros.html">Parcieros</a></li>
+                                <li><a class="contactmenu_open" href="#">Contato</a></li>
+                                <li><a class="searchmenu_open" href="#">Busca</a></li>
+                            </ul>
+                        </div>
+
+                    </div>
+
+                </nav>
+            </div>
+
+        </header>
+
+        <!-- ******* MENU PRINCIPAL *******   -->
+
+        <div class="navbar yamm">
+            <div id="navbar-collapse-grid" class="navbar-collapse collapse"
+                style="width: 70%; margin-left: 20%;">
+                <ul class="nav navbar-nav ">
+
+                    <!--  Home  -->
+                    <li class="dropdown yamm-fw ">
+                        <a href="../" original-data-toggle="dropdown" class="dropdown-toggle menu-home"> </a>
+                    </li>
+                    <!--  -->
+                    <!--  Tarefas  -->
+                    
+                    <li class="">
+                        <a href="../../app" target="_self" original-href="/customer.html#/cst/postjob" id="postjoblink" class="menu-tarefas"> <span class="botao-tarefas"></span> </a>
+                    </li>
+                    <!--  -->
+                    <!--  Profissionais  -->
+                    <li class="dropdown yamm-fw">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-profissionais  ">  </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="profissionais">
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <h3>3.625</h3> <h4>Autônomos <br /> Cadastrados</h4>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <h3>RJ</h3> <h4>Rio de Janeiro</h4>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-3">
+                                            <ul>
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_pintor_off.png" alt="Icone"> pintor</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_eletricista_off.png" alt="Icone"> eletrecista</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_encanador_off.png" alt="Icone"> encanador</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_pedreiro_off.png" alt="Icone"> pedreiro</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_jardineiro_off.png" alt="Icone"> jardineiro</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_fotografo_off.png" alt="Icone"> fotógrafo</a>
+                                                </li> 
+                                                                                           
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <ul>
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_marceneiro_off.png" alt="Icone"> marceneiro</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_diarista_off.png" alt="Icone"> diarista</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_baba_off.png" alt="Icone"> babá</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_cuidador_de_idosos_off.png" alt="Icone"> cuidador de idosos</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_cozinheiro_off.png" alt="Icone"> cozinheiro</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_sapateiro_off.png" alt="Icone"> sapateiro</a>
+                                                </li>
+
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <ul>
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_seguranca_off.png" alt="Icone"> segurança</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_professor_particular_off.png" alt="Icone"> professor particular</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_perssonal_training_off.png" alt="Icone"> personal training</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_manicure_off.png" alt="Icone"> manicure / pedicure</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_cabeleleiro_off.png" alt="Icone"> cabelereiro</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_costureira_off.png" alt="Icone"> costureira</a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="col-md-3">
+                                            <ul>
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_barbearia_off.png" alt="Icone"> barbeiro</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_informatica_off.png" alt="Icone"> informatica</a>
+                                                </li>
+
+                                                <li>
+                                                    <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_contador_off.png" alt="Icone"> contador</a>
+                                                </li>
+                                                                                            
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--  -->
+                    <!--  Cadastro  -->
+                    <li class="dropdown yamm-fw">
+                        <a href="../../app/index.html#choice.html" original-data-toggle="dropdown" class="dropdown-toggle menu-cadastro">  </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="cadastro">
+                                    <h3> Cadastre-se</h3>
+                                    <div class="row">
+                                        <div class="col-md-4">
+                                            <div class="cad-cliente">
+                                                <div class="cadastro-circulo-1">
+                                                    <img src="../images/icones/drop-cadastro/app_site_cadastro_dropdown_icon_clientes.png" />
+                                                </div>
+                                                <h4>Clientes</h4>
+                                                <a class="btn-cad-cliente" href="../pages/cadastro-cliente.html"> cadastrar </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="cad-profi">
+                                                <div class="cadastro-circulo-2">
+                                                    <img src="../images/icones/drop-cadastro/app_site_cadastro_dropdown_icon_profissionais.png" />
+                                                </div>
+                                                <h4>Profissionais</h4>
+                                                <a class="btn-cad-profi" href="../pages/cadastro-profissional.html"> cadastrar </a>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-4">
+                                            <div class="cad-parceiros">
+                                                <div class="cadastro-circulo-3">
+                                                    <img src="../images/icones/drop-cadastro/app_site_cadastro_dropdown_icon_parceiros.png" />
+                                                </div>
+                                                <h4>Parceiros</h4>
+                                                <a class="btn-cad-parceiros" href="../pages/cadastro-parceiros.html"> cadastrar </a>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--  -->
+                    <!--  Parceiros  -->
+                    <li class="dropdown yamm-fw">
+                        <a href="../pages/parceiros.html" class="menu-parceiros"> </a>
+                    </li>
+                    <!--  -->
+                    <!--  contato  -->
+                    <li class="dropdown yamm-fw">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-contato">  </a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="yamm-content">
+                                    <div class="contato">
+                                        <h3> Contato </h3>
+                                        <div class="row contato-linha-1">
+                                            <div class="col-md-6">
+                                                <input type="text" class="form-control" placeholder="Nome">
+                                            </div>
+                                            <div class="col-md-6">
+                                                <input type="email" class="form-control" placeholder="E-mail">
+                                            </div>
+                                        </div>
+                                        <div class="row contato-linha-2">
+                                            <div class="col-md-12">
+                                                <textarea class="form-control" placeholder="Mensagem" rows="3"></textarea>
+                                            </div>
+                                        </div>
+                                        <button><span class="glyphicon glyphicon-chevron-right"></span> Enviar</button>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+                    <!--  -->
+                    <!--  Busca  -->
+                    <li class="dropdown yamm-fw">
+                        <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-busca"></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <div class="busca">
+                                    <h3> Busca </h3>
+                                    <div class="input-group">
+                                        <input type="search" class="form-control" placeholder="Busca...">
+                                        <span class="input-group-btn">
+                                            <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                                        </span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+
+        <!-- **************************************************** FIM MENU PRINCIPAL *************************************************************   -->
+
+        <div class="profissionais-header-img">
+            <img src="../images/banner/oltask_site_profissionais_banner_img.gif" alt="Alternate Text" />
+        </div>
+
+        <div class="header-menu-profissionais">
+
+            <select class="selectpicker">
+                <option value="00" checked>Filtrar por Categoria</option>
+                <option value="01">Eletrecista</option>
+                <option value="02">Diarista</option>
+                <option value="03">Segurança</option>
+                <option value="04">Personal</option>
+            </select>
+
+        </div>
+
+        <div class="header-profissionais">
+            <i class="fa fa-star fa-3x"></i>
+            <h3> Destaques </h3>
+        </div>
+
+        <div class="profissionais-container">
+            <div class="row">
+
+                <div class="col-md-6">
+
+                    <div class="caixa-prof-public">
+                        <div class="public-header">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="../images/128-3.jpg" alt="Imagem Profissional" />
+                                </div>
+                                <div class="col-md-8">
+                                    <h3> Nome <br /> Sobrenome </h3>
+                                    <div class="stars"></div>
+                                </div>
+                            </div>                       
+                            
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="public-description">
+                            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will. </p>
+                        </div>
+                        <div class="public-footer">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <img src="../images/icones/app_site_footer_icon_facebook.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_google.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_twitter.png" alt="" />
+                                </div>
+                                <div class="col-md-4">
+                                    <button>Visitar Página</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="caixa-prof-public">
+                        <div class="public-header">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="../images/128.jpg" alt="Imagem Profissional" />
+                                </div>
+                                <div class="col-md-8">
+                                    <h3> Nome <br /> Sobrenome </h3>
+                                    <div class="stars"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="public-description">
+                            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will. </p>
+                        </div>
+                        <div class="public-footer">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <img src="../images/icones/app_site_footer_icon_facebook.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_google.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_twitter.png" alt="" />
+                                </div>
+                                <div class="col-md-4">
+                                    <button>Visitar Página</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="col-md-6">
+
+                    <div class="caixa-prof-public">
+                        <div class="public-header">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="../images/128-2.jpg" alt="Imagem Profissional" />
+                                </div>
+                                <div class="col-md-8">
+                                    <h3> Nome <br /> Empresa </h3>
+                                    <div class="stars"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="public-description">
+                            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will. </p>
+                        </div>
+                        <div class="public-footer">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <img src="../images/icones/app_site_footer_icon_facebook.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_google.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_twitter.png" alt="" />
+                                </div>
+                                <div class="col-md-4">
+                                    <button>Visitar Página</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="caixa-prof-public">
+                        <div class="public-header">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <img src="../images/128.jpg" alt="Imagem Profissional" />
+                                </div>
+                                <div class="col-md-8">
+                                    <h3> Nome <br /> Empresa </h3>
+                                    <div class="stars"></div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="clearfix"></div>
+
+                        <div class="public-description">
+                            <p>The path of the righteous man is beset on all sides by the iniquities of the selfish and the tyranny of evil men. Blessed is he who, in the name of charity and good will. </p>
+                        </div>
+                        <div class="public-footer">
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <img src="../images/icones/app_site_footer_icon_facebook.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_google.png" alt="" />
+                                    <img src="../images/icones/app_site_footer_icon_twitter.png" alt="" />
+                                </div>
+                                <div class="col-md-4">
+                                    <button>Visitar Página</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <div class="linha-prof">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="linha-prof">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="linha-prof">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="linha-prof">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="linha-prof">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="linha-prof">
+                <div class="row">
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-2.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-md-2">
+                        <div class="caixa-prof">
+                            <img src="../images/73-3.jpg" alt="Profissional" />
+                            <h4> Nome <br /> Sobrenome</h4>
+                            <div class="stars-2"></div>
+                            <button>Visitar Página</button>
+                            <ul>
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_facebook.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_google.png" width="35" alt="" />
+                                </li>
+
+                                <li>
+                                    <img class="caixa-prof-midia" src="../images/icones/app_site_footer_icon_twitter.png" width="35" alt="" />
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+
+        
+
+        
+
+
+
+
+
+        <script>
+
+            $('.stars').raty({
+                readOnly: true,
+                score: 5,
+            });
+
+            $('.stars-2').raty({
+                readOnly: true,
+                score: 5,
+            });
+
+            $(function () {
+                window.prettyPrint && prettyPrint()
+                $(document).on('click', '.yamm .dropdown-menu', function (e) {
+                    e.stopPropagation()
+                })
+            })
+
+
+            $("textarea").kendoEditor({
+                tools: [
+                    "bold", "italic", "underline",
+                    "strikethrough","justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                    "insertUnorderedList", "insertOrderedList", "indent", "outdent"
+                ]
+            });
+
+
+        </script>
+
+
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../js/bootstrap.min.js"></script>
+
+            <div class="mobile">
+
+                    <!--professional-->
+            <div class="profissionais well" id="professionalmenu" style="width: 90%;">
+                <a class="btn btn-primary professionalmenu_close pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+
+                <div class="row">
+                    <div class="col-md-3">
+                        <h3>3.625</h3> <h4>Autônomos <br /> Cadastrados</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h3>RJ</h3> <h4>Rio de Janeiro</h4>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3">
+                        <ul>
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_pintor_off.png" alt="Icone" /> pintor</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_eletricista_off.png" alt="Icone" /> eletrecista</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_encanador_off.png" alt="Icone" /> encanador</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_pedreiro_off.png" alt="Icone" /> pedreiro</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_jardineiro_off.png" alt="Icone" /> jardineiro</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_fotografo_off.png" alt="Icone" /> fotógrafo</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_marceneiro_off.png" alt="Icone" /> marceneiro</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_diarista_off.png" alt="Icone" /> diarista</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_baba_off.png" alt="Icone" /> babá</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_cuidador_de_idosos_off.png" alt="Icone" /> cuidador de idosos</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_cozinheiro_off.png" alt="Icone" /> cozinheiro</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_sapateiro_off.png" alt="Icone" /> sapateiro</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_seguranca_off.png" alt="Icone" /> segurança</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_professor_particular_off.png" alt="Icone" /> professor particular</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_perssonal_training_off.png" alt="Icone" /> personal training</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_manicure_off.png" alt="Icone" /> manicure / pedicure</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_cabeleleiro_off.png" alt="Icone" /> cabelereiro</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_costureira_off.png" alt="Icone" /> costureira</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-md-3">
+                        <ul>
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_barbearia_off.png" alt="Icone" /> barbeiro</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_informatica_off.png" alt="Icone" /> informatica</a>
+                            </li>
+
+                            <li>
+                                <a href="../pages/profissionais.html"> <img src="../images/icones/drop-profi/app_icon_contador_off.png" alt="Icone" /> contador</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!--end professional--> 
+
+
+
+
+        <!--contact-->
+
+        <div class="yamm-content well container-fluid" id="contactmenu">
+            <a class="btn btn-primary contactmenu_close pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+            <div class="contato">
+                <h3> Contato </h3>
+                <div class="row contato-linha-1">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="row contato-linha-2">
+                    <div class="col-md-12">
+                        <textarea class="form-control" placeholder="Mensagem" rows="3"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-chevron-right"></span> Enviar</button>
+            </div>
+        </div>
+
+        <!--end contact-->
+
+
+        <!--search-->
+
+
+        <div class="busca well" id="searchmenu">
+            <a class="btn btn-primary searchmenu_close pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+            <h3> Busca </h3>
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Busca...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                </span>
+            </div>
+        </div>
+        
+       <!--end search-->
+
+        </div>
+
+
+    </body>
+
+    <!-- Mirrored from oltask.com../pages/profissionais.html by HTTrack Website Copier/3.x [XR&CO'2013], Wed, 01 Apr 2015 03:46:17 GMT -->
+</html>

@@ -1,0 +1,33 @@
+﻿<div class="row">
+
+    <h3 class="form-login-heading text-center">Submit Proposal</h3>
+    <form name="formdata" novalidate>
+        <div class="col-md-12">
+            <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{message}}
+            </div>
+        </div>
+        <div class="col-md-12">
+            <label for="email">Amount:</label>
+            <input type="number" class="form-control" name="amount" ng-model="myquote.amount" placeholder="Amount" required>
+            <span class="help-block" ng-show="myquote.amount.$invalid && myquote.amount.$dirty">Required</span>
+        </div>
+        <div class="col-md-12" >
+
+            <label for="pwd">Schedule:</label>
+            <select class="form-control task select2" name="category" ng-model="myquote.appointment_Id" ng-options="s.startAt+'-'+s.entAt for s in categories=Appiontments |filter:{service_Id:sendServiceid} track by s.appointment_Id" required autofocus>
+                <option value="">Select a schedule</option>
+            </select>
+            <span class="help-block " ng-show="formdata.appointment_Id.$error.required && submitted">This field is required.</span>
+
+
+            
+            
+        </div>
+       
+        <div class="col-md-12 margintop_20">
+            <button type="submit" data-id="{{sendServiceid}}" ng-click="send($event.target)" ng-disabled="formdata.$invalid" class="btn btn-success pull-right">Send Proposal</button>
+        </div>
+    </form>
+
+</div>

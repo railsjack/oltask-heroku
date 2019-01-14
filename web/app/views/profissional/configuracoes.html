@@ -1,0 +1,197 @@
+﻿<div id="profissionalConfiguracaoView"
+     data-role="view"
+     data-title="Configurações"
+     data-model="ClienteConfiguracoesModel"
+     data-layout="profissional-back-layout"
+     data-show="ClienteConfiguracoesModel.show"
+     data-init="ClienteConfiguracoesModel.init"
+     data-transition="overlay:up"
+     data-use-native-scrolling="true">
+
+    <div data-role="header">
+        <iframe src="topbar.html" height="50" width="100%" frameborder="0"></iframe>
+        <div data-role="navbar" class="profissional-navbar">
+            <a data-role="backbutton" data-click="onBack" class="btn-header" data-align="left">
+                <i class="fa fa-chevron-left"></i>
+            </a>
+            <div class="thumbnail user">
+                <img data-bind="attr: { src: photo }" onerror="imageError(this)" />
+            </div>
+
+            <label data-bind="text: account.name"></label>
+        </div>
+    </div>
+
+    <div class="list-config">
+        <div class="list-group-item">
+            <div class="config-item" data-bind="click: toggleConfig">
+                <i class="fa fa-cog"></i>
+                <label>Configurações</label>
+            </div>
+
+            <div class="list-config" data-bind="visible: configActive">
+                <div class="list-group-item">
+                    <div class="config-item" data-bind="click: toggleInfo">
+                        <label>Informações pessoais</label>
+                    </div>
+                    <div class="panel-body" data-bind="visible:infoActive" style="padding-top: 0;">
+                        <button data-role="button" data-bind="click: editarAccount, invisible: editingAccount" class="btn btn-default" style="float: right;border:none;">
+                            <i class="fa fa-pencil-square-o"></i>
+                        </button>
+                        <!--<div class="row">
+                            <div class="col-xs-12 table" style="margin-bottom:0">
+                                <i class="fa fa-map-marker table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                    <label style="font-size:2em;" data-bind="text: account.state_name"></label>
+                                    <label data-bind="text: account.city_name"></label>
+                                    <br />
+                                    <label data-bind="text: account.street"></label>, <label data-bind="text: account.number"></label>, <label data-bind="text: account.neighborhood_name"></label>.
+                                    <br />
+                                    <div data-bind="visible: account.CEP">
+                                        <label>CEP</label> <label data-bind="text: account.CEP"></label>
+                                    </div>
+                                </div>
+
+                                <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                    <input id="profissionalConfigCep" name="cep" type="text" class="form-control" placeholder="CEP" style="margin-bottom: 5px;">
+                                    <input id="profissionalConfigEstados" name="estado" type="text" class="form-control" placeholder="estado" style="margin-bottom: 5px;">
+                                    <input id="profissionalConfigCidades" name="cidade" type="text" class="form-control" placeholder="cidade" style="margin-bottom: 5px;">
+                                    <input id="profissionalConfigBairros" name="bairro" type="text" class="form-control" placeholder="bairro" style="margin-bottom: 5px;">
+                                    <input id="profissionalConfigRua" name="rua" type="text" class="form-control" placeholder="rua / avenida" style="margin-bottom: 5px;">
+                                    <input id="profissionalConfigNumero" name="numero" type="number" class="form-control" placeholder="número" style="margin-bottom: 5px;">
+                                    <input id="profissionalConfigComplemento" name="complemento" type="text" class="form-control" placeholder="complemento">
+                                </div>
+                            </div>
+                        </div>-->
+                        <!--<hr />
+                        <div class="row">
+                            <div class="col-xs-12 table" style="margin-bottom:0">
+                                <i class="fa fa-birthday-cake table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                    <label data-bind="text: formattedBirthday"></label>
+                                </div>
+                                <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                    <input name="birthday" type="date" class="form-control">
+                                </div>
+                            </div>
+                        </div>-->
+ 
+                        <!--<div class="row">
+                            <div class="col-xs-12 table" style="margin-bottom:0">
+                                <i class="fa fa-at table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                    <label data-bind="text: account.email"></label>
+                                </div>
+                                <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                    <input name="email" type="email" class="form-control" placeholder="email">
+                                </div>
+                            </div>
+                        </div>-->
+                        <form id="accountForm" data-role="validator">
+                            <div class="row" style="margin-top:0.5em;">
+                                <div class="col-xs-12 table" style="margin-bottom:0">
+                                    <i class="fa fa-user table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                    <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                        <label data-bind="text: account.name"></label>
+                                    </div>
+                                    <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                        <input name="name" type="tel" class="form-control" placeholder="nome">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:0.5em;">
+                                <div class="col-xs-12 table" style="margin-bottom:0">
+                                    <i class="fa fa-phone table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                    <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                        <label data-bind="text: account.phone"></label>
+                                    </div>
+                                    <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                        <input name="phone" type="tel" class="form-control" placeholder="telefone">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top:0.5em;">
+                                <div class="col-xs-12 table" style="margin-bottom:0">
+                                    <i class="fa fa-mobile table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                    <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                        <label data-bind="text: account.celular"></label>
+                                    </div>
+                                    <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                        <input name="cel" type="tel" class="form-control" placeholder="celular">
+                                    </div>
+                                </div>
+                            </div>
+                            <hr/>
+                            <div class="row">
+                                <div class="col-xs-12 table" style="margin-bottom:0">
+                                    <i class="fa fa-tags table-cell" style="font-size: 1.5em;color: lightgrey;padding-top: 5px;width: 30px;text-align:center;"></i>
+                                    <div data-bind="invisible: editingAccount" class="table-cell" style="padding-left: 1em;">
+                                        <ul id="selectedCategories"></ul>
+                                    </div>
+
+                                    <div data-bind="visible: editingAccount" class="form-group table-cell" style="padding-left: 1em;">
+                                        <ul id="allCategories"></ul>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </form>
+                        <div class="row" data-bind="visible: editingAccount" style="margin-bottom:5px; margin-top:10px;">
+                            <div class="col-xs-6">
+                                <button data-role="button" data-bind="click: salvarAccount" class="btn btn-green btn-block" style="font-size:1em !important; white-space: normal;">Salvar alterações</button>
+                            </div>
+                            <div class="col-xs-6">
+                                <button data-role="button" data-bind="click: cancelar" class="btn btn-red btn-block" style="font-size:1em !important;white-space: normal;">Cancelar alterações</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="config-item" data-bind="click: showAlterarSenhaDialog">
+                        <label>Alterar Senha</label>
+                    </div>
+                </div>
+                <div class="list-group-item">
+                    <div class="config-item" id="imageUpload" data-bind="click: uploadFile">
+                        <label>Alterar Foto do Perfil</label>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="list-group-item">
+            <div class="config-item btn-block" data-role="button" href="views/profissional/proposta.html">
+                <i class="fa fa-plus-circle"></i>
+                <label>Propostas</label>
+            </div>
+        </div>
+
+        <div class="list-group-item">
+            <div class="config-item btn-block" data-role="button" href="views/profissional/agendaDeTarefas.html">
+                <i class="fa fa-tasks"></i>
+                <label>Minhas Tarefas</label>
+            </div>
+        </div>
+
+        <div class="list-group-item">
+            <div class="config-item btn-block" data-role="button" data-rel="modalview" href="#modalview-indicarOLTask">
+                <i class="fa fa-user-plus"></i>
+                <label>Indicar OLTask para um amigo</label>
+            </div>
+        </div>
+
+        <div class="list-group-item">
+            <div class="config-item btn-block" data-role="button" onclick="javascript: logout()">
+                <i class="fa fa-power-off"></i>
+                <label>Deslogar</label>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="categorias-profissional-template">
+    <label style="width:100%;margin: 0 10px 0 0;">
+        <input name="categorie" type="checkbox" value="#: categorie_Id #">#: categorie # <br />
+    </label>
+</script>

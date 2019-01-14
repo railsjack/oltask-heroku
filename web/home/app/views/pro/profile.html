@@ -1,0 +1,130 @@
+﻿
+
+<div class="row">
+    <!--main area-->
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        
+
+        <div class="main-header margintop_20">
+            <h2>Profile</h2>
+            <em>Edit your profile</em>
+        </div>
+
+        <div class="content">
+           
+
+            <div class="main-content">
+                <!-- NAV TABS -->
+                
+                <!-- END NAV TABS -->
+
+              
+                        <div class="row">
+                            <div class="col-md-3">
+                                <div class="user-info-left">
+                                    <img ng-src="Professional.photo" err-src="/images/nopic.png" alt="Profile Picture" />
+                                 <h3>{{Professional.name}}</h3>
+                                    
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <div class="user-info-right">
+                                    <div class="basic-info">
+                                        <a href="" ng-click="putProfessional()">Put</a>
+                                        <h3><i class="fa fa-square"></i> Basic Information <a href="" ng-click="clickToOpen()" class="btn-sm btn-link  pull-right small"><span class="glyphicon glyphicon-edit"></span>Edit</a></h3>
+                                        <p class="data-row">
+                                            <span class="data-name">Name</span>
+                                            <span class="data-value">{{Professional.name}}</span>
+                                        </p>
+                                       
+                                        <p class="data-row">
+                                            <span class="data-name">Email</span>
+                                            <span class="data-value">
+                                                {{Professional.email}}
+                                            </span>
+                                        </p>
+                                        
+                                        <p class="data-row">
+                                            <span class="data-name">Date Joined</span>
+                                            <span class="data-value">{{FormatDate(Professional.createdOn)}}</span>
+                                        </p>
+                                    </div>
+                                    <div class="contact_info">
+                                        <h3><i class="fa fa-square"></i> Basic Information <a href="" ng-click="clickToOpenLocationInfo()" class="btn-sm btn-link  pull-right small"><span class="glyphicon glyphicon-edit"></span>Edit</a></h3>
+                                        <p class="data-row">
+                                            <span class="data-name">Email</span>
+                                            <span class="data-value">{{Professional.name}}</span>
+                                        </p>
+                                        <p class="data-row">
+                                            <span class="data-name">Phone</span>
+                                            <span class="data-value">{{Professional.phone}}</span>
+                                        </p>
+                                        <p class="data-row">
+                                            
+                                            <span class="data-name">Street</span>
+                                            <span class="data-value">
+                                                <k ng-repeat="ca in ProfessionalAddresses | filter:{serviceProvider_Id:Professional.serviceProvider_Id}" ng-hide="!isrowFirst(ca, $index)">
+                                                    <k ng-repeat="a in Addresses | filter:{address_Id:ca.address_Id}" ng-hide="!isrowFirst(a, $index)">{{a.street}}{{address_Id}}</k>
+                                                </k>
+
+                                            </span>
+                                        </p>
+                                        <p class="data-row">
+                                            <span class="data-name">City</span>
+                                            <span class="data-value">
+                                                <k ng-repeat="ca in ProfessionalAddresses | filter:{customer_Id:Professional.customer_Id}" ng-hide="!isrowFirst(ca, $index)">
+                                                    <k ng-repeat="a in Addresses | filter:{address_Id:ca.address_Id}" ng-hide="!isrowFirst(a, $index)">{{a.city}}</k>
+                                                </k>
+
+                                            </span>
+                                        </p>
+                                        
+                                        <p class="data-row">
+                                            <span class="data-name">Zip</span>
+                                            <span class="data-value">
+
+                                                <k ng-repeat="ca in ProfessionalAddresses | filter:{customer_Id:Professional.customer_Id}" ng-hide="!isrowFirst(ca, $index)">
+                                                    <k ng-repeat="a in Addresses | filter:{address_Id:ca.address_Id}" ng-hide="!isrowFirst(a, $index)">{{a.cep}}</k>
+                                                </k>
+
+                                            </span>
+                                        </p>
+                                    </div>
+                                    
+                                </div>
+                            </div>
+                        </div>
+                   
+
+                
+            </div>
+        </div>
+
+
+    </div>
+           
+            <!--// row-->
+            <!--end main area-->
+            <!--promotions-->
+
+            <div class="col-md-4 col-sm-6">
+                <h3>Promotions</h3>
+                <div class="col-md-12 col-sm-12 margintop_10">
+                    <p><b>Promotion Title</b></p>
+                    <img src="../../../images/promotion.png" class="img-responsive" />
+                    <p>About Promotion</p>
+
+                </div>
+                <div class="col-md-12 col-sm-12 margintop_20">
+                    <p><b>Promotion Title</b></p>
+                    <p>About Promotion</p>
+
+                </div>
+                <div class="col-md-12 col-sm-12 margintop_20">
+                    <p><b>Promotion Title</b></p>
+                    <p>About Promotion</p>
+
+                </div>
+            </div>
+            <!--end promotions-->
+        </div>

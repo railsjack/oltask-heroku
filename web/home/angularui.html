@@ -1,0 +1,164 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2-bootstrap.css" />
+    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css" />
+    <link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css" />
+
+    <link href="css/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <div ng-app="myApp">
+    <div class="container" ng-controller="ctrlTags">
+        <div class="row" id="exSelects">
+        <div class="col-sm-6">
+            <h4>Select with Search Filter</h4>
+            <select id="mySel" class="form-control">
+            <option ng-repeat="item in items" ng-selected="item.selected" ng-model="item.tag">{{item.tag}}</option>
+            </select></div></div>
+        <hr>
+        <div class="row">
+        <div class="col-sm-6">
+            <h4>Tag Picker</h4>
+            <select id="mySel2" class="form-control" multiple="multiple">
+            <option ng-repeat="item in items" ng-selected="item.selected" ng-model="item.tag">{{item.tag}}</option></select></div></div><hr><div class="row" id="exDateTime"><div class="col-sm-3"><h4>Date &amp; Time Inputs</h4><div class="form-group"><label class="control-label">Date picker</label><div class="input-group date" id="datepicker"><input type="text" class="form-control"> <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span></div></div></div><div class="col-sm-3"><h4>&nbsp;</h4>
+        
+        <div class="form-group">
+        <label class="control-label">Time picker</label><div class="input-group" id="timepicker"><input type="text" class="form-control"> <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span></div></div></div><div class="col-sm-6"><h4>Date Range Selector</h4><div class="row"><div class="col-sm-6"><div class="input-daterange form-group has-feedback"><label class="control-label">Start</label> <input class="form-control" name="dateStart" type="text" placeholder="from"> <span class="glyphicon glyphicon-calendar form-control-feedback"></span></div></div><div class="col-sm-6"><div class="input-daterange form-group has-feedback"><label class="control-label">End</label> <input class="form-control" name="dateEnd" type="text" placeholder="to"> <span class="glyphicon glyphicon-calendar form-control-feedback"></span></div></div></div></div></div><hr><div class="row" id="exInputMasking"><div class="col-sm-6"><h4>Input Masking</h4><h5>Phone Number</h5><input type="text" class="form-control" data-mask="(999) 999-9999 x9999" placeholder="(555) 111-2222"><h5>Credit Card</h5><input type="text" class="form-control" data-mask="9999-9999-9999-9999" placeholder="0000-0000-0000-0000"><h5>Tax Id</h5><input type="text" class="form-control" data-mask="99-9999999" placeholder="XX-XXXXXXX"><h5>Date</h5><div class="form-group"><div class="input-group"><input type="text" class="form-control" data-mask="99/99/9999" placeholder="MM/DD/YYYY"> <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span></div></div></div><div class="col-sm-6"><h4>&nbsp;</h4><h5>Twitter</h5><input type="text" class="form-control" data-mask="@ww?wwwwwwwwwwwwwww" placeholder="@screename"><h5>Expiration Date</h5><input type="text" class="form-control" data-mask="99/9999" placeholder="MM/YYYY"><h5>Social Security #</h5><input type="text" class="form-control" data-mask="999-99-9999" placeholder="123-23-1234"><h5>Time</h5><div class="form-group"><div class="input-group"><input type="time" class="form-control" placeholder="12:00 AM"> <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span></div></div></div></div><hr>
+        
+        <div class="row">
+        <form class="col-sm-6" id="exHtml5Validation" novalidate>
+            <h4>HTML5 Validation</h4>
+            <div class="form-group has-feedback">
+            <label>Email</label> 
+            <input type="email" class="form-control" placeholder="you@validemail.com" required="" min="7" data-valid-pattern="^[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,4}$"> 
+            <span class="glyphicon glyphicon-ok form-control-feedback fade"></span><h6 class="help-block">Enter a valid email address.</h6></div><div class="form-group has-feedback"><label>Password</label> <input type="password" id="inputPassword" class="form-control has-feedback" required="" placeholder="xxxxxx" pattern="^[a-z,A-Z,0-9,_]{6,15}$" title="One word. No spaces or special characters." min="6"> <span class="glyphicon glyphicon-ok form-control-feedback fade"></span><h6 class="help-block">Enter a password of at least 6 alpha and numeric chars.</h6></div><div class="form-group has-feedback"><label>Verify</label> <input type="password" class="form-control has-feedback" placeholder="xxxxxx" required="" pattern="^[a-z,A-Z,0-9,_]{6,15}$" title="One word. No spaces or special characters." min="6" data-valid-match="inputPassword"> <span class="glyphicon glyphicon-ok form-control-feedback fade"></span><h6 class="help-block">Re-enter that same password for verification.</h6></div><div class="form-group has-feedback"><label>Username</label> <input type="text" class="form-control" placeholder="username" min="6" max="20" required="" pattern="^[a-z,A-Z,0-9,_]{6,20}$"> <span class="glyphicon glyphicon-ok form-control-feedback fade"></span><h6 class="help-block">Enter a username. No spaces or special characters.</h6></div><div class="form-group has-feedback"><label>Web URL</label> <input type="url" class="form-control" placeholder="username" data-valid-min="10" pattern="https?://.+"> <span class="glyphicon glyphicon-ok form-control-feedback fade"></span><h6 class="help-block">Enter a URL address. Include the http:// or https:// portion.</h6></div>
+            <button class="btn btn-default" type="submit">Validate</button></form><div class="col-sm-6" id="exFileImageUpload"><h4>File &amp; Image Upload</h4><div class="form-group"><label>File selector</label><div class="fileinput fileinput-new input-group" data-provides="fileinput"><div class="form-control" data-trigger="fileinput"><i class="glyphicon glyphicon-file fileinput-exists"></i><span class="fileinput-filename"></span></div><span class="input-group-addon btn btn-default btn-file"><span class="fileinput-new">Choose...</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span> <a href="#" class="input-group-addon btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a></div></div><hr><div class="fileinput fileinput-new" data-provides="fileinput"><label>Image uploader</label><div class="fileinput-new thumbnail"><img data-src="" src="/assets/example/bg_suburb.jpg" class="img-responsive"></div><div class="fileinput-preview fileinput-exists thumbnail"></div><div><span class="btn btn-default btn-file"><span class="fileinput-new">Select image...</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span> <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a></div></div></div></div></div><hr></div>
+
+    <script src="js/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.js"></script>
+   
+    <script>
+        var tagsData = [
+  { id: 1, tag: 'Apple' },
+  { id: 2, tag: 'Banana' },
+  { id: 3, tag: 'Cherry' },
+  { id: 4, tag: 'Cantelope' },
+  { id: 5, tag: 'Grapefruit' },
+  { id: 6, tag: 'Grapes', selected: true },
+  { id: 7, tag: 'Lemon' },
+  { id: 8, tag: 'Lime' },
+  { id: 9, tag: 'Melon', selected: true },
+  { id: 10, tag: 'Orange' },
+  { id: 11, tag: 'Strawberry' },
+  { id: 11, tag: 'Watermelon' }
+        ];
+
+        function ctrlTags($scope) {
+
+            $scope.items = tagsData;
+
+        };
+
+        // init angular app and ctrls
+
+        angular.module('myApp', [])
+            .controller('ctrlTags', ['$scope', ctrlTags]);
+
+
+        // init jquery functions and plugins
+        $(document).ready(function () {
+
+            $.getScript('//cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2.min.js', function () {
+                $.getScript('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/js/bootstrap-datepicker.min.js', function () {
+                    $.getScript('//cdnjs.cloudflare.com/ajax/libs/moment.js/2.6.0/moment.min.js', function () {
+                        $.getScript('//cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/3.0.0/js/bootstrap-datetimepicker.min.js', function () {
+                            $.getScript('//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/js/jasny-bootstrap.min.js', function () {
+
+                                $("#mySel").select2({
+
+                                });
+
+                                $("#mySel2").select2({
+                                    closeOnSelect: false
+                                });
+
+                                $('#datepicker').datepicker({
+                                    autoclose: true,
+                                }).on("changeDate", function (e) {
+                                    console.log(e.date);
+                                });
+
+                                $('.input-daterange').datepicker({
+                                    autoclose: true
+                                }).on("changeDate", function (e) {
+                                    console.log(e.date);
+                                });
+
+                                $('#timepicker').datetimepicker({
+                                    pickDate: false
+                                });
+
+                                $("input").bind('keyup change', function () {
+                                    var $t = $(this);
+                                    var $par = $t.parent();
+                                    var min = $t.attr("data-valid-min");
+                                    var match = $t.attr("data-valid-match");
+                                    var pattern = $t.attr("pattern");
+
+                                    if (typeof match != "undefined") {
+                                        if ($t.val() != $('#' + match).val()) {
+                                            $par.removeClass('has-success').addClass('has-error');
+                                        }
+                                        else {
+                                            $par.removeClass('has-error').addClass('has-success');
+                                        }
+                                    }
+                                    else if (!this.checkValidity()) {
+                                        $par.removeClass('has-success').addClass('has-error');
+                                    }
+                                    else {
+                                        $par.removeClass('has-error').addClass('has-success');
+                                    }
+
+                                    if ($par.hasClass("has-success")) {
+                                        $par.find('.form-control-feedback').removeClass('fade');
+                                    }
+                                    else {
+                                        $par.find('.form-control-feedback').addClass('fade');
+                                    }
+
+                                });
+
+
+
+
+
+                            });//script
+                        });//script
+                    });//script
+                });//script
+            });//script
+
+        });
+
+
+    </script>
+    <style>
+        @import url('http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2.css');
+        @import url('http://cdnjs.cloudflare.com/ajax/libs/select2/3.4.8/select2-bootstrap.css');
+        @import url('http://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.3.0/css/datepicker.min.css');
+        @import url('//cdnjs.cloudflare.com/ajax/libs/jasny-bootstrap/3.1.3/css/jasny-bootstrap.min.css');
+
+        .timepicker-picker .table-condensed td {
+            text-align: center;
+        }
+    </style>
+
+</body>
+</html>

@@ -1,0 +1,281 @@
+﻿<!DOCTYPE html>
+<html data-ng-app="AngularAuthApp">
+<head>
+    <title>OLTask: Dashboard</title>
+   
+    <link href="themepro/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="themepro/css/bootstrap-theme.min.css" rel="stylesheet" />
+   
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css" />
+    <link href="css/fonts.css" rel="stylesheet" />
+
+    <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet" />-->
+    <!--<link href="css/bootstrap.css"           rel="stylesheet" />-->
+    <link href="theme/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style_background.css" rel="stylesheet" />
+    <link href="css/yamm.css" rel="stylesheet" />
+    <link href="css/home.css" rel="stylesheet" />
+    <link href="css/font-awesome.min.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    <link href="css/heightmenu.css" rel="stylesheet" />
+
+  
+    <link href="css/ngDialog.css" rel="stylesheet" />
+    <link rel="stylesheet" href="css/ngDialog-theme-default.css">
+    <!-- Kendo UI -->
+    <link rel="stylesheet" href="styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="styles/kendo.dataviz.default.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
+
+    <!-- JS -->
+    <script src="js/jquery.min.js">               </script>
+    <script src="js/kendo.all.min.js">            </script>
+    <script src="js/jssor.js">                    </script>
+    <script src="js/jssor.slider.js">             </script>
+    <script src="js/cidades-estados-1.2-utf8.js"> </script>
+
+    <!-- plugins -->
+
+    <!-- plugins -->
+    <style>
+        #loading-indicator {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+    </style>
+    <script>
+        $(document).ajaxSend(function (event, request, settings) {
+            $('#loading-indicator').show();
+        });
+
+        $(document).ajaxComplete(function (event, request, settings) {
+            $('#loading-indicator').hide();
+        });
+    </script>
+
+</head>
+<body>
+    <img src="/images/loading.gif" id="loading-indicator" style="display:none" />
+    <header ng-controller="indexController">
+
+        <div class="desktop">
+            <div class="header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 logo">
+                        <a href="" style="text-decoration:none"><img src="../images/logo/oltask_site_logo_top.png" alt="OLTask.com" /></a>
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="login">
+                            <a href="" ng-click="logOut()">Logout({{authentication.userName}}) <img src="images/icones/app_site_top_icon_connect_off.png" /> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="menu navbar-inverse">
+                <ul class="">
+                    <li style="float:left">
+                        <a href="/professional.html#/pro">
+                            <span class="glyphicon glyphicon-dashboard input-lg"></span>
+                        </a>
+                    </li>
+                    <li style="float:left">
+                        <a href="/professional.html#/pro/profile">
+                            <span class="glyphicon glyphicon-user input-lg"></span>
+                        </a>
+                    </li>
+                    <li style="float:left">
+                        <a href="/professional.html#/pro">
+                            <span class="glyphicon glyphicon-list-alt input-lg"></span>
+                            Proposals<span class="badge bg-danger pull-right">{{proposalsended.proposalsended}}</span>
+                        </a>
+                    </li>
+
+                    <li style="float:left">
+                        <a href="#/pro/sendproposal">
+                            <span class="glyphicon glyphicon-usd input-lg"></span>
+                            Send Proposals
+                        </a>
+                    </li>
+
+
+                    <li style="float:left">
+                        <a href="#/pro/myschedule">
+                            <span class="glyphicon glyphicons-list glyphicon-tasks input-lg"></span>
+                            My tasks<span class="badge bg-danger pull-right">8</span>
+                        </a>
+                    </li>
+
+                    <!--<li style="float:left">
+                        <a href="">
+                            <span class="glyphicon glyphicon-star-empty input-lg"></span>
+                            Clients attended
+                        </a>
+                    </li>-->
+
+                </ul>
+
+
+            </div>
+
+        </div>
+
+
+
+        <div class="mobile">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                        <img style="margin-top:20px" src="images/logo/oltask_site_logo_top.png" />
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+
+                        <a style="margin-top:-35px" href="" class="navbar-toggle" data-toggle="collapse" data-target="#myLoginBar">
+                            <span class="glyphicon glyphicon-user dropdown-toggle"><i class="glyphicon caret"></i></span>
+                        </a>
+
+                        <div class="collapse navbar-collapse" id="myLoginBar">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="#">Home</a></li>
+                                <li><a href="" ng-click="logOut()">Logout</a></li>
+                            </ul>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!--navbar popus-->
+                <!--create task-->
+
+
+            </div>
+
+
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">Menu</a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-form" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a class="createtaskmenu_open" href="/professional.html#/pro">Dashboard</a></li>
+                            <li><a class="professionalmenu_open" href="professional.html#/pro/profile">Profile</a></li>
+                            <li><a class="registermenu_open" href="/professional.html#/pro">Proposals</a></li>
+                            <li><a href="#/pro/sendproposal">Send Proposal</a></li>
+                            <li><a class="contactmenu_open" href="#/pro/myschedule">My Tasks</a></li>
+                            <!--<li><a class="searchmenu_open" href="">Clients attended</a></li>-->
+                        </ul>
+
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+
+    <div class="desktop">
+        <div id="spinner" style="display:none;">
+            <div class="alert-info"><strong>Loading…</strong> Please wait.<img src="../images/loading.gif" width="16" height="16" alt="Loading…" /></div>
+        </div>
+    </div>
+    <div class="mobile">
+        <div id="spinnerM" class="col-sm-12" style="display:none;">
+            <div class="alert-info col-sm-12"><strong>Loading…</strong> Please wait.<img src="../images/loading.gif" width="16" height="16" alt="Loading…" /></div>
+        </div>
+    </div>
+
+    <div class="container">
+
+        <div data-ng-view="">
+
+        </div>
+
+    </div>
+
+
+    <!-- Include jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>-->
+    <!-- Include jQuery Popup Overlay -->
+    <script src="js/plugins/responsive-popup/jquery.popupoverlay.js"></script>
+    <!--<script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>-->
+
+
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- 3rd party libraries -->
+    <script src="js/jquery.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <link href="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/css/select2.min.css" rel="stylesheet" />
+    <script src="//cdnjs.cloudflare.com/ajax/libs/select2/4.0.0-rc.2/js/select2.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular-sanitize.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular.min.js'></script>
+    <script src="js/angular-local-storage.min.js"></script>
+    <script src="js/loading-bar.min.js"></script>
+    <script src="js/angular-ui.min.js"></script>
+    <script src="js/dirPaging.js"></script>
+    <script src="js/ngDialog.min.js"></script>
+    <!-- Load app main script -->
+
+    <script src="js/app.js"></script>
+    <!-- Load services -->
+    <script src="app/services/authInterceptorService.js?v=2"></script>
+    <script src="app/services/authService.js?v=2"></script>
+    <script src="app/services/ordersService.js?v=2"></script>
+    <script src="app/services/tokensManagerService.js?v=2"></script>
+    <script src="app/services/cityService.js"></script>
+    <script src="app/services/stateService.js"></script>
+    <script src="app/services/neighboursService.js"></script>
+    <script src="app/services/addressService.js"></script>
+    <script src="app/services/categoryService.js"></script>
+    <script src="app/services/serviceService.js"></script>
+    <script src="app/services/customerService.js"></script>
+    <script src="app/services/professionalService.js"></script>
+    <script src="app/services/proposalService.js"></script>
+    <script src="app/services/professionalAddressService.js"></script>
+    <script src="app/services/customerAddressService.js"></script>
+    <script src="app/services/appointmentService.js"></script>
+    <script src="app/services/reviewService.js"></script>
+    <!-- Load controllers -->
+    <script src="app/controllers/indexController.js?v=2"></script>
+    <script src="app/controllers/homeController.js?v=2"></script>
+    <script src="app/controllers/loginController.js?v=2"></script>
+    <script src="app/controllers/signupController.js?v=2"></script>
+    <script src="app/controllers/ordersController.js?v=2"></script>
+    <script src="app/controllers/refreshController.js?v=2"></script>
+    <script src="app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="app/controllers/associateController.js?v=2"></script>
+    <script src="app/controllers/indexController.js"></script>
+    <script src="app/controllers/proposalController.js"></script>
+    <script src="app/controllers/serviceController.js"></script>
+    <script src="app/controllers/professionalProfileController.js"></script>
+    <script src="app/controllers/scheduleController.js"></script>
+    <script src="app/controllers/reviewController.js"></script>
+   
+    <script src="app/controllers/sendproposalController.js"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('.select2').select2();
+        })
+
+    </script>
+
+
+
+</body>
+</html>

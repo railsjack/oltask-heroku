@@ -1,0 +1,73 @@
+﻿<div id="parceiroMainView"
+     data-role="view"
+     data-model="ParceiroMainModel"
+     data-init="ParceiroMainModel.init"
+     data-show="ParceiroMainModel.show"
+     data-title="Painel de Controle"
+     data-layout="parceiro-default-layout">
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top:5px;">
+            <div class="col-sm-12">
+                <button data-role="button" data-rel="modalview" href="#modalview-indicarOLTask"
+                        class="btn rounded btn-block btn-orange text-medium" style="font-size:1em !important; min-height:35px !important;">
+                    <i class="fa fa-user-plus"></i>
+                    <b>INDICAR OLTASK PARA UM AMIGO</b>
+                </button>
+            </div>
+        </div>
+
+        <div data-bind="visible: loaded">
+            <div data-bind="invisible: noTasks">
+                <div class="alert alert-success" role="alert" style="margin-top:10px;">
+                    <p><label><b>Parabéns, você publicou promoções com sucesso.</b></label></p>
+                    <p><label><i>Confira abaixo suas promoções que ainda estão em andamento.</i></label></p>
+                </div>
+
+                <ul id="parceiro-promocoes-main" data-role="listview" data-source="ParceiroMainModel.data" data-template="parceiro-promocoes-template" data-pull-to-refresh="true" data-auto-bind="false"></ul>
+
+            </div>
+        </div>
+
+        <div class="text-center" data-bind="visible: noTasks">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+            <label><b><i>Você não tem nenhuma proposta.</i></b></label>
+        </div>
+
+        <div class="text-center" data-bind="visible: error">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+            <label><b><i>Houston, we have a problem. ):</i></b></label>
+        </div>
+
+    </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="parceiro-promocoes-template">
+
+    <div class="item">
+        <div class="row">
+            <div class="col-xs-8">
+                <label class="title">#: data.title #</label>
+            </div>
+
+            <span class="col-xs-4 text-right" style="padding-left:0" onclick="cancelaPromocao(this)">
+                <label style="vertical-align: middle;margin:0;color:\#DC4650">Cancelar</label>
+                <button data-role="button" class="btn rounded btn-small btn-danger">
+                    <i class="fa fa-times"></i>
+                </button>
+            </span>
+        </div>
+
+        # if (data.image) {#
+        <div class="row">
+            <div class="col-xs-12 text-center">
+                <img src="#: data.image #" style="max-width:100%; margin: 5px 0 5px 0" />
+            </div>
+        </div>
+        #}#
+
+        <label class="description">#: data.description #</label>
+    </div>
+
+</script>

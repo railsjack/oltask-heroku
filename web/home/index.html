@@ -1,0 +1,1069 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--STOP IPHONE SIMULATOR IMAGE RESIZING-->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>OLTask</title>
+    <link href="theme/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="theme/css/bootstrap-theme.min.css" rel="stylesheet" />
+    <!--<link href="css/bootstrap-theme.min.css" rel="stylesheet" />-->
+    <!--<link href="css/bootstrap.css"           rel="stylesheet" />-->
+    <link href="theme/css/bootstrap.css" rel="stylesheet" />
+    <link href="css/style_background.css"    rel="stylesheet" />
+    <link href="css/yamm.css"                rel="stylesheet" />
+    <link href="css/home.css"                rel="stylesheet" />
+    <link href="css/font-awesome.min.css"    rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
+    <!-- Kendo UI -->
+    <link rel="stylesheet" href="styles/kendo.common.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.min.css" />
+    <link rel="stylesheet" href="styles/kendo.dataviz.min.css" />
+    <link rel="stylesheet" href="styles/kendo.dataviz.default.min.css" />
+    <link rel="stylesheet" href="styles/kendo.default.mobile.min.css" />
+
+    <!-- JS -->
+    <script src="js/jquery.min.js">               </script>
+    <script src="js/kendo.all.min.js">            </script>
+    <script src="js/jssor.js">                    </script>
+    <script src="js/jssor.slider.js">             </script>
+    <script src="js/cidades-estados-1.2-utf8.js"> </script>
+
+    <!-- plugins -->
+    <style>
+        #loading-indicator {
+            position: absolute;
+            left: 10px;
+            top: 10px;
+        }
+
+        #botao-job:hover {
+            background-image: url(../images/botao/oltask_site_home_banner_bot_off.png);
+        }
+    </style>
+    <script>
+        $(document).ajaxSend(function (event, request, settings) {
+            $('#loading-indicator').show();
+        });
+
+        $(document).ajaxComplete(function (event, request, settings) {
+            $('#loading-indicator').hide();
+        });
+    </script>
+    
+    <script>
+        jQuery(document).ready(function ($) {
+
+            var _CaptionTransitions = [];
+            _CaptionTransitions["L"] = { $Duration: 900, x: 0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+            _CaptionTransitions["R"] = { $Duration: 900, x: -0.6, $Easing: { $Left: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+            _CaptionTransitions["T"] = { $Duration: 900, y: 0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+            _CaptionTransitions["B"] = { $Duration: 900, y: -0.6, $Easing: { $Top: $JssorEasing$.$EaseInOutSine }, $Opacity: 2 };
+            _CaptionTransitions["ZMF|10"] = { $Duration: 900, $Zoom: 11, $Easing: { $Zoom: $JssorEasing$.$EaseOutQuad, $Opacity: $JssorEasing$.$EaseLinear }, $Opacity: 2 };
+            _CaptionTransitions["RTT|10"] = { $Duration: 900, $Zoom: 11, $Rotate: 1, $Easing: { $Zoom: $JssorEasing$.$EaseOutQuad, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInExpo }, $Opacity: 2, $Round: { $Rotate: 0.8 } };
+            _CaptionTransitions["RTT|2"] = { $Duration: 900, $Zoom: 3, $Rotate: 1, $Easing: { $Zoom: $JssorEasing$.$EaseInQuad, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInQuad }, $Opacity: 2, $Round: { $Rotate: 0.5 } };
+            _CaptionTransitions["RTTL|BR"] = { $Duration: 900, x: -0.6, y: -0.6, $Zoom: 11, $Rotate: 1, $Easing: { $Left: $JssorEasing$.$EaseInCubic, $Top: $JssorEasing$.$EaseInCubic, $Zoom: $JssorEasing$.$EaseInCubic, $Opacity: $JssorEasing$.$EaseLinear, $Rotate: $JssorEasing$.$EaseInCubic }, $Opacity: 2, $Round: { $Rotate: 0.8 } };
+            _CaptionTransitions["CLIP|LR"] = { $Duration: 900, $Clip: 15, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic }, $Opacity: 2 };
+            _CaptionTransitions["MCLIP|L"] = { $Duration: 900, $Clip: 1, $Move: true, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic } };
+            _CaptionTransitions["MCLIP|R"] = { $Duration: 900, $Clip: 2, $Move: true, $Easing: { $Clip: $JssorEasing$.$EaseInOutCubic } };
+
+            var options = {
+                $FillMode: 2,                                       //[Optional] The way to fill image in slide, 0 stretch, 1 contain (keep aspect ratio and put all inside slide), 2 cover (keep aspect ratio and cover whole slide), 4 actual size, 5 contain for large image, actual size for small image, default value is 0
+                $AutoPlay: true,                                    //[Optional] Whether to auto play, to enable slideshow, this option must be set to true, default value is false
+                $AutoPlayInterval: 4000,                            //[Optional] Interval (in milliseconds) to go for next slide since the previous stopped if the slider is auto playing, default value is 3000
+                $PauseOnHover: 1,                                   //[Optional] Whether to pause when mouse over if a slider is auto playing, 0 no pause, 1 pause for desktop, 2 pause for touch device, 3 pause for desktop and touch device, 4 freeze for desktop, 8 freeze for touch device, 12 freeze for desktop and touch device, default value is 1
+
+                $ArrowKeyNavigation: true,   			            //[Optional] Allows keyboard (arrow key) navigation or not, default value is false
+                $SlideEasing: $JssorEasing$.$EaseOutQuint,          //[Optional] Specifies easing for right to left animation, default value is $JssorEasing$.$EaseOutQuad
+                $SlideDuration: 1200,                                //[Optional] Specifies default duration (swipe) for slide in milliseconds, default value is 500
+                $MinDragOffsetToSlide: 20,                          //[Optional] Minimum drag offset to trigger slide , default value is 20
+                //$SlideWidth: 600,                                 //[Optional] Width of every slide in pixels, default value is width of 'slides' container
+                $SlideHeight: 400,                                //[Optional] Height of every slide in pixels, default value is height of 'slides' container
+                $SlideSpacing: 0, 					                //[Optional] Space between each slide in pixels, default value is 0
+                $DisplayPieces: 1,                                  //[Optional] Number of pieces to display (the slideshow would be disabled if the value is set to greater than 1), the default value is 1
+                $ParkingPosition: 0,                                //[Optional] The offset position to park slide (this options applys only when slideshow disabled), default value is 0.
+                $UISearchMode: 1,                                   //[Optional] The way (0 parellel, 1 recursive, default value is 1) to search UI components (slides container, loading screen, navigator container, arrow navigator container, thumbnail navigator container etc).
+                $PlayOrientation: 1,                                //[Optional] Orientation to play slide (for auto play, navigation), 1 horizental, 2 vertical, 5 horizental reverse, 6 vertical reverse, default value is 1
+                $DragOrientation: 1,                                //[Optional] Orientation to drag slide, 0 no drag, 1 horizental, 2 vertical, 3 either, default value is 1 (Note that the $DragOrientation should be the same as $PlayOrientation when $DisplayPieces is greater than 1, or parking position is not 0)
+
+                $CaptionSliderOptions: {                            //[Optional] Options which specifies how to animate caption
+                    $Class: $JssorCaptionSlider$,                   //[Required] Class to create instance to animate caption
+                    $CaptionTransitions: _CaptionTransitions,       //[Required] An array of caption transitions to play caption, see caption transition section at jssor slideshow transition builder
+                    $PlayInMode: 1,                                 //[Optional] 0 None (no play), 1 Chain (goes after main slide), 3 Chain Flatten (goes after main slide and flatten all caption animations), default value is 1
+                    $PlayOutMode: 3                                 //[Optional] 0 None (no play), 1 Chain (goes before main slide), 3 Chain Flatten (goes before main slide and flatten all caption animations), default value is 1
+                },
+
+                $BulletNavigatorOptions: {                                //[Optional] Options to specify and enable navigator or not
+                    $Class: $JssorBulletNavigator$,                       //[Required] Class to create navigator instance
+                    $ChanceToShow: 2,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 1,                                 //[Optional] Auto center navigator in parent container, 0 None, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1,                                      //[Optional] Steps to go for each navigation request, default value is 1
+                    $Lanes: 1,                                      //[Optional] Specify lanes to arrange items, default value is 1
+                    $SpacingX: 8,                                   //[Optional] Horizontal space between each item in pixel, default value is 0
+                    $SpacingY: 8,                                   //[Optional] Vertical space between each item in pixel, default value is 0
+                    $Orientation: 1                                 //[Optional] The orientation of the navigator, 1 horizontal, 2 vertical, default value is 1
+                },
+
+                $ArrowNavigatorOptions: {                       //[Optional] Options to specify and enable arrow navigator or not
+                    $Class: $JssorArrowNavigator$,              //[Requried] Class to create arrow navigator instance
+                    $ChanceToShow: 1,                               //[Required] 0 Never, 1 Mouse Over, 2 Always
+                    $AutoCenter: 2,                                 //[Optional] Auto center arrows in parent container, 0 No, 1 Horizontal, 2 Vertical, 3 Both, default value is 0
+                    $Steps: 1                                       //[Optional] Steps to go for each navigation request, default value is 1
+                }
+            };
+
+            var jssor_slider1 = new $JssorSlider$("slider1_container", options);
+
+            //responsive code begin
+            //you can remove responsive code if you don't want the slider scales while window resizes
+            function ScaleSlider() {
+                var bodyWidth = document.body.clientWidth;
+                if (bodyWidth)
+                    jssor_slider1.$ScaleWidth(Math.min(bodyWidth, 1920));
+                else
+                    window.setTimeout(ScaleSlider, 30);
+            }
+            ScaleSlider();
+
+            $(window).bind("load", ScaleSlider);
+            $(window).bind("resize", ScaleSlider);
+            $(window).bind("orientationchange", ScaleSlider);
+            //responsive code end
+        });
+
+        function hover(element) {
+            element.setAttribute('src', 'images/icones/menu/app_site_top-menu_home_on.html');
+        }
+        function unhover(element) {
+            element.setAttribute('src', 'images/icones/menu/app_site_top-menu_home_off.html');
+        }
+
+        $(document).ready(function(){
+            new dgCidadesEstados({
+                cidade: document.getElementById('cidade'),
+                estado: document.getElementById('estado'),
+                change: true
+            });
+
+            $("#horario-1").kendoMaskedTextBox({
+                mask: "00:00 ás 00:00"
+            });
+            $("#horario-2").kendoMaskedTextBox({
+                mask: "00:00 ás 00:00"
+            });
+        });
+    </script>
+
+   
+
+
+
+</head>
+<body>
+    <img src="/images/loading.gif" id="loading-indicator" style="display:none" />
+    <header>
+
+        <div class="desktop">
+            <div class="header">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 logo">
+                       <a href="index.html"><img src="images/logo/oltask_site_logo_top.png" alt="OLTask.com" /></a> 
+                    </div>
+                    <div class="col-md-6 col-sm-6">
+                        <div class="login">
+                            <a href="../app" original-href="/sociallogin/#/login">Login <img src="images/icones/app_site_top_icon_connect_off.png" /> </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="mobile">
+
+            <div class="container">
+                <div class="row">
+                    <div class="col-sm-6 col-md-6">
+                        <img style="margin-top:20px" src="images/logo/oltask_site_logo_top.png" />
+                    </div>
+                    <div class="col-sm-6 col-md-6">
+
+                        <a style="margin-top:-35px" href="#" class="navbar-toggle" data-toggle="collapse" data-target="#myLoginBar">
+                            <span class="glyphicon glyphicon-user dropdown-toggle"><i class="glyphicon caret"></i></span>
+                        </a>
+
+                        <div class="clearfix"></div>
+
+                        <div class="collapse navbar-collapse pull-right" id="myLoginBar" style="  margin-top: -25px;">
+                            <ul class="nav navbar-nav">
+                                <li class="active"><a href="../app" original-href="/sociallogin/#/login">Login</a></li>
+                                <!--<li><a href="#">Page 1</a></li>-->
+                            </ul>
+                            
+                        </div>
+
+                    </div>
+                    
+                </div>
+
+
+                <!--navbar popus-->
+
+                <!--create task-->
+               
+
+            </div>
+
+
+            <nav class="navbar navbar-inverse">
+                <div class="container-fluid">
+                    <div class="navbar-header">
+                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                             <span class="icon-bar"></span>
+                             <span class="icon-bar"></span>
+                             <span class="icon-bar"></span>
+                        </button>
+                        <a href="#" class="navbar-brand">Menu</a>
+                    </div>
+                    <div class="collapse navbar-collapse navbar-form" id="myNavbar">
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="#">Home</a></li>
+                            <li><a original-class="createtaskmenu_open" href="../app"
+                            original-href="/customer.html#/cst/postjob">Publicar Tarefa</a></li>
+                            <li class="hidden"><a class="professionalmenu_open" href="#">Profissionais</a></li>
+                            <li><a original-class="registermenu_open" href="../app/index.html#choice.html">Cadastrar</a></li>
+                            <li class="hidden"><a href="../home/pages/parceiros.html">Parcieros</a></li>
+                            <li><a class="contactmenu_open" href="#">Contato</a></li>
+                            <li class="hidden"><a class="searchmenu_open" href="#">Busca</a></li>
+                        </ul>
+                        
+                    </div>
+                </div>
+            </nav>
+        </div>
+
+    </header>
+   
+    
+    <!-- **************************************************** MENU PRINCIPAL *************************************************************   -->
+
+    <div class="navbar yamm">
+
+        <div id="navbar-collapse-grid" class="navbar-collapse collapse" style="margin-left:20%;">
+            <ul class="nav navbar-nav ">
+
+                <!--  Home -->
+                <li class="dropdown yamm-fw ">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-home"> </a>
+                </li>
+                <!--  -->
+                <!--  Tarefas -->
+                
+
+                <li class="">
+                    <a href="../app" target="_self" original-href="/customer.html#/cst/postjob" id="postjoblink" class="menu-tarefas"> <span class="botao-tarefas"></span> </a>
+                </li>
+
+                <!--  -->
+                <!--  Profissionais -->
+                <li class="dropdown yamm-fw">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-profissionais hidden">  </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="profissionais">                                
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <h3>3.625</h3> <h4>Autônomos <br/> Cadastrados</h4>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <h3>RJ</h3> <h4>Rio de Janeiro</h4>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-3">
+                                        <ul>
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_pintor_off.png" alt="Icone" /> pintor</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_eletricista_off.png" alt="Icone" /> eletrecista</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_encanador_off.png" alt="Icone" /> encanador</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_pedreiro_off.png" alt="Icone" /> pedreiro</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_jardineiro_off.png" alt="Icone" /> jardineiro</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_fotografo_off.png" alt="Icone" /> fotógrafo</a>
+                                            </li> 
+                                                                                       
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <ul>
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_marceneiro_off.png" alt="Icone" /> marceneiro</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_diarista_off.png" alt="Icone" /> diarista</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_baba_off.png" alt="Icone" /> babá</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_cuidador_de_idosos_off.png" alt="Icone" /> cuidador de idosos</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_cozinheiro_off.png" alt="Icone" /> cozinheiro</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_sapateiro_off.png" alt="Icone" /> sapateiro</a>
+                                            </li>
+
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <ul>
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_seguranca_off.png" alt="Icone" /> segurança</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_professor_particular_off.png" alt="Icone" /> professor particular</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_perssonal_training_off.png" alt="Icone" /> personal training</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_manicure_off.png" alt="Icone" /> manicure / pedicure</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_cabeleleiro_off.png" alt="Icone" /> cabelereiro</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_costureira_off.png" alt="Icone" /> costureira</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="col-md-3">
+                                        <ul>
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_barbearia_off.png" alt="Icone" /> barbeiro</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_informatica_off.png" alt="Icone" /> informatica</a>
+                                            </li>
+
+                                            <li>
+                                                <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_contador_off.png" alt="Icone" /> contador</a>
+                                            </li>
+                                                                                        
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--  -->
+                <!--  Cadastro -->
+                <li class="dropdown yamm-fw">
+                    <a href="../app/index.html#choice.html" original-data-toggle="dropdown" class="dropdown-toggle menu-cadastro"> </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="cadastro">
+                                <h3> Cadastre-se</h3>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="cad-cliente">
+                                            <div class="cadastro-circulo-1">
+                                                <img src="images/icones/drop-cadastro/oltask_site_cadastro_icon_clientes.png" />
+                                            </div>
+                                            <h4>Clientes</h4>
+                                            <a class="btn-cad-cliente" href="pages/cadastro-cliente.html"> cadastrar </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="cad-profi">
+                                            <div class="cadastro-circulo-2">
+                                                <img src="images/icones/drop-cadastro/oltask_site_cadastro_icon_profissionais.png" />
+                                            </div>
+                                            <h4>Profissionais</h4>
+                                            <a class="btn-cad-profi" href="pages/cadastro-profissional.html"> cadastrar </a>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-4">
+                                        <div class="cad-parceiros">
+                                            <div class="cadastro-circulo-3">
+                                                <img src="images/icones/drop-cadastro/oltask_site_cadastro_icon_parceiros.png" />
+                                            </div>
+                                            <h4>Parceiros</h4>
+                                            <a class="btn-cad-parceiros" href="pages/cadastro-parceiros.html"> cadastrar </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--  -->
+                <!--  Parceiros -->
+                <li class="dropdown yamm-fw">
+                    <a href="pages/parceiros.html" class="menu-parceiros hidden"> </a>
+                </li>
+                <!--  -->
+                <!--  contato -->
+                <li class="dropdown yamm-fw" >
+                    <a href="#" data-toggle="dropdowna" class="dropdown-toggle menu-contato"
+                    onclick="$('.menu-contato').siblings('.dropdown-menu').toggle();">  </a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="yamm-content">
+                                <div class="contato">
+                                    <h3> Contato </h3>
+                                    <div class="row contato-linha-1">
+                                        <div class="col-md-6">
+                                            <input type="text" class="form-control" placeholder="Nome">
+                                        </div>
+                                        <div class="col-md-6">
+                                            <input type="email" class="form-control" placeholder="E-mail">
+                                        </div>
+                                    </div>
+                                    <div class="row contato-linha-2">
+                                        <div class="col-md-12">
+                                            <textarea class="form-control" placeholder="Mensagem" rows="3"></textarea>
+                                        </div>
+                                    </div>
+                                    <button><span class="glyphicon glyphicon-chevron-right"></span> Enviar</button>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--  -->
+                <!--  Busca -->
+                <li class="dropdown yamm-fw">
+                    <a href="#" data-toggle="dropdown" class="dropdown-toggle menu-busca hidden"></a>
+                    <ul class="dropdown-menu">
+                        <li>
+                            <div class="busca">
+                                <h3> Busca </h3>
+                                <div class="input-group">
+                                    <input type="search" class="form-control" placeholder="Busca...">
+                                    <span class="input-group-btn">
+                                        <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                                    </span>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </li>
+                <!--  -->
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- **************************************************** FIM MENU PRINCIPAL *************************************************************   -->
+
+
+    <div class="back-overlay desktop" >
+        <div id="slider1_container" style="position: relative; margin: 0 auto;
+		top: -10px; left: 0px; width: 1300px; height: 500px; overflow: hidden;">
+            <!-- Loading Screen -->
+            <div data-u="loading" style="position: absolute; top: 0px; left: 0px;">
+                <div style="filter: alpha(opacity=70); opacity: 0.7; position: absolute; display: block;
+				top: 0px; left: 0px; width: 100%; height: 100%;">
+                </div>
+                <div style="position: absolute; display: block; background: url(images/loading.gif) no-repeat center center;
+				top: 0px; left: 0px; width: 100%; height: 100%;">
+                </div>
+            </div>
+            <!-- Slides Container -->
+            <div class="slides-container" data-u="slides" style="/*cursor: move;*/ position: absolute; left: 0px; top: 0px; width: 1300px;
+			height: 500px; overflow: hidden;">
+                <div>
+                    <img data-u="image" class="img-responsive" src="images/banner/oltask_site_home_banner.gif" alt="" />
+
+                    
+                </div>
+                
+            </div>
+            <div class="caixa-botao-job" style="position:absolute;margin-left:40%;z-index:89">
+                <a class="botao-job" href="../app" original-href="/customer.html#/cst/postjob"></a>
+            </div>
+
+            <!-- Bullet Navigator Skin Begin
+
+               <div data-u="navigator" class="jssorb21" style="position: absolute; bottom: 26px; left: 6px;">
+
+                   <div data-u="prototype" style="POSITION: absolute; WIDTH: 19px; HEIGHT: 19px; text-align:center; line-height:19px; color:White; font-size:12px;"></div>
+               </div>
+
+
+               <span data-u="arrowleft" class="jssora21l" style="width: 55px; height: 55px; top: 123px; left: 8px;">
+               </span>
+
+               <span data-u="arrowright" class="jssora21r" style="width: 55px; height: 55px; top: 123px; right: 8px">
+               </span>
+            -->
+        </div>
+    </div>
+
+    
+    <!--//mobile-->
+    <div class="" style="margin-top:-80px;position:relative">
+
+        <div class="mobile">
+            <div style="width:100% ">
+                <div class="slides-container">
+
+                    <img src="images/slidermobile.png" class="img img-responsive" />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    
+
+
+    <div class="clearfix"></div>
+
+    <div class="container">
+
+    <div class=" row" style="position:relative;margin-top:5px">
+       
+            <h3 class="text-center">Não consegue encontrar o profissional certo <br /> resolver seus problemas? Publique seu job e eles vão até você.</h3>
+            <div class="row circles-row-1">
+                <div class="col-md-4 col-sm-12  borda-right fundo-cinza">
+                    <div class="circle-1"> <img src="images/icones/div_1/oltask_site_home_icon_servicos-para-voce.png" /></div>
+                    <h4>Serviços <br /> para Você!</h4>
+                </div>
+                <div class="col-md-4 col-sm-6 borda-right fundo-cinza">
+                    <div class="circle-2"> <img src="images/icones/div_1/oltask_site_home_icon_servicos-para-casa.png" /></div>
+                    <h4>Serviços <br /> para sua Casa!</h4>
+                </div>
+                <div class="col-md-4 col-sm-6 fundo-cinza">
+                    <div class="circle-3"> <img src="images/icones/div_1/oltask_site_home_icon_servicos-para-empresa.png" /></div>
+                    <h4>Serviços <br /> para sua Empresa!</h4>
+                </div>
+            </div>
+        
+
+        <div class="col-sm-12 col-xs-12">
+
+            <h3 class="text-center"> Faça parte do <strong>OLTask</strong> e conect-se a uma rede de profissionais <br /> capacitados para resovler aqueles pequenos problemas do dia-a-dia.</h3>
+            <div class="row circles-row-2">
+                <div class="col-md-3 col-sm-6 borda-right fundo-cinza">
+                    <div class="circle-4"> <img src="images/icones/div_1/oltask_site_home_icon_publicar-tarefa.png" /></div>
+                    <h4>É facil, rápido <br /> e prático publicar <br /> um Job</h4>
+                </div>
+                <div class="col-md-3 col-sm-6 borda-right fundo-cinza">
+                    <div class="circle-5"> <img src="images/icones/div_1/oltask_site_home_icon_profissionais-certificados.png" /></div>
+                    <h4>Profissionais <br /> certificados e <br /> cadastrados</h4>
+                </div>
+                <div class="col-md-3 col-sm-6 borda-right fundo-cinza">
+                    <div class="circle-6"> <img src="images/icones/div_1/oltask_site_home_icon_propostas-sigilosas.png" /></div>
+                    <h4>Receba propostas <br /> dos profissionais <br /> de maneira segura <br /> e sigilosa</h4>
+                </div>
+                <div class="col-md-3 col-sm-6  fundo-cinza">
+                    <div class="circle-7"> <img src="images/icones/div_1/oltask_site_home_icon_avalie-profissionais.png" /></div>
+                    <h4>Avalie <br /> o desenpenho <br /> dos profissionais <br /> contratados</h4>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+    </div>
+    <div class="div_2">
+
+    </div>
+
+    <div class="div_3">
+
+    </div>
+
+
+    <div class="div_4">
+
+    </div>
+
+
+    <div class="div_5">
+        <h2>Quer o <strong>OLTask</strong> em sua cidade ?</h2>
+        <h4>Se ainda não chegamos a sua cidade, faça parte do Programa <span>#OLTaskJá</span> <br /> Clique no botão abaixo e cadastre-se! </h4>
+        <a href="#"> <img src="images/botao/oltask_site_home_bot_cadastrarcidade.gif" alt="Cadastrar" /> </a>
+    </div>
+
+    <div class="cd-fixed-bg cd-bg-1">
+        <div class="div_6">
+            <div class="row">
+                <div class="col-md-6 col-sm-6 col-sm-12 col-xs-12">
+                    <div class="feedback">
+                        <h3>Feedback</h3>
+                        <img alt="imagem do usuario" src="images/73.jpg" />
+                        <h4>
+                            &#147; Lorem Ipsum é simplesmente uma simulação de texto da indústria tipográfica e de impressos,
+                            e vem sendo utilizado desde o século XVI, quando um impressor desconhecido pegou uma bandeja de tipos
+                            e os embaralhou para fazer um livro de modelos &#148;.
+                        </h4>
+                        <h5>Gentleman</h5>
+                    </div>
+                </div>
+                <!--<div class="clearfix hidden-sm hidden-xs"></div>-->
+                <div class="col-md-6 col-sm-6  col-sm-12 col-xs-12 hidden-xs hidden-sm">
+                    <div class="video">
+                        <h3>Como funciona o APP</h3>
+                        <iframe width="460" height="315" src="https://www.youtube.com/embed/3RyOzksrQmo" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="div_7">
+        <h3>Parceiros</h3>
+    </div>
+
+    <div class="div_8">
+
+    </div>
+
+    <script>
+        $(function () {
+            window.prettyPrint && prettyPrint()
+            $(document).on('click', '.yamm .dropdown-menu', function (e) {
+                e.stopPropagation()
+            })
+        })
+
+
+        $("textarea").kendoEditor({
+            tools: [
+                "bold", "italic", "underline",
+                "strikethrough","justifyLeft", "justifyCenter", "justifyRight", "justifyFull",
+                "insertUnorderedList", "insertOrderedList", "indent", "outdent"
+            ]
+        });
+
+
+    </script>
+
+
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+
+
+    <!--mobile ui popups-->
+    <div class="mobile">
+        <!--create task-->
+        <div class="tarefas col-lg-12 well" id="createtaskmenu">
+            <h3> Criar Task </h3>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <input type="text" class="form-control task" name="local-do-servico" placeholder="Onde o Serviço Será Realizado" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control task" name="estado" id="estado" value="Selecione um Estado" />
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control task" name="cidade" id="cidade" value="Selecione uma Cidade" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <input type="text" class="form-control task" name="bairro" placeholder="Bairro" />
+                            <div class="row">
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control task" name="complemento" placeholder="Complemento" />
+                                </div>
+                                <div class="col-md-4">
+                                    <input type="number" class="form-control task" name="numero" placeholder="Nº" />
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <input type="text" class="form-control task" name="rua-avenida-praca" placeholder="Rua / Avenida / Praça" />
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control task" name="cep" placeholder="CEP" />
+                                </div>
+                                <div class="col-md-6">
+                                    <button class="button-task-1"> Salvar Local </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <select class="form-control task">
+                                <option>Escolha o Serviço Desejado</option>
+                                <optgroup label="teste">
+                                    <option>teste1</option>
+                                    <option>teste2</option>
+                                </optgroup>
+                            </select>
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <label>Data</label>
+                                    <input type="date" class="form-control task" value="10/09/1979" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Horario 1</label>
+                                    <input type="text" id="horario-1" class="form-control task" value="00 00 00 00" />
+                                </div>
+                                <div class="col-md-4">
+                                    <label>Horario 2</label>
+                                    <input type="text" id="horario-2" class="form-control task" value="00 00 00 00" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <div>
+                            <textarea id="bio" placeholder="Descrição da tarefa"></textarea>
+                        </div>
+                    </div>
+                </div>
+                <button class="button-task-2">Enviar</button>
+            </div>
+        </div>
+
+        <!--end create task-->
+
+        <!--professional-->
+        <div class="profissionais well" id="professionalmenu" style="width: 90%;">
+            <a class="btn btn-primary professionalmenu_close pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+
+            <div class="row">
+                <div class="col-md-3">
+                    <h3>3.625</h3> <h4>Autônomos <br /> Cadastrados</h4>
+                </div>
+                <div class="col-md-3">
+                    <h3>RJ</h3> <h4>Rio de Janeiro</h4>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <ul>
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_pintor_off.png" alt="Icone" /> pintor</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_eletricista_off.png" alt="Icone" /> eletrecista</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_encanador_off.png" alt="Icone" /> encanador</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_pedreiro_off.png" alt="Icone" /> pedreiro</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_jardineiro_off.png" alt="Icone" /> jardineiro</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_fotografo_off.png" alt="Icone" /> fotógrafo</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_marceneiro_off.png" alt="Icone" /> marceneiro</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_diarista_off.png" alt="Icone" /> diarista</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_baba_off.png" alt="Icone" /> babá</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_cuidador_de_idosos_off.png" alt="Icone" /> cuidador de idosos</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_cozinheiro_off.png" alt="Icone" /> cozinheiro</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_sapateiro_off.png" alt="Icone" /> sapateiro</a>
+                        </li>
+
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_seguranca_off.png" alt="Icone" /> segurança</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_professor_particular_off.png" alt="Icone" /> professor particular</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_perssonal_training_off.png" alt="Icone" /> personal training</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_manicure_off.png" alt="Icone" /> manicure / pedicure</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_cabeleleiro_off.png" alt="Icone" /> cabelereiro</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_costureira_off.png" alt="Icone" /> costureira</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-3">
+                    <ul>
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_barbearia_off.png" alt="Icone" /> barbeiro</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_informatica_off.png" alt="Icone" /> informatica</a>
+                        </li>
+
+                        <li>
+                            <a href="pages/profissionais.html"> <img src="images/icones/drop-profi/app_icon_contador_off.png" alt="Icone" /> contador</a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+        <!--end professional--> 
+
+        <!--register-->
+
+        <div class="cadastro well container-fluid" id="registermenu" style="width: 90%;">
+            <a class="btn btn-primary registermenu_close pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+            <h3> Cadastre-se</h3>
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <div class="cad-cliente">
+                        <div class="cadastro-circulo-1">
+                            <img src="images/icones/drop-cadastro/oltask_site_cadastro_icon_clientes.png" />
+                        </div>
+                        <h4>Clientes</h4>
+                        <a class="btn btn-primary btn-cad-cliente" href="pages/cadastro-cliente.html"> cadastrar </a>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <div class="cad-profi">
+                        <div class="cadastro-circulo-2">
+                            <img src="images/icones/drop-cadastro/oltask_site_cadastro_icon_profissionais.png" />
+                        </div>
+                        <h4>Profissionais</h4>
+                        <a class="btn btn-primary btn-cad-profi" href="pages/cadastro-profissional.html"> cadastrar </a>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+
+                <div class="col-md-4 text-center">
+                    <div class="cad-parceiros">
+                        <div class="cadastro-circulo-3">
+                            <img src="images/icones/drop-cadastro/oltask_site_cadastro_icon_parceiros.png" />
+                        </div>
+                        <h4>Parceiros</h4>
+                        <a class="btn btn-primary btn-cad-parceiros" href="pages/cadastro-parceiros.html"> cadastrar </a>
+                        <p>&nbsp;</p>
+                    </div>
+                </div>
+
+
+
+
+            </div>
+        </div>
+
+        <!--end register-->
+
+        <!--contact-->
+
+        <div class="yamm-content well container-fluid" id="contactmenu">
+            <a class="btn btn-primary contactmenu_close pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+            <div class="contato">
+                <h3> Contato </h3>
+                <div class="row contato-linha-1">
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" placeholder="Nome">
+                    </div>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" placeholder="E-mail">
+                    </div>
+                </div>
+                <div class="row contato-linha-2">
+                    <div class="col-md-12">
+                        <textarea class="form-control" placeholder="Mensagem" rows="3"></textarea>
+                    </div>
+                </div>
+                <button class="btn btn-primary pull-right"><span class="glyphicon glyphicon-chevron-right"></span> Enviar</button>
+            </div>
+        </div>
+
+        <!--end contact-->
+
+        <!--search-->
+
+
+        <div class="busca well" id="searchmenu">
+            <a class="btn btn-primary searchmenu_close pull-right"><span class="glyphicon glyphicon-remove"></span></a>
+            <h3> Busca </h3>
+            <div class="input-group">
+                <input type="search" class="form-control" placeholder="Busca...">
+                <span class="input-group-btn">
+                    <button class="btn btn-default" type="button"><span class="glyphicon glyphicon-search"></span> Buscar</button>
+                </span>
+            </div>
+        </div>
+        
+       <!--end search-->
+
+
+    </div>
+
+
+    <!-- Include jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>-->
+    <!-- Include jQuery Popup Overlay -->
+    <script src="js/plugins/responsive-popup/jquery.popupoverlay.js"></script>
+    <!--<script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>-->
+
+    <script>
+        $(document).ready(function () {
+
+            // Initialize the plugin
+
+            $.fn.popup.defaults.transition = 'all 0.3s';
+            //$.fn.popup.defaults.pagecontainer = '.container';
+
+            $('#my_popup').popup({
+               
+                    opacity: 0.3,
+                    transition: 'all 0.3s'
+               
+            });
+
+            $('#searchmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#contactmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#registermenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#professionalmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+
+            $('#createtaskmenu').popup({
+
+                opacity: 0.3,
+                transition: 'all 0.3s'
+
+            });
+            
+           
+        });
+    </script>
+
+
+    <!-- 3rd party libraries -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="js/angular-local-storage.min.js"></script>
+    <script src="js/loading-bar.min.js"></script>
+    <!-- Load app main script -->
+    <script src="app/app.js?v=2"></script>
+    <!-- Load services -->
+    <script src="app/services/authInterceptorService.js?v=2"></script>
+    <script src="app/services/authService.js?v=2"></script>
+    <script src="app/services/ordersService.js?v=2"></script>
+    <script src="app/services/tokensManagerService.js?v=2"></script>
+    <!-- Load controllers -->
+    <script src="app/controllers/indexController.js?v=2"></script>
+    <script src="app/controllers/homeController.js?v=2"></script>
+    <script src="app/controllers/loginController.js?v=2"></script>
+    <script src="app/controllers/signupController.js?v=2"></script>
+    <script src="app/controllers/ordersController.js?v=2"></script>
+    <script src="app/controllers/refreshController.js?v=2"></script>
+    <script src="app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="app/controllers/associateController.js?v=2"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+
+
+</body>
+
+</html>

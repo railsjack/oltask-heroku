@@ -1,0 +1,36 @@
+﻿    <div class="row">
+        
+        <h3 class="form-login-heading text-center">Confirm ?</h3>
+        <form name="formdata" novalidate>
+            <div class="col-md-12">
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </div>
+            
+            <div class="form-group col-md-12">
+                <h4>Are you sure to select this proposal?</h4>
+                
+            
+            </div>
+           
+            <div class="col-md-12 margintop_20">
+                <button type="submit"  ng-click="createAppointment($event.target)" class="btn btn-sm btn-block btn-primary">  Submit</button>
+            </div>
+            </form>
+        <script>
+            $(document).ready(function () {
+
+                $('.form_datetime').datetimepicker({
+                    //language:  'fr',
+                    weekStart: 1,
+                    todayBtn: 1,
+                    autoclose: 1,
+                    todayHighlight: 1,
+                    startView: 2,
+                    forceParse: 0,
+                    showMeridian: 1
+                });
+            })
+        </script>
+</div>

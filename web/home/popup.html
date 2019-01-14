@@ -1,0 +1,43 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Site Title</title>
+</head>
+<body>
+
+    <!-- Add an optional button to open the popup -->
+    <button class="my_popup_open">Open popup</button>
+
+    <!-- Add content to the popup -->
+    <div id="my_popup">
+
+        <h4>Basic example</h4>
+        <p>Try to change the width and height of browser window, or to rotate your device, and also try to navigate with the <kbd>Tab</kbd> key.</p>
+        <p>You can close the dialog by pressing the <kbd>Esc</kbd> key, or by clicking on the background outside the content area, or by clicking on the Close button.</p>
+        <button class="my_popup fade_open btn btn-default">Next example</button>
+        <button class="my_popup btn btn-default">Close</button>
+
+        <button class="my_popup_close">Close</button>
+
+    </div>
+
+    <!-- Include jQuery -->
+    <script src="js/jquery.min.js"></script>
+    <!--<script src="http://code.jquery.com/jquery-1.8.2.min.js"></script>-->
+
+    <!-- Include jQuery Popup Overlay -->
+    <script src="js/plugins/responsive-popup/jquery.popupoverlay.js"></script>
+    <!--<script src="http://vast-engineering.github.io/jquery-popup-overlay/jquery.popupoverlay.js"></script>-->
+
+    <script>
+        $(document).ready(function () {
+
+            // Initialize the plugin
+            $('#my_popup').popup();
+
+        });
+    </script>
+
+</body>
+</html>

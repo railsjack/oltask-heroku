@@ -1,0 +1,35 @@
+﻿<div id="parceiroNovaPromocaoView"
+     data-role="view"
+     data-model="NovaPromocaoModel"
+     data-show="NovaPromocaoModel.show"
+     data-title="Nova Promoção"
+     data-layout="parceiro-back-layout"
+     data-transition="overlay:up"
+     data-use-native-scrolling="true">
+
+    <div data-role="footer" style="background-color:white">
+        <div class="col-xs-12">
+            <a data-role="button" data-bind="click: publicar"
+               class="btn btn-green btn-block" style="font-family:UbuntuM; padding: 5px 0 5px 0 !important; margin-bottom:5px; margin-top:5px;">
+                <b>Publicar</b>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid">
+
+        <form id="novaTarefaForm" style="padding: 10px 10px 10px 5px;" data-role="validator">
+
+            <div class="form-group">
+                <input type="text" name="title" data-bind="value: novaPromocao.title" class="form-control" placeholder="Titulo da Promoção" required="required">
+            </div>
+
+            <div class="form-group">
+                <textarea name="description" data-bind="value: novaPromocao.description" class="form-control" placeholder="Descrição" required="required"></textarea>
+            </div>
+
+        </form>
+
+    </div>
+
+</div>

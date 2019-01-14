@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+        <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+        <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css" />
+        <link href="star-rating/css/star-rating.min.css" rel="stylesheet" />
+        <link href="styles/main.css" rel="stylesheet" />
+        <link href="styles/cliente.css" rel="stylesheet" />
+        <link href="styles/profissional.css" rel="stylesheet" />
+        <link href="styles/parceiro.css" rel="stylesheet" />
+        <link href="styles/helper_style.css" rel="stylesheet" />
+
+	    <script src="kendo/js/jquery.min.js"></script>
+    </head>
+
+    <body bgcolor="white" style="margin-top: 10px; overflow: hidden;" >
+        <div class="container-fluid">
+            <div class="row-fluid">
+                <div class="col-md-6 col-sm-6 logo">
+                   <a href="javascript: parent.location.reload();" target="_top"><img src="images/logo/oltask_site_logo_top.png" alt="OLTask.com"></a> 
+                </div>
+                <div class="col-md-6 col-sm-6 text-right">
+                    <div class="login">
+                        <a href="javascript: top.logout();" target="_top" original-href="/sociallogin/#/login">
+                        	<span id="username">Login</span>
+                        	<img src="images/icones/app_site_top_icon_connect_off.png"> </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </body>
+
+    <script>
+    	var onLoad = function(){
+    		var username = localStorage.getItem("userName");
+    		if(username){
+    			$('#username').html(username);
+    		}
+    	};
+    	$(function(){
+    		onLoad();
+    	});
+    </script>
+</html>

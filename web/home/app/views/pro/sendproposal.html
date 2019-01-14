@@ -1,0 +1,158 @@
+﻿
+<div class="row">
+   
+    <!--main area-->
+    <div class="col-md-8 col-sm-12 col-xs-12">
+        <div class="main-header margintop_20">
+            <h2>Send Praposals</h2>
+            <em>Send New Praposals</em>
+        </div>
+        
+        <!--paging-->
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="my-controller bg-success well">
+
+                    <div class="row">
+
+                        <div class="col-xs-6">
+                            <label for="search">Search:</label>
+                            <div class="input-group input-group add-on">
+                                <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="search">items per page:</label>
+                            <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+
+            </div>
+        </div>
+        <!--//paging-->
+
+
+        <!--projects-->
+        <div class="row">
+            <div class="col-md-12 col-sm-12 projects  ">
+
+                <div class="wrap container-fluid margintop_50" dir-paginate="service in ServicesWithStatusOpened | orderBy:'service_Id':true | filter:q | itemsPerPage: pageSize">
+                    <div class="row">
+                        <div class="professionals col-lg-12">
+                            <div class="col-md-12 col-sm-12">
+                                <span class="date">{{FormatDate(service.createdOn)}}</span>  <strong class="taskname">{{service.title}}</strong>
+                            </div>
+
+
+                        </div>
+                        <div class="clearfix"></div>
+                        <div class="col-md-12 col-sm-12" style="padding:5px 0">
+                            <div class="col-md-12 col-sm-12" ng-bind-html="renderHtml(service.description)"></div>
+                        </div>
+                        <div class="clearfix"></div>
+                        <!--provides list-->
+                        <div class="providers col-lg-12" ng-repeat="client in Clients |filter:{customer_Id:service.customer_Id} " ng-hide="!isrowFirst(client, $index)">
+                            <div class="col-md-6 col-sm-6 ">
+
+                                <div class="media pull-right">
+                                    <a class="pull-left" href="#">
+                                        <div class="col-lg-8 col-xs-8">
+                                            <span style="display:none; position: relative; top: 40px; right: 55px;" class="badge badge-success pull-right firstbadge">9</span>
+                                            <img src="../../../images/128-2.jpg" style="max-height:50px;max-width:50px" class="img-circle img-responsive media-object" />
+                                            <span class="badge badge-success pull-right">2</span>
+
+                                        </div>
+                                    </a>
+                                    <div class="media-body">
+                                        <div class="col-lg-8 col-xs-8">
+                                            <h4 class="media-heading">{{client.name}}</h4>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+
+                                <h5>Visits</h5>
+
+                                <p ng-repeat="appt in Appiontments |filter:{service_Id:service.service_Id}">
+                                    {{appt.startAt}}-{{appt.entAt}}
+                                </p>
+
+                            </div>
+                            <div class="col-md-3 col-sm-3">
+                                <h5>hours</h5>
+                            </div>
+                        </div>
+                        <!--//provides list-->
+                        <!--button-->
+
+                        <div class="clearfix"></div>
+                        <div class="container-fluid">
+                            <div class="col-md-12 col-sm-12 col-xs-12 margintop_10">
+                                <div class="row">
+
+                                    <a data-id="{{service.service_Id}}" href="" ng-click="clickToOpenSendProposal($event.target)" class="btn btn-success pull-right">Send Proposal</a>
+                                    <!--<form class="form-inline" name="formdata" role="form" novalidate>
+                            <div class="form-group">
+
+                                <label for="email">Amount:</label>
+                                <input type="number" class="form-control" name="amount" ng-model="myquote.amount" placeholder="Amount" required>
+                                <span class="help-block" ng-show="myquote.amount.$invalid && myquote.amount.$dirty">Required</span>
+                            </div>
+
+                            <button type="submit" data-id="{{service.service_Id}}" ng-click="send($event.target)" ng-disabled="formdata.$invalid" class="btn btn-success pull-right">Send Proposal</button>
+                        </form>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            </div>
+
+            <!--//projects-->
+        <div class="other-controller">
+
+            <div class="text-center">
+
+                <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/app/views/dirPagination.html"></dir-pagination-controls>
+            </div>
+        </div>
+        </div>
+    <!--end main area-->
+    <!--promotions-->
+    <!--promotions-->
+    <div class="col-md-4 col-sm-6">
+        <h3>Promotions</h3>
+        <div class="col-md-12 col-sm-12 margintop_10">
+            <p><b>Promotion Title</b></p>
+            <img src="../../../images/promotion.png" class="img-responsive" />
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+    </div>
+    <!--end promotions-->
+</div>

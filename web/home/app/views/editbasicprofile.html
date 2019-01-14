@@ -1,0 +1,35 @@
+﻿    <div class="row">
+        
+        <h3 class="form-login-heading text-center">Edit</h3>
+        <form name="formdata" novalidate>
+            <div class="col-md-12">
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </div>
+            <input type="text" ng-minlength="2" ng-init="registration.serviceProvider_Id=Professional.serviceProvider_Id" name="serviceProvider_Id" ng-model="registration.serviceProvider_Id" class="form-control" style="display:none" placeholder="Nome" required />
+            <input type="text" ng-minlength="2" ng-init="registration.email=Professional.email" name="serviceProvider_Id" ng-model="registration.email" class="form-control" style="display:none" placeholder="Nome" required />
+            <div class="col-md-12">
+               
+                <input type="text" ng-minlength="2" ng-init="registration.name=Professional.name" name="name" ng-model="registration.name" class="form-control" placeholder="Nome" required/>
+
+                <span class="help-block " ng-show="formdata.name.$error.required">This field is required.</span>
+                <span class="help-block " ng-show="formdata.name.$error.minlength">Minimum 2 characters.</span>
+            </div>
+           
+
+            <div class="col-md-12 margintop_20">
+                <div class="input-group">
+                    <span class="input-group-addon" id="sizing-addon2"><i class="glyphicon glyphicon-earphone"></i></span>
+                    <input type="text" id="phone" name="phone" ng-model="registration.phone" class="form-control" ng-init="registration.phone=Professional.phone" required />
+
+                </div>
+                <span class="help-block " ng-show="formdata.phone.$error.required">This field is required.</span>
+            </div>
+            
+            <div class="col-md-12 margintop_20">
+                <button type="submit" ng-click="putProfessional()" class="btn btn-sm btn-block btn-primary">Save Changes</button>
+            </div>
+            </form>
+
+</div>

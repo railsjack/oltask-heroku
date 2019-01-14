@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title></title>
+    <script src="jquery-1.10.2.js"></script>
+    <script>
+
+        $(document).ready(function () {
+
+            $('#click').click(function () {
+                var tokenKey = 'accessToken';
+                var loginData = {
+                    grant_type: 'password',
+                    username: "demo",
+                    password: "123456"
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://consvita.w06.wh-2.com/oltaskapi/api/token',
+                   
+                    
+                    data: loginData
+                }).done(function (ldata) {
+                    alert(ldata.access_token);
+                    // Cache the access token in session storage.
+                    sessionStorage.setItem("accessToken", ldata.access_token);
+                    var token = ldata.access_token;
+                    var headers = {};
+                    if (token) {
+                        headers.Authorization = 'Bearer ' + token;
+                    }
+
+                    var pdata = {
+                        "name": "Maria Pintora ", "rg": null, "cpf": null, "photo": null, "email": "Maria@mail.com", "phone": null, "presentation": null, "user_Id": 1, "createdOn": null
+                    };
+
+                    $.ajax({
+                        type: 'GET',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/Addresses',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/customers',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/CustomerAddresses',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/Addresses',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/neighborhoods',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/customers',
+                        url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/account/1',
+                        
+                        headers: headers
+                    }).done(function (data) {
+                        
+                        var item = sessionStorage.getItem("accessToken");
+                        var token = item;
+                        var headers = {};
+                        if (token) {
+                            headers.Authorization = 'Bearer ' + token;
+                            
+                        }
+                        alert(data.user_Id);
+                        var adata = {
+                            "appointment_Id":115,
+                            "service_Id": 124,
+                            "startAt": "2015-01-05T00:00:00",
+                            "entAt": "2015-01-05T00:00:00",
+                            "scheduled": true, "obs": null
+                        };
+
+                        $.ajax({
+                            type: 'PUT',
+                            //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/Addresses',
+                            //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/customers',
+                            //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/CustomerAddresses',
+                            //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/Addresses',
+                            //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/neighborhoods',
+                            //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/customers',
+                            url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/schedules/115',
+                            data:{
+                                "appointment_Id":115,
+                                "service_Id": 124,
+                                "startAt": "2015-01-05T00:00:00",
+                                "entAt": "2015-01-05T00:00:00",
+                                "scheduled": true, "obs": null
+                            },
+                            headers: headers
+                        }).done(function (data) {
+                            alert("rrrf");
+
+
+
+
+                        }).fail(showError);
+
+
+                    }).fail();
+                }
+                    
+                ).fail(function (data) {
+                    alert("error");
+                });
+            })
+
+
+            $('#addcustomer').click(function () {
+                var tokenKey = 'accessToken';
+                var loginData = {
+                    grant_type: 'password',
+                    username: "demo",
+                    password: "123456"
+                };
+
+                $.ajax({
+                    type: 'POST',
+                    url: 'http://consvita.w06.wh-2.com/oltaskapi/api/token',
+
+
+                    data: loginData
+                }).done(function (data) {
+                    alert(data.access_token);
+                    // Cache the access token in session storage.
+                    sessionStorage.setItem(tokenKey, data.access_token);
+                    var token = data.access_token;
+                    var headers = {};
+                    if (token) {
+                        headers.Authorization = 'Bearer ' + token;
+                    }
+                    
+                    var professionaldata = {
+
+                      //"service_Id":1,"visitValue":2.0000,"appointment_Id":1,"serviceProvider_Id":1
+
+                       
+                        "service_Id": 14,
+                        "customer_Id": 2,
+                        "serviceProvider_Id": 7,
+                        "dimension": 3,
+                        "score": 3,
+                        "createdBy": null,
+                        "createdOn": null,
+                        "createdAt": null,
+                        "modifiedBy": null,
+                        "modifiedOn": null,
+                        "modifiedAt": null
+                    };
+
+                    $.ajax({
+                        type: 'PUT',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/Addresses',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/ServiceProviderAddresses',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/Partners',
+                        url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/reviews/1',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/CustomerAddresses',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/Addresses',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/neighborhoods',
+                        //url: 'http://consvita.w06.wh-2.com/oltaskapi/api/api/CitiesNoAuth',
+                        data: professionaldata,
+                        headers: headers
+                    }).done(function (data) {
+                        //get token
+                        
+                        alert("done");
+                    }).fail(function (data) {
+                        alert("error");
+                    });
+                }
+
+                ).fail(function (data) {
+                    alert("error");
+                });
+            })
+
+        })
+        
+    </script>
+</head>
+<body>
+    <button id="click">Add</button>
+    <button id="addcustomer">addcustomer</button>
+</body>
+</html>

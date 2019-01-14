@@ -1,0 +1,833 @@
+﻿<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>OLTask</title>
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link href="kendo/styles/kendo.mobile.all.min.css" rel="stylesheet" />
+    <link rel="stylesheet" href="bootstrap/bootstrap.min.css" />
+    <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css" />
+    <link href="star-rating/css/star-rating.min.css" rel="stylesheet" />
+    <link href="styles/main.css" rel="stylesheet" />
+    <link href="styles/cliente.css?_=1" rel="stylesheet" />
+    <link href="styles/profissional.css" rel="stylesheet" />
+    <link href="styles/parceiro.css" rel="stylesheet" />
+    <link href="styles/helper_style.css" rel="stylesheet" />
+
+    <link rel="stylesheet" href="kendo/styles/kendo.common-material.min.css" />
+    <link rel="stylesheet" href="kendo/styles/kendo.material.min.css" />
+
+    
+    <script src="cordova.js?_=1"></script>
+    <script src="kendo/js/jquery.min.js"></script>
+    <script src="http://widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+    <script src='cloudinary/jquery.ui.widget.js' type='text/javascript'></script>
+    <script src='cloudinary/jquery.iframe-transport.js' type='text/javascript'></script>
+    <script src='cloudinary/jquery.fileupload.js' type='text/javascript'></script>
+    <script src='cloudinary/jquery.cloudinary.js' type='text/javascript'></script>
+    
+    <script src="kendo/js/kendo.all.min.js"></script>
+    <script src="kendo/js/kendo.mobile.min.js"></script>
+    <script src="kendo/js/kendo.culture.pt-BR.js"></script>
+    <script src="bootstrap/bootstrap.min.js"></script>
+    <script src="star-rating/js/star-rating.min.js"></script>
+    <script src="scripts/jso.js"></script>
+
+    <script src="scripts/appConfig.js"></script>
+    <!--<script src="scripts/oauthConfig.js"></script>-->
+    <script src="scripts/appData.js"></script>
+    <script src="scripts/controller/ConfiguracaoController.js"></script>
+    <script src="scripts/controller/LoginController.js?_=1"></script>
+    <script src="scripts/controller/CadastroController.js"></script>
+    <script src="scripts/controller/IndicarOLTaskController.js"></script>
+    <script src="scripts/controller/cliente/MainController.js"></script>
+    <script src="scripts/controller/cliente/AgendamentoController.js"></script>
+    <script src="scripts/controller/cliente/CartaoDoProfissionalController.js"></script>
+    <script src="scripts/controller/cliente/TarefasController.js"></script>
+    <script src="scripts/controller/cliente/AvaliarProfissionalController.js"></script>
+    <script src="scripts/controller/cliente/ProfissionaisAvaliadosController.js"></script>
+    <script src="scripts/controller/cliente/NovaTarefaController.js"></script>
+    <script src="scripts/controller/profissional/profissional.js"></script>
+    <script src="scripts/controller/profissional/AvaliarClienteController.js"></script>
+    <script src="scripts/controller/profissional/CartaoDoClienteController.js"></script>
+    <script src="scripts/controller/profissional/ClientesAvaliadosController.js"></script>
+    <script src="scripts/controller/parceiro/MainController.js"></script>
+    <script src="scripts/controller/parceiro/ProfissionaisController.js"></script>
+    <script src="scripts/controller/parceiro/NovaPromocaoController.js"></script>
+    <script src="scripts/main.js"></script>
+
+    <style type="text/css">
+        .k-animation-container, .k-widget, .k-widget *, .k-animation-container *, .k-widget *:before, .k-animation-container *:after, .k-block .k-header, .k-list-container{
+            -webkit-box-sizing: border-box!important;
+        }
+
+        li.km-button span.km-text{
+            padding-left: 10px!important;
+            padding-right: 10px!important;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!--LOGIN DIV-->
+    <div id="LoginView" data-role="view" data-model="LoginModel" data-show="LoginModel.resetaCampos" data-title="OLTask.com">
+        <div class="container" style="margin:1rem auto 0 auto;">
+
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-12 ">
+                    <label class="text-large"><i><b>Conecte-se</b></i></label>
+
+                    <form id="loginForm" data-role="validator" novalidate="novalidate">
+
+                        <input type="hidden" name="grant_type" value="password" />
+                        <div class="form-group">
+                            <input type="text" id="username" name="username" data-bind="value: username" class="form-control" placeholder="Login (e-mail)" required="required" validationmessage="Sem o Login não entra!" />
+                        </div>
+
+                        <div class="form-group">
+                            <input type="password" name="password" data-bind="value: password" class="form-control" placeholder="Senha" required="required" validationmessage="Sem a senha também não!" />
+                        </div>
+                        <div class="form-group 
+                            col-lg-6 col-lg-offset-6
+                            col-md-6 col-md-offset-6
+                            col-sm-6" style="padding:0">
+                            <button data-role="button" class="btn btn-block btn-conectar" data-bind="click: login"><i><b>conectar</b></i></button>
+                        </div>
+
+                        <div class="hidden">
+                            <label class="text-large"><i><b>Conectar com mídia social</b></i></label>
+                            <div style="font-size: 8px; overflow: hidden;">
+                                <div class=" 
+                                col-lg-12
+                                col-md-12
+                                col-sm-12
+                                " style="padding:0 5px 0 0;">
+                                    <a id="fbButton" data-role="button" class="btn btn-block btn-media btn-facebook"><i class="fa fa-facebook"></i>&nbsp;Conectar utilizando minha conta</a>
+                                </div>
+                                
+                                <div class=" 
+                                col-lg-12
+                                col-md-12
+                                col-sm-12
+                                " style="padding:0 5px 0 0;  overflow: hidden;">
+                                    <a id="googleButton" data-role="button" class="btn btn-block btn-media btn-google"><i class="fa fa-google-plus"></i>&nbsp;Conectar utilizando minha conta</a>
+                                </div>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+                <div class="col-lg-8 col-md-8 col-sm-12 form-row ">
+
+                    <div class="text-left">
+                        <label class="text-large"><i><b>Conecte-se</b></i></label>
+                    </div>
+
+                    <div class="row-fluid">
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 choice-option">
+                            <a data-role="button" class="icon-button btn-block" 
+                                href="views/cliente/cadastro.html">
+                                <img src="images/cliente_icon.png" alt="" />
+                                <label>Clientes</label>
+                                <div class="btn rounded btn-blue">cadastrar</div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 choice-option">
+                            <a data-role="button" class="icon-button btn-block" 
+                                href="views/profissional/cadastro.html">
+                                <img src="images/profissional_icon.png" alt="" />
+                                <label>Profissionais</label>
+                                <div class="btn rounded btn-green">cadastrar</div>
+                            </a>
+                        </div>
+
+                        <div class="col-lg-4 col-md-4 col-sm-12 choice-option">
+                            
+                        </div>
+
+                    </div>
+
+
+                    <div class="clearfix"></div>
+
+
+
+                    <p>
+                        Para efetuar seu cadastro como Cliente, clique no botão a cima ou conecte-se utilizando uma mídia social.
+                    </p>
+
+
+                </div>
+            
+
+            </div>
+
+            
+        </div>
+    </div>
+    <!--FIM LOGIN DIV-->
+    <!--DEFAULT LAYOUT DIV-->
+    <div data-role="layout" data-id="default-layout">
+        <div data-role="header" class="custom-header">
+            <div data-role="navbar">
+                <a href="../home" target="_self"><span><img src="images/oltask.png" alt=""></span></a>
+            </div>
+        </div>
+    </div>
+
+    <!--BACKLAYOUT DIV-->
+    <div data-role="layout" data-id="default-back-layout">
+        <div data-role="header">
+            <div data-role="navbar">
+                <a data-role="backbutton" data-click="onBack" data-align="left" class="btn-header">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <span><img src="images/oltask.png" alt=""></span>
+            </div>
+        </div>
+    </div>
+
+    <!--CLIENTE DEFAULT LAYOUT DIV-->
+    <div data-role="layout" data-id="cliente-default-layout">
+        <div data-role="header" class="bg-white header-mobile">
+            <iframe src="topbar.html" height="40" width="100%" frameborder="0"></iframe>
+            <div data-role="navbar" class="cliente-navbar">
+                <span data-role="view-title"></span>
+
+                <a data-role="button" class="btn-header" data-align="right" href="views/cliente/configuracoes.html">
+                    <i class="fa fa-bars text-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div data-role="header" class="bg-white header-desktop">
+            <iframe src="topbar.html" height="40" width="100%" frameborder="0"></iframe>
+            <div data-role="navbar" class="cliente-navbar">
+
+                <a data-role="button" class="btn-header" data-align="left" href="views/cliente/main.html">
+                    <i class="fa fa-home text-right"></i>
+                </a>
+                <a data-role="button" class="btn-header" data-align="left" href="views/cliente/configuracoes.html">
+                    <i class="fa fa-gear text-right"></i>
+                </a>
+
+                <a data-role="button" class="btn btn-orange btn-header rounded"  
+                    style="width: auto; background-color: orange !important; margin-top: -5px;
+                            font-size: 10.5pt!important; line-height: 1.0em; height: 1.4em;" 
+                     data-rel="modalview" href="#modalview-indicarOLTask" data-align="left">
+                    <i class="fa fa-user-plus text-right"></i>
+                    <span class="small-device-caption">INDICAR</span>
+                    <span class="large-device-caption">INDICAR OLTASK PARA UM AMIGO</span>
+                </a>
+
+                <a data-role="button" class="btn" data-align="right" href="views/cliente/novaTarefa.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-plus-circle"></i>
+                    Publicar <br>Nova Tarefa
+                </a>
+                <a data-role="button" class="btn" data-align="right" href="views/cliente/tarefas.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-file-text-o"></i>
+                    Minhas <br>Tarefas
+                </a>
+                <a data-role="button" class="btn" data-align="right" href="views/cliente/profissionaisAvaliados.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-star"></i>
+                    Profissionais <br>Avaliados
+                </a>
+
+            </div>
+        </div>
+
+
+        <div data-role="footer" class="cliente-footer">
+            <div data-role="tabstrip" data-id="oltask-tabstrip">
+                <a href="views/cliente/main.html" data-icon="home">Home</a>
+                <a href="views/cliente/tarefas.html" data-icon="task">Tarefas</a>
+                <a href="views/cliente/profissionaisAvaliados.html" data-icon="star">Avaliações</a>
+                <a href="views/cliente/novaTarefa.html" data-icon="plus">Nova Tarefa</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- CLIENTE BACK LAYOUT -->
+    <div data-role="layout" data-id="cliente-back-layout">
+        <div data-role="header" class="bg-white header-mobile">
+            <div data-role="navbar" class="cliente-navbar">
+                <a data-role="backbutton" data-click="onBack" class="btn-header" data-align="left">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+
+        <div data-role="header" class="bg-white header-desktop">
+            <iframe src="topbar.html" height="40" width="100%" frameborder="0"></iframe>
+            <div data-role="navbar" class="cliente-navbar">
+
+                <a data-role="button" class="btn-header" data-align="left" href="views/cliente/main.html">
+                    <i class="fa fa-home text-right"></i>
+                </a>
+                <a data-role="button" class="btn-header" data-align="left" href="views/cliente/configuracoes.html">
+                    <i class="fa fa-gear text-right"></i>
+                </a>
+
+                <a data-role="button" class="btn btn-orange btn-header rounded"  
+                    style="width: auto; background-color: orange !important; margin-top: -5px;
+                            font-size: 10.5pt!important; line-height: 1.0em; height: 1.4em;" 
+                     data-rel="modalview" href="#modalview-indicarOLTask" data-align="left">
+                    <i class="fa fa-user-plus text-right"></i>
+                    <span class="small-device-caption">INDICAR</span>
+                    <span class="large-device-caption">INDICAR OLTASK PARA UM AMIGO</span>
+                </a>
+
+                <a data-role="button" class="btn" data-align="right" href="views/cliente/novaTarefa.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-plus-circle"></i>
+                    Publicar <br>Nova Tarefa
+                </a>
+                <a data-role="button" class="btn" data-align="right" href="views/cliente/tarefas.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-file-text-o"></i>
+                    Minhas <br>Tarefas
+                </a>
+                <a data-role="button" class="btn" data-align="right" href="views/cliente/profissionaisAvaliados.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-star"></i>
+                    Profissionais <br>Avaliados
+                </a>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!--PROFISSIONAL DEFAULT LAYOUT-->
+    <div data-role="layout" data-id="profissional-home-layout">
+        <div data-role="header" class="bg-white header-mobile">
+            <div data-role="navbar" class="profissional-navbar">
+                <span data-role="view-title"></span>
+                <a data-role="button" class="btn-header" data-align="right" href="views/profissional/configuracoes.html">
+                    <i class="fa fa-bars text-right"></i>
+                </a>
+            </div>
+        </div>
+
+        <div data-role="header" class="bg-white header-desktop">
+            <iframe src="topbar.html" height="40" width="100%" frameborder="0"></iframe>
+            <div data-role="navbar" class="profissional-navbar">
+
+                <a data-role="button" class="btn-header" data-align="left" href="views/profissional/main.html">
+                    <i class="fa fa-home text-right"></i>
+                </a>
+                <a data-role="button" class="btn-header" data-align="left" href="views/profissional/configuracoes.html">
+                    <i class="fa fa-gear text-right"></i>
+                </a>
+
+                <a data-role="button" class="btn btn-orange btn-header rounded"  
+                    style="width: auto; background-color: orange !important; margin-top: -5px;
+                            font-size: 10.5pt!important; line-height: 1.0em; height: 1.4em;" 
+                     data-rel="modalview" href="#modalview-indicarOLTask" data-align="left">
+                    <i class="fa fa-user-plus text-right"></i>
+                    <span class="small-device-caption">INDICAR</span>
+                    <span class="large-device-caption">INDICAR OLTASK PARA UM AMIGO</span>
+                </a>
+
+                <a data-role="button" class="btn" data-align="right" href="views/profissional/proposta.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-plus-circle"></i>
+                    Enviar <br>Propostas
+                </a>
+                <a data-role="button" class="btn" data-align="right" href="views/profissional/agendaDeTarefas.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-file-text-o"></i>
+                    Minhas <br>Tarefas
+                </a>
+                <a data-role="button" class="btn" data-align="right" href="views/profissional/clientesAvaliados.html"
+                    style="margin-top: -1px;">
+                    <i class="fa fa-star"></i>
+                    Clientes <br>Atendidos
+                </a>
+
+            </div>
+        </div>
+
+        <div data-role="footer" class="profissional-footer">
+            <div data-role="tabstrip" data-id="oltask-tabstrip">
+                <a href="views/profissional/agendaDeTarefas.html" data-icon="task">Tarefas</a>
+                <a href="views/profissional/proposta.html" data-icon="plus">Propostas</a>   
+                <a href="views/profissional/clientesAvaliados.html" data-icon="star">Avaliações</a>   
+            </div>
+        </div>
+    </div>
+
+    <!-- PROFISSIONAL BACK LAYOUT -->
+    <div data-role="layout" data-id="profissional-back-layout">
+        <div data-role="header" class="bg-white header-mobile">
+            <div data-role="navbar" class="profissional-navbar">
+                <a data-role="backbutton" data-click="onBack" class="btn-header" data-align="left">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+
+        <div data-role="header" class="bg-white header-desktop">
+            <iframe src="topbar.html" height="40" width="100%" frameborder="0"></iframe>
+            <div data-role="navbar" class="profissional-navbar">
+
+                <div data-role="navbar" class="profissional-navbar">
+                    <a data-role="backbutton" data-click="onBack" class="btn-header" data-align="left">
+                        <i class="fa fa-chevron-left"></i>
+                    </a>
+                    <span data-role="view-title"></span>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- PARCEIRO DEFAULT LAYOUT -->
+    <div data-role="layout" data-id="parceiro-default-layout">
+        <div data-role="header">
+            <div data-role="navbar" class="parceiro-navbar">
+                <span data-role="view-title"></span>
+                <a data-role="button" class="btn-header" data-align="right" href="views/parceiro/configuracoes.html">
+                    <i class="fa fa-bars text-right"></i>
+                </a>
+            </div>
+        </div>
+        <div data-role="footer" class="parceiro-footer">
+            <div data-role="tabstrip" data-id="oltask-tabstrip">
+                <a href="views/parceiro/main.html" data-icon="home">Home</a>
+                <a href="views/parceiro/profissionais.html" data-icon="users">Profissionais</a>
+                <a href="views/parceiro/novaPromocao.html" data-icon="plus">Nova Promoção</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- PARCEIRO BACK LAYOUT -->
+    <div data-role="layout" data-id="parceiro-back-layout">
+        <div data-role="header">
+            <div data-role="navbar" class="parceiro-navbar">
+                <a data-role="backbutton" data-click="onBack" class="btn-header" data-align="left">
+                    <i class="fa fa-chevron-left"></i>
+                </a>
+                <span data-role="view-title"></span>
+            </div>
+        </div>
+    </div>
+
+    <div data-role="modalview" id="modalview-cartaoDoCliente" data-model="CartaoDoClienteModel"  style="width: 90%; display:none;">
+        <div data-role="header">
+            <div data-role="navbar">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <img data-bind="attr: { src: photo }" onerror="imageError(this)" class="profissional thumbnail rounded" />
+                    </div>
+                </div>
+                <a data-click="CartaoDoClienteModel.close" data-role="button" data-align="right" class="close-button" style="width: 70px;height: 40px;">
+                    <i class="fa fa-times"></i>
+                </a>
+                
+                <label class="name" data-bind="text: customer.name">Nome Completo do Profissional</label>
+                <br />
+                <div data-bind="visible: customer.age"><label class="age" data-bind="text: customer.age" /> </label> anos</div>
+
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="col-xs-9" style="padding:0">
+                <ul data-role="listview" data-style="inset" class="info-list">
+                    <li data-bind="visible: customer.concludedServices">
+                        <i class="fa fa-check-square-o"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: customer.concludedServices"></label>
+                            <br />
+                            <label class="info-description">Tarefas Realizadas</label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: customer.city">
+                        <i class="fa fa-map-marker"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: customer.state">RJ</label>
+                            <br />
+                            <label class="info-description" data-bind="text: customer.city"></label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: customer.phone">
+                        <i class="fa fa-phone"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: customer.ddd"></label>
+                            <br />
+                            <label class="info-description" data-bind="text: customer.phone"></label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: customer.email">
+                        <i class="fa fa-at"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: email1"></label>
+                            <br />
+                            <label class="info-description" data-bind="text: email2"></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+
+            <div class="col-xs-3" style="height: 15em;">
+                <div class="media-avaliacao" data-bind="visible: customer.averageReview">
+                    <div style="height:11.2em; position:relative">
+                        <div class="star-rating">
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                        <div class="star-rating selected" data-bind="style:{height:averageReview}">
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                    </div>
+                    <div class="arrow-top"></div>
+                    <img src="images/oltask_app_icon_white.png" style="position: absolute;top: 12.8em;right: 0; width:2.2em;" />
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div data-role="modalview" id="modalview-cartaoDoProfissional" data-model="CartaoDoProfissionalModel" style="width: 90%; display:none;">
+        <div data-role="header">
+            <div data-role="navbar">
+                <div class="row">
+                    <div class="col-xs-12 text-center">
+                        <img data-bind="attr: { src: photo }" onerror="imageError(this)" class="profissional thumbnail rounded" />
+                    </div>
+                </div>
+                <label class="name" data-bind="text: serviceProvider.name">Nome Completo do Profissional</label>
+                <br />
+                <div data-bind="visible: serviceProvider.age"><label class="age" data-bind="text: serviceProvider.age" /> </label> anos</div>
+                <a data-click="closeModalViewCartao" data-role="button" data-align="right" class="close-button" style="width: 70px;height: 40px;">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="col-xs-9" style="padding:0">
+                <ul data-role="listview" data-style="inset" class="info-list">
+                    <li data-bind="visible: serviceProvider.concludedServices">
+                        <i class="fa fa-check-square-o"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: serviceProvider.concludedServices"></label>
+                            <br />
+                            <label class="info-description">Tarefas Realizadas</label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: serviceProvider.city">
+                        <i class="fa fa-map-marker"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: serviceProvider.state">RJ</label>
+                            <br />
+                            <label class="info-description" data-bind="text: serviceProvider.city"></label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: serviceProvider.phone">
+                        <i class="fa fa-phone"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: serviceProvider.ddd"></label>
+                            <br />
+                            <label class="info-description" data-bind="text: serviceProvider.phone"></label>
+                        </div>
+                    </li>
+                    <li data-bind="visible: serviceProvider.email">
+                        <i class="fa fa-at"></i>
+                        <div class="info">
+                            <label class="info-title" data-bind="text: email1"></label>
+                            <br />
+                            <label class="info-description" data-bind="text: email2"></label>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+
+            <div class="col-xs-3" style="height: 15em;">
+                <div class="media-avaliacao" data-bind="visible: serviceProvider.averageReview">
+                    <div style="height:11.2em; position:relative">
+                        <div class="star-rating">
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                        <div class="star-rating selected" data-bind="style:{height:averageReview}">
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                            <i class="fa fa-star star"></i>
+                        </div>
+                    </div>
+                    <div class="arrow-top"></div>
+                    <img src="images/oltask_app_icon_white.png" style="position: absolute;top: 12.8em;right: 0; width:2.2em;" />
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <div id="modalview-republicarTarefa" data-role="modalview" style="width: 90%; height: 400px; display:none;" data-model="ClienteTarefasModel" data-open="ClienteTarefasModel.edit" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <label class="title" data-bind="text : tarefaSelecionada.title" />
+                <a data-bind="click: closeDialog" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="col-xs-12" style="padding:10px">
+                <label class="description" data-bind="text : tarefaSelecionada.description" />
+            </div>
+            <div class="col-xs-12" style="padding:10px">
+                <div class="form-group table" style="font-family: UbuntuB; font-size:1.2em">
+                    <label class="table-cell">
+                        <b>Dia</b>
+                    </label>
+                    <input id="data" type="date" name="date" required="required" class="form-control table-cell">
+                </div>
+
+                <div class="form-group table" style="font-family: UbuntuB; font-size:1.2em">
+                    <input id="horaInicio1" type="time" step='60' name="horaInicio1" class="form-control table-cell" required="required">
+                    <label class="table-cell" style="padding:0 4px;">às</label>
+                    <input id="horaFim1" type="time" name="horaFim1" class="form-control table-cell" required="required">
+                    <!--div class="col-xs-5">
+                        <input id="horaInicio1" type="time" step='60' name="horaInicio1" class="form-control" required="required">
+                    </div>
+
+                    <div class="col-xs-2 text-center" style="top:10px;">
+                        <label>às</label>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <input id="horaFim1" type="time" name="horaFim1" class="form-control" required="required">
+                    </div-->
+                </div>
+
+                <div class="form-group table" style="font-family: UbuntuB; font-size:1.2em">
+                    <input id="horaInicio2" type="time" step='60' name="horaInicio2" class="form-control table-cell" required="required">
+                    <label class="table-cell" style="padding:0 4px;">às</label>
+                    <input id="horaFim2" type="time" name="horaFim2" class="form-control table-cell" required="required">
+                    <!--<div class="col-xs-5">
+                        <input id="horaInicio2" type="time" step='60' name="horaInicio2" class="form-control" required="required">
+                    </div>
+
+                    <div class="col-xs-2 text-center" style="top:8px;">
+                        <label>às</label>
+                    </div>
+
+                    <div class="col-xs-5">
+                        <input id="horaFim2" type="time" name="horaFim2" class="form-control" required="required">
+                    </div>-->
+                </div>
+
+            </div>
+
+            <div class="col-xs-12" style="padding: 0 10px 10px 10px">
+                <button data-role="button" class="btn-confirma" data-bind="click: republicar">
+                    <div class="img"></div>
+                    <b>CONFIRMAR</b>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalview-indicarOLTask" data-role="modalview" data-model="IndicarOLTaskModel" data-open="IndicarOLTaskModel.open" style="width: 90%; height: 300px; display:none;" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <img src="images/oltask.png" />
+                <a data-bind="click: close" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <form id="indicarOLTaskForm" data-role="validator">
+                <div class="col-xs-12" style="padding:10px">
+                    <label class="text-center"><i>Ajude-nos a ampliar nossa rede de profissionais e clientes. Convide seus amigos para fazer parte da comunidade OLTask.</i></label>
+                </div>
+                <div class="col-xs-12" style="padding:0">
+                    <div class="form-group">
+                        <input type="email" data-bind="value: email" class="form-control" placeholder="Email" required>
+                    </div>
+                </div>
+                <div class="col-xs-12 text-right" style="padding:0 0 10px 0">
+                    <button data-role="button" data-bind="click: indicarOLTaskEmail" class="btn btn-blue btn-block" type="button">
+                        Enviar <i class="fa fa-chevron-right"></i>
+                    </button>
+                </div>
+            </form>
+            <div class="col-xs-12" style="padding: 0 10px 10px 10px">
+                <label class="text-center"><i>Compartilhe OLTask com seus amigos nas mídias sociais.</i></label>
+            </div>
+
+            <div class="row" style="margin: 2em;">
+                <div class="col-xs-4" style="padding:0 5px 0 0; text-align:center; color:gray;">
+                    <img src="images/oltask_aplicativo_facebook_circle_on.png">
+                    <span class='desktop-caption'>Facebook</span>
+                </div>
+                <div class="col-xs-4" style="padding:0 2.5px 0 2.5px; text-align:center; color:gray;">
+                    <img src="images/oltask_aplicativo_twitter_circle_on.png">
+                    <span class='desktop-caption'>Twitter</span>
+                </div>
+                <div class="col-xs-4" style="padding:0 0 0 5px; text-align:center; color:gray;">
+                    <img src="images/oltask_aplicativo_google_circle_on.png">
+                    <span class='desktop-caption'>Google+</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="modalview-alterarDadosConfirmacao" data-role="modalview" data-model="ClienteConfiguracoesModel" style="width: 90%; display:none;" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <a data-bind="click: closeConfirmDialog" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="padding:10px 0 10px 0">
+            <div class="col-xs-12 table" style="margin:0">
+                <div class="table-cell text-center" style="padding-right: 20px">
+                    <img height="150" src="images/oltask_aplicativo_icon_padlock.png" alt="">
+                </div>
+                <div class="table-cell">
+                    <label class="text-left"><i>Por motivos de segurança digite sua senha para salvar as alterações feitas em sua conta.</i></label>
+                </div>
+            </div>
+            <form id="alterarDadosConfirmacaoForm" data-role="validator">
+                <div class="col-xs-12" style="padding-top:20px">
+                    <div class="form-group">
+                        <input type="password" data-bind="value: password" class="form-control" placeholder="Senha" required>
+                    </div>    
+                </div>
+            </form>
+            <div class="col-xs-12">
+                <button data-bind="click: salvarAccount" class="btn btn-block btn-green"><b><i>Salvar Alterações</i></b></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalview-alterarSenha" data-role="modalview" data-model="ClienteConfiguracoesModel" style="width: 90%; height: 100%; display:none;" class="dialog">
+        <div data-role="header">
+            <div data-role="navbar">
+                <label class="title">Alterar Senha</label>
+                <a data-bind="click: closeAlterarSenhaDialog" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+
+        <div class="container-fluid" style="padding: 10px 0px 10px 0;">
+            <form id="alterarSenhaForm" data-role="validator">
+                <div class="col-xs-12" style="padding-top:20px">
+                    <div class="form-group">
+                        <input type="password" data-bind="value: password" class="form-control" placeholder="Senha Atual" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="newPassword" data-bind="value: newPassword" class="form-control" placeholder="Nova Senha"
+                               pattern=".{6,}" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="confirmNewPassword" data-bind="value: confirmNewPassword" class="form-control" placeholder="Confirmar Nova Senha" required data-equal-field="newPassword" data-equal-msg='A confirmação da senha não confere'>
+                    </div>
+                </div>
+            </form>
+            <div class="col-xs-12">
+                <button data-bind="click: alterarSenha" class="btn btn-block btn-green"><b><i>Alterar Senha</i></b></button>
+            </div>
+        </div>
+    </div>
+
+    <div id="modalview-enviarProposta" data-role="modalview" style="width: 90%; height: 345px; display:none;" class="dialog" data-model="ProfissionalPropostas" >
+        <div data-role="header">
+            <div data-role="navbar">
+                <label class="title" data-bind="text : selectedJob.title">00/00/0000</label>
+
+                <a data-click="closeModalEnviarProposta" data-role="button" data-align="right" class="close-button">
+                    <i class="fa fa-times"></i>
+                </a>
+            </div>
+        </div>
+        <div class="container-fluid">
+
+            <div class="container-fluid" style="font-size:1.5em;">
+
+                <div class="row" data-bind="visible: selectedJobGetDate()">
+                    <label style="padding:10px 0 10px 0;" data-bind="text: selectedJobGetDate()">
+
+                    </label>
+                </div>
+                <div class="row" data-bind="visible: selectedJobGetOption1()">
+                    <label style="padding:10px 0 10px 0;width:80%;" data-bind="text: selectedJobGetOption1()">00:00</label>
+                    <input name="dateOption" type="radio" style="width:15%;height:25px;" value="0">
+
+                </div>
+                <div class="row" data-bind="visible: selectedJobGetOption2()">
+                    <label style="padding:10px 0 10px 0;width:80%;" data-bind="text: selectedJobGetOption2()">00:00</label>
+                    <input name="dateOption" type="radio" style="width:15%;height:25px;" value="1">
+                </div>
+                <div class="row" style="padding: 10px 0 10px 0;">
+
+                    <label style="width:35%;">
+                        Valor R$
+                    </label>
+
+                    <input name="propostaValor" type="number" min="0" style="width:60%;"> <br />
+
+                </div>
+                <div class="row" style="padding: 10px 10px 10px 0;">
+                    <button data-role="button" class="btn-confirma" style="width:100%;" onclick="ProfissionalPropostas.confirmar()">
+
+                        <b>CONFIRMAR</b>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+    <script>
+        function closeCartaoProfissional() {
+            $("#modalview-cartaoDoCliente").kendoMobileModalView("close");
+        };
+        function closeModalViewCartao() {
+            $("#modalview-cartaoDoProfissional").kendoMobileModalView("close");
+        };
+        function closeModalEnviarProposta() {
+            $("#modalview-enviarProposta").kendoMobileModalView("close");
+        }
+
+        
+    </script>
+
+</body>
+
+</html>

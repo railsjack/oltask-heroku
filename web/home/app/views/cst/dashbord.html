@@ -1,0 +1,254 @@
+﻿
+<div class="row">
+    <!--main area-->
+   
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        <div class="main-header margintop_20">
+            <h2>Services</h2>
+            <em>Your services list</em>
+        </div>
+        <!--paging-->
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="my-controller bg-success well">
+
+                    <div class="row">
+
+                        <div class="col-xs-6">
+                            <label for="search">Search:</label>
+                            <div class="input-group input-group add-on">
+                                <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="search">items per page:</label>
+                            <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+
+            </div>
+        </div>
+        <!--//paging-->
+        <!--projects-->
+        <div class="row">
+            <div class="col-lg-12 col-md-12 col-sm-12 projects ">
+                <div class="wrap container-fluid" dir-paginate="service in ServicesPostedTillToday | orderBy:'service_Id':true | filter:q | itemsPerPage: pageSize">
+                    <div class="row">
+
+                        <div class="professionals col-lg-12 text-danger desktop">
+                            <div class="col-md-6 col-sm-6">
+                                <span class="date">{{FormatDate(service.createdOn)}}</span>
+                                <strong class="taskname">{{service.title}}</strong>
+                            </div>
+                            <div class="col-md-6 col-sm-6 desktop">
+                                <form>
+                                    <div class="dropup pull-right">
+                                        <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+                                            Actions
+                                            <span class="caret"></span>
+                                        </button>
+
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                                            <li role="presentation">
+
+                                                <a role="menuitem" tabindex="-1" ng-click="openmarkcomplete($event.target)" data-seviceid="{{service.service_Id}}" href="">Mark Completed</a>
+
+                                            </li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="opencancel($event.target)" data-seviceid="{{service.service_Id}}" href="">Cancel</a></li>
+
+                                        </ul>
+
+
+                                    </div>
+
+                                    </form>
+
+</div>
+                            <div class="col-md-6 col-sm-6 mobile">
+
+                                <div class="dropup pull-right">
+                                    <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-expanded="true">
+                                        Actions
+                                        <span class="caret"></span>
+                                    </button>
+                                    <form>
+                                        <ul class="dropdown-menu" role="menu" aria-labelledby="dropdownMenu2">
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="openmarkcomplete($event.target)" data-seviceid="{{service.service_Id}}" href="">Mark Completed</a></li>
+                                            <li role="presentation"><a role="menuitem" tabindex="-1" ng-click="opencancel($event.target)" data-seviceid="{{service.service_Id}}" href="">Cancel</a></li>
+
+                                        </ul>
+                                    </form>
+</div>
+
+                            </div>
+                        </div>
+
+
+                        <!--//mobile-->
+
+                        <div class="professionals col-lg-12 text-danger mobile">
+                            <div class="col-md-12 col-xs-12">
+                                <strong class="text-left">{{service.title}}</strong>
+
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+
+                                <span class="date">{{FormatDate(service.createdOn)}}</span>
+
+
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+
+                                <div class="nav nav-pills pull-left">
+                                    <a href="#" class="btn-link"> Photo <span class="glyphicon glyphicon-camera"></span></a>
+
+                                </div>
+
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+
+                                <div class="nav nav-pills pull-left">
+
+                                    <a href="#" style="color:red" class="btn-link"> Cancel <span class="glyphicon glyphicon-remove bg-danger"></span></a>
+                                </div>
+
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="clearfix"></div>
+
+                    <!--provides list-->
+                    
+                    <label class="label-default">Proposals Recieved:</label>
+                    <div class="providers col-lg-12" ng-repeat="proposal in Proposals=( Proposals | filter:{service_Id:service.service_Id}) " style="border-bottom:1px solid #fff">
+
+                        <div class="col-md-4 col-sm-4">
+
+                            <div class="media pull-right">
+                                <a class="pull-left" href="" ng-repeat="pro in Professionals | filter:{serviceProvider_Id:proposal.serviceProvider_Id}" ng-hide="!isrowFirst(pro, $index)">
+
+                                    <span style="display:none; position: relative; top: 40px; right: 55px;" class="badge badge-success pull-right firstbadge">9</span>
+                                    <img ng-src="pro.photo" err-src="/images/nopic.png" style="max-height:50px;max-width:50px" class="img-circle img-responsive media-object" />
+                                    <span class="badge badge-success pull-right">2</span>
+                                </a>
+                                <div class="media-body">
+
+                                    <h4 class="media-heading" ng-repeat="professional in Professionals | filter:{serviceProvider_Id:proposal.serviceProvider_Id} " ng-hide="!isrowFirst(professional, $index)">{{professional.name}}</h4>
+
+                                </div>
+                            </div>
+
+
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <h5>Visits</h5>
+                            <h5 class="text-success">R$ {{proposal.visitValue}}</h5>
+                           
+                        </div>
+                        <div class="col-md-3 col-sm-3">
+                            <h5>hours</h5>
+                            <p ng-repeat="appt in Appointments |filter:{appointment_Id:proposal.appointment_Id}" ng-hide="!isrowFirst(appt, $index)">
+                                {{appt.startAt}}-{{appt.entAt}}
+                            </p>
+                        </div>
+
+                        <div class="col-md-3 col-sm-3" ng-show="proposal.status==0">
+                            <button data-proposalid="{{proposal.quote_Id}}" data-proposal="{{proposal}}" type="button" ng-click="clickToOpenLocationInfo($event.target)" class="btn btn-warning pull-right margintop_20 pull-right"><span class="glyphicon glyphicon-time"></span>&nbsp;Select Proposal</button>
+
+                        </div>
+                        <div class="clearfix"></div>
+
+
+
+                    </div>
+                    <hr />
+                    <!--//provides list-->
+                    <!--button-->
+
+                    <div class="clearfix"></div>
+
+                    <div class="">
+
+                        <p ng-repeat="proposal in Proposals=( Proposals | filter:{service_Id:service.service_Id}) ">
+                            <div class="col-md-12 col-sm-12">
+                                <div ng-show="!Proposals.length">
+                        <p class="text-warning">No Proposal Found</p>
+                    </div>
+                </div>
+
+        </p>
+        <div class="col-md-6 col-sm-6 pull-left">
+            <div class="col-md-6 col-sm-6">
+
+                <label ng-show="service.status==1" class="label label-info pull-left margintop_20"><b>Status:</b> Open Waiting for proposals</label>
+                <label ng-show="service.status==2" class="label label-info pull-left margintop_20"><b>Status:</b> Ongoing</label>
+                <label ng-show="service.status==3" class="label label-info pull-left margintop_20"><b>Status:</b> Closed</label>  
+                <label ng-show="service.status==4" class="label label-info pull-left margintop_20"><b>Status:</b> Cancled</label> 
+                <label ng-show="service.status==6" class="label label-info pull-left margintop_20"><b>Status:</b> Overdue</label>
+
+            </div>
+
+
+        </div>
+
+                <div ng-show="!ServicesPostedTillToday.length">
+                    <p class="text-warning">No Data Found</p>
+                </div>
+
+
+    </div>
+
+                </div>
+
+
+
+                <!--//projects-->
+
+            </div>
+
+            <!--paging-->
+           </div>
+        <!--// row-->
+            <div class="other-controller">
+
+                <div class="text-center">
+                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/app/views/dirPagination.html"></dir-pagination-controls>
+                </div>
+            </div>
+
+
+        </div>
+    <!--end main area-->
+    <!--promotions-->
+    <!--promotions-->
+    <div class="col-md-4 col-sm-6">
+        <h3>Promotions</h3>
+        <div class="col-md-12 col-sm-12 margintop_10">
+            <p><b>Promotion Title</b></p>
+            <img src="../../../images/promotion.png" class="img-responsive" />
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+    </div>
+    <!--end promotions-->
+</div>

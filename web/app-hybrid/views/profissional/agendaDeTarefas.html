@@ -1,0 +1,284 @@
+﻿<div id="profissionalTarefasView"
+     data-role="view"
+     data-init="AgendaDeTarefas.init"
+     data-show="AgendaDeTarefas.show"
+     data-model="AgendaDeTarefas"
+     data-title="Agenda de Tarefas"
+     data-layout="profissional-home-layout">
+
+    <header data-role="header" class="bg-white header-mobile">
+        <div data-role="navbar" class="profissional-navbar">
+            <span data-role="view-title"></span>
+            <a data-role="button" class="btn-header" data-align="right" href="views/profissional/configuracoes.html">
+                <i class="fa fa-bars text-right"></i>
+            </a>
+        </div>
+        <ul id="btnAgendaProfissionalViewToggle" class="profissional-buttongroup" data-role="buttongroup" data-index="0" data-align="center">
+            <li><i><b>Agendadas</b></i></li>
+            <li><i><b>Pendentes</b></i></li>
+            <li><i><b>Histórico</b></i></li>
+        </ul>
+    </header>
+    <div data-role="header" class="bg-white header-desktop">
+        <iframe src="topbar.html" height="40" width="100%" frameborder="0"></iframe>
+        <div data-role="navbar" class="profissional-navbar">
+
+            <a data-role="button" class="btn-header" data-align="left" href="views/profissional/main.html">
+                <i class="fa fa-home text-right"></i>
+            </a>
+            <a data-role="button" class="btn-header" data-align="left" href="views/profissional/configuracoes.html">
+                <i class="fa fa-gear text-right"></i>
+            </a>
+
+            <a data-role="button" class="btn btn-orange btn-header rounded"  
+                style="width: auto; background-color: orange !important; margin-top: -5px;
+                        font-size: 10.5pt!important; line-height: 1.0em; height: 1.4em;" 
+                 data-rel="modalview" href="#modalview-indicarOLTask" data-align="left">
+                <i class="fa fa-user-plus text-right"></i>
+                <span class="small-device-caption">INDICAR</span>
+                <span class="large-device-caption">INDICAR OLTASK PARA UM AMIGO</span>
+            </a>
+
+            <a data-role="button" class="btn" data-align="right" href="views/profissional/proposta.html"
+                style="margin-top: -1px;">
+                <i class="fa fa-plus-circle"></i>
+                Enviar <br>Propostas
+            </a>
+            <a data-role="button" class="btn" data-align="right" href="views/profissional/agendaDeTarefas.html"
+                style="margin-top: -1px;">
+                <i class="fa fa-file-text-o"></i>
+                Minhas <br>Tarefas
+            </a>
+            <a data-role="button" class="btn" data-align="right" href="views/profissional/clientesAvaliados.html"
+                style="margin-top: -1px;">
+                <i class="fa fa-star"></i>
+                Clientes <br>Atendidos
+            </a>
+
+        </div>
+
+        <ul id="btnAgendaProfissionalViewToggleM" class="profissional-buttongroup" data-role="buttongroup" data-index="0" data-align="center">
+            <li><i><b>Agendadas</b></i></li>
+            <li><i><b>Pendentes</b></i></li>
+            <li><i><b>Histórico</b></i></li>
+        </ul>
+
+    </div>
+
+
+    <div class="container-fluid">
+
+        <div class="row mobile-indicar" style="margin-top:5px;">
+            <div class="col-sm-12">
+                <button data-role="button" data-rel="modalview" href="#modalview-indicarOLTask"
+                        class="btn rounded btn-block btn-orange text-medium" style="font-size:1em !important; min-height:0 !important;">
+                    <i class="fa fa-user-plus"></i>
+                    <b>INDICAR OLTASK PARA UM AMIGO</b>
+                </button>
+
+            </div>
+        </div>
+
+        <div data-bind="visible: loaded">
+            <div data-bind="invisible: noTasks">
+                <div class="alert alert-success" role="alert" style="margin-top:10px;">
+                    
+                </div>
+
+                <ul id="tarefas-list" data-role="listview" data-source="AgendaDeTarefas.data" data-template="agenda-template" data-pull-to-refresh="true" data-auto-bind="false"></ul>
+
+            </div>
+        </div>
+
+        <div class="text-center" data-bind="visible: noTasks">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+            <label><b><i>Não há nenhuma tarefa.</i></b></label>
+        </div>
+
+        <div class="text-center" data-bind="visible: error">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+            <label><b><i>Houston, we have a problem. ):</i></b></label>
+        </div>
+
+       
+
+    </div>
+
+</div>
+
+<script type="text/x-kendo-template" id="agenda-template">
+    <div class="item">
+        #if (status == QUOTE_ABERTO || status == QUOTE_APROVADO) {#
+        <div class="row">
+            <span class="col-xs-8">
+                <label class="title">#: title #</label>
+            </span>
+            <span class="col-xs-4 text-right" style="padding-left:0" onclick="cancelaPropostaConfirmacao(this)">
+                <label style="vertical-align: middle;margin:0;color:\#DC4650">Cancelar</label>
+                <button data-role="button" class="btn rounded btn-small btn-danger">
+                    <i class="fa fa-times"></i>
+                </button>
+            </span>
+        </div>
+        #} else {#
+        <div class="row">
+            <div class="col-xs-12"><label class="title">#: data.title #</label></div>
+        </div>
+        #}#
+
+        <label class="description">#: description #</label>
+
+        <div class="item-row pessoa table #if ((status == QUOTE_APROVADO)){# success#} else if ((status == QUOTE_REJEITADO)) {# danger#}#" onclick="CartaoDoClienteModel.showCartao(#:data.service_Id#)">
+            <div data-role="button" class="table-cell icon-button">
+                <div class="table-cell">
+                    <div class="thumbnail">
+                        #
+                        var src;
+                        if (data.photoURL != null) {
+                        var url = data.photoURL;
+                        var publicID = url.substring(url.lastIndexOf("/") + 1);
+                        src = $.cloudinary.url(publicID, {width: 30, height: 30, crop: 'thumb', gravity: 'face'});
+                        }
+                        #
+                        <img src="#:src#" onerror="imageError(this)" />
+                    </div>
+                </div>
+                <div class="nome table-cell">
+                    <label>
+                        <b>#: data.customer_Name #</b>
+                    </label>
+                    #if (data.review) {#
+                    <div class="star-rating">
+                        <div class="rating-container rating-fa" data-content="">
+                            <div class="rating-stars" data-content="" style="width:  #: review/5 * 100  + '%' # ;"></div>
+                        </div>
+                    </div>
+                    #}#
+                </div>
+            </div>
+        </div>
+
+        <div class="item-row text-center">
+            <label class="horario">
+                #: schedule.replace("between","-").replace("and","às")  #
+            </label>
+        </div>
+       
+        <div class="item-row text-center">
+            <label class="valor">
+                Valor: <b>R$ #:kendo.toString(visitValue, "0.00")#</b>
+            </label>
+        </div>
+
+
+        #if (status == 2 && kendo.parseDate(schedule.substr(6, 4) + "-" + schedule.substr(3, 2) + "-" + schedule.substr(0, 2) + "T" + schedule.substr(29, 5)) < new Date()) { #
+            <div class="row">
+                <div class="col-xs-12">
+
+                    <a data-role="button" onclick="concluirPropostaConfirmacao(this)" class="btn concluir" style="margin-top:5px; padding:5px;">
+                        <i class="fa fa-check"></i>
+                        <b>Tarefa Concluída</b>
+                    </a>
+
+                    <!--<a data-role="button" href="views/profissional/avaliarCliente.html?uid=#:data.uid#" class="btn avaliar" style="margin-top:5px; padding:5px;">
+                        <i class="fa fa-star"></i>
+                        <b>Avaliar Cliente</b>
+                    </a>-->
+
+                </div>
+            </div>
+        #}#
+
+        #if ((status == QUOTE_REJEITADO)){#
+        <label class="danger" style="margin-top:5px;">
+            <i class="fa fa-exclamation-circle"></i> O cliente cancelou a tarefa.
+        </label>
+        #}#
+        
+    </div>
+</script>
+
+
+
+<script>
+   
+    function closeModal() {
+        $("#modalview-publicar-tarefa").kendoMobileModalView("close");
+    };
+
+    var propostaSelecionada;
+
+    function cancelaPropostaConfirmacao(elem) {
+        var li = $(elem).parents('li:first');
+        var uid = li.data('uid');
+        propostaSelecionada = agendaProfissionalDS.getByUid(uid);
+
+        navigator.notification.confirm("Deseja realmente cancelar a tarefa " + propostaSelecionada.title, cancelaProposta, "Atenção", ["Sim", "Não"])
+    }
+
+    function cancelaProposta(number) {
+        if (number === 1) {
+            app.showLoading();
+            $.ajax({
+                url: url + 'api/quotes/' + propostaSelecionada.quote_Id,
+                type: "PUT",
+                data: JSON.stringify({
+                    service_Id: propostaSelecionada.service_Id,
+                    appointment_Id: propostaSelecionada.appointment_Id,
+                    serviceProvider_Id: propostaSelecionada.serviceProvider_Id,
+                    status: QUOTE_CANCELADO
+                }),
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token },
+                success: function (data) {
+                    propostaSelecionada.set("status", QUOTE_CANCELADO);
+                    agendaProfissionalDS.fetch();
+                    app.hideLoading();
+                },
+                error: function (msg) {
+                    navigator.notification.alert("Ocorreu um Erro.", null, "Erro", "OK");
+                    app.hideLoading();
+                }
+            });
+        }
+    }
+
+    var uid;
+
+    function concluirPropostaConfirmacao(elem) {
+        var li = $(elem).parents('li:first');
+        uid = li.data('uid');
+        propostaSelecionada = agendaProfissionalDS.getByUid(uid);
+
+        navigator.notification.confirm("Deseja realmente concluir a tarefa " + propostaSelecionada.title, concluirProposta, "Atenção", ["Sim", "Não"])
+    }
+
+    function concluirProposta(number) {
+        if (number === 1) {
+            app.showLoading();
+            $.ajax({
+                url: url + 'api/quotes/' + propostaSelecionada.quote_Id,
+                type: "PUT",
+                data: JSON.stringify({
+                    service_Id: propostaSelecionada.service_Id,
+                    appointment_Id: propostaSelecionada.appointment_Id,
+                    serviceProvider_Id: propostaSelecionada.serviceProvider_Id,
+                    status: QUOTE_CONCLUIDO
+                }),
+                headers: { 'Content-Type': 'application/json', 'Authorization': 'Bearer ' + access_token },
+                success: function (data) {
+                    propostaSelecionada.set("status", QUOTE_CONCLUIDO);
+                    agendaProfissionalDS.fetch();
+                    app.hideLoading();
+                    app.navigate("views/profissional/avaliarCliente.html?uid=" + uid);
+                },
+                error: function (msg) {
+                    navigator.notification.alert("Ocorreu um Erro.", null, "Erro", "OK");
+                    app.hideLoading();
+                }
+            }); 
+        }
+    }
+
+
+</script>
+

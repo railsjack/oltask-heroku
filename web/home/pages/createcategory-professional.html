@@ -1,0 +1,151 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br"  ng-app="AngularAuthApp">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Casdastro de Profissionais</title>
+
+
+    <!-- CSS -->
+    <link href="../css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/cadastro-profissional.css" rel="stylesheet" />
+    <link href="../css/yamm.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+
+    <!-- JS -->
+    <script src="../js/jquery.min.js">               </script>
+    <script src="../js/kendo.all.min.js">            </script>
+    <script src="../js/cidades-estados-1.2-utf8.js"> </script>
+
+    
+
+</head>
+
+<body ng-controller="professionalCategoryController">
+    <header class="desktop">
+        <div>
+            <a href="index.html" style="text-decoration:none"><h2>OL<strong class="orange">Task</strong>.com</h2></a>
+            <div class="circulo-cliente">
+                <img src="../images/icones/drop-cadastro/app_site_cadastro_dropdown_icon_profissionais.png" />
+            </div>
+        </div>
+    </header>
+
+
+    <header class="mobile">
+        <div class="header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 logo">
+                    <a href="/index.html" style="text-decoration:none"><img src="../images/logo/oltask_site_logo_top.png" alt="OLTask.com" /></a>
+                </div>
+            </div>
+        </div>
+
+    </header>
+
+    <div class="desktop">
+        <div id="spinner" style="display:none;">
+            <div class="alert-info"><strong>Loading…</strong> Please wait.<img src="../images/loading.gif" width="16" height="16" alt="Loading…" /></div>
+        </div>
+    </div>
+    <div class="mobile">
+        <div id="spinnerM" class="col-sm-12" style="display:none;">
+            <div class="alert-info col-sm-12"><strong>Loading…</strong> Please wait.<img src="../images/loading.gif" width="16" height="16" alt="Loading…" /></div>
+        </div>
+    </div>
+
+    <form name="formdata" novalidate>
+
+
+        <div class="cadastro">
+            <h2>Please Choose Category</h2>
+            <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                {{message}}
+            </div>
+            <div class="row">
+                <div class="col-md-6 dados-pessoais" style="padding-bottom:50px">
+
+
+                    <h3>Categories</h3>
+
+                    <!--show category List-->
+                    
+                    <div ng-repeat="c in categoryies" style="padding-bottom:5px">
+
+                        <label>
+                            <input name="r" type="radio" value="c.categorie" ng-click="toggleCheck(c)" ng-model="data" />
+                            <span class="lbl padding-8">{{c.categorie}}</span>
+                        </label>
+                       
+                    </div>
+
+
+
+
+
+                </div>
+
+
+            </div>
+
+            <div class="row">
+                <div class="col-md-6 col-sm-12">
+                    <button type="submit" ng-click="saveCategory()" ng-disabled="!isSelected" class="btn btn-info btn-block">
+                        Continue
+                    </button>
+                </div>
+            </div>
+
+        </div>
+
+
+
+
+
+    </form>
+    <script src="js/bootstrap.min.js"></script>
+    <!-- 3rd party libraries -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-resource.js"></script>
+    <script src="../js/angular-local-storage.min.js"></script>
+    <script src="../js/loading-bar.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular-sanitize.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular.min.js'></script>
+
+    <!-- Load app main script -->
+    <script src="../app/app.js?v=2"></script>
+    <!-- Load services -->
+    <script src="../app/services/authInterceptorService.js?v=2"></script>
+    <script src="../app/services/authService.js?v=2"></script>
+
+    <script src="../app/services/tokensManagerService.js?v=2"></script>
+    <script src="../app/services/cityService.js?v=2"></script>
+    <script src="../app/services/stateService.js?v=2"></script>
+    <script src="../app/services/categoryService.js"></script>
+    <script src="../app/services/professionalService.js"></script>
+    <script src="../app/services/addressService.js?v=2"></script>
+    <script src="../app/services/professionalCategoryService.js"></script>
+    <script src="../app/services/professionalAddressService.js"></script>
+
+    <!-- Load controllers -->
+    <script src="../app/controllers/indexController.js?v=2"></script>
+    <script src="../app/controllers/homeController.js?v=2"></script>
+    <script src="../app/controllers/loginController.js?v=2"></script>
+    <script src="../app/controllers/signupController.js?v=2"></script>
+    <script src="../app/controllers/ordersController.js?v=2"></script>
+    <script src="../app/controllers/refreshController.js?v=2"></script>
+    <script src="../app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="../app/controllers/associateController.js?v=2"></script>
+    <script src="../app/controllers/professionalCategoryController.js"></script>
+    <script src="../app/controllers/professionalRegisterController.js"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+</body>
+
+</html>

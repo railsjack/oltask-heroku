@@ -1,0 +1,224 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br" data-ng-app="AngularAuthApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+
+    <!-- CSS -->
+    <link href="../css/login.css" rel="stylesheet" />
+    <link href="../css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <!-- JS -->
+    <script src="../js/jquery.min.js">     </script>
+
+</head>
+
+<body ng-controller="loginController">
+
+    <header>
+        <div class="header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 logo">
+                   <a href="/index.html" style="text-decoration:none"><img src="../images/logo/oltask_site_logo_top.png" alt="OLTask.com" /></a> 
+                </div>
+            </div>
+        </div>
+
+    </header>
+    
+    <div class="login desktop" >
+        <div class="row">
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                <h3>Conecte-se</h3>
+                <div class="acesso">
+                    <h4>Dados Para Acesso</h4>
+                    <form>
+                        <input type="text" class="form-control" data-ng-model="loginData.userName" placeholder="Login(e-mail)" required autofocus />
+                        <input type="password" class="form-control" placeholder="Senha" data-ng-model="loginData.password" required />
+                        <button type="submit" data-ng-click="login()" class="btn btn-default">Conectar</button>
+                        <input style="visibility:hidden" type="checkbox" data-ng-model="loginData.useRefreshTokens">
+                        <div data-ng-hide="message == ''" class="alert alert-danger">
+                            {{message}}
+                        </div>
+                    </form>
+                </div>
+                <div class="midiasocial">
+                    <h4>Conectar com mídia social</h4>
+                    <a  class="face" href="#" data-ng-click="authExternalProvider('Facebook')"><img src="../images/icones/app_site_footer_icon_facebook.png" /> Conectar-se usando o Facebook</a>
+                    <a class="google" href="#" data-ng-click="authExternalProvider('Google')"><img src="../images/icones/app_site_footer_icon_google.png" /> Conectar-se usando o Google+</a>
+                    <!--<a class="twitter" href="#"><img src="../images/icones/app_site_footer_icon_twitter.png" /> Conectar-se usando o Twitter</a>-->
+                </div>
+            </div>
+            <a ng-click="login()">Facebook</a>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="cadastro">
+                    <h3> Criar Conta </h3>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="cad-cliente">
+                                <div class="cadastro-circulo-1">
+                                    <img src="../images/icones/drop-cadastro/oltask_site_cadastro_icon_clientes.png" />
+                                </div>
+                                <h4>Clientes</h4>
+                                <a class="btn-cad-cliente" href="cadastro-cliente.html"> cadastrar </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="cad-profi">
+                                <div class="cadastro-circulo-2">
+                                    <img src="../images/icones/drop-cadastro/oltask_site_cadastro_icon_profissionais.png" />
+                                </div>
+                                <h4>Profissionais</h4>
+                                <a class="btn-cad-profi" href="cadastro-profissional.html"> cadastrar </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="cad-parceiros">
+                                <div class="cadastro-circulo-3">
+                                    <img src="../images/icones/drop-cadastro/oltask_site_cadastro_icon_parceiros.png" />
+                                </div>
+                                <h4>Parceiros</h4>
+                                <a class="btn-cad-parceiros" href="cadastro-parceiros.html"> cadastrar </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="textocadastro">
+                    <p>
+                        Para efetuar seu cadastro como <em class="blue">Cliente</em>, clique no botão <br /> a cima ou conecte-se utilizando
+                        uma mídia social.
+                    </p>
+                    <p>
+                        <em class="grenn">Profissionais</em> e <em class="yellow">Parceiros</em> devem  preencher nosso formulário <br /> de cadastro
+                        e aguardar pela validação da conta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--//mobile-->
+
+
+    <div class="mobile">
+        <div class="row">
+            <div class="col-md-6 col-xs-12 col-sm-12">
+                
+                <div class="acesso col-xs-12 col-sm-12">
+                    <h3>Conecte-se</h3>
+                    <h4>Dados Para Acesso</h4>
+                    <form>
+                        <input type="text" class="form-control" data-ng-model="loginData.userName" placeholder="Login(e-mail)" required autofocus />
+                        <input type="password" class="form-control" placeholder="Senha" data-ng-model="loginData.password" required />
+                        <button type="submit" data-ng-click="login()" class="btn btn-default">Conectar</button>
+                        <input style="visibility:hidden" type="checkbox" data-ng-model="loginData.useRefreshTokens">
+                        <div data-ng-hide="message == ''" class="alert alert-danger">
+                            {{message}}
+                        </div>
+                    </form>
+                </div>
+                <div class="midiasocial margintop_10 col-xs-12 col-sm-12">
+                    <h4>Conectar com mídia social</h4>
+                    <a class="face" href="#" data-ng-click="authExternalProvider('Facebook')"><img src="../images/icones/app_site_footer_icon_facebook.png" /> Conectar-se usando o Facebook</a>
+                    <a class="google" href="#" data-ng-click="authExternalProvider('Google')"><img src="../images/icones/app_site_footer_icon_google.png" /> Conectar-se usando o Google+</a>
+                    <!--<a class="twitter" href="#"><img src="../images/icones/app_site_footer_icon_twitter.png" /> Conectar-se usando o Twitter</a>-->
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="cadastro col-xs-12 col-sm-12">
+                    <h3> Criar Conta </h3>
+                    <div class="row">
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="cad-cliente">
+                                <div class="cadastro-circulo-1">
+                                    <img src="../images/icones/drop-cadastro/oltask_site_cadastro_icon_clientes.png" />
+                                </div>
+                                <h4>Clientes</h4>
+                                <a class="btn-cad-cliente" href="cadastro-cliente.html"> cadastrar </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="cad-profi">
+                                <div class="cadastro-circulo-2">
+                                    <img src="../images/icones/drop-cadastro/oltask_site_cadastro_icon_profissionais.png" />
+                                </div>
+                                <h4>Profissionais</h4>
+                                <a class="btn-cad-profi" href="cadastro-profissional.html"> cadastrar </a>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4 col-sm-12 col-xs-12">
+                            <div class="cad-parceiros">
+                                <div class="cadastro-circulo-3">
+                                    <img src="../images/icones/drop-cadastro/oltask_site_cadastro_icon_parceiros.png" />
+                                </div>
+                                <h4>Parceiros</h4>
+                                <a class="btn-cad-parceiros" href="cadastro-parceiros.html"> cadastrar </a>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="textocadastro col-xs-12 col-sm-12">
+                    <p>
+                        Para efetuar seu cadastro como <em class="blue">Cliente</em>, clique no botão <br /> a cima ou conecte-se utilizando
+                        uma mídia social.
+                    </p>
+                    <p>
+                        <em class="grenn">Profissionais</em> e <em class="yellow">Parceiros</em> devem  preencher nosso formulário <br /> de cadastro
+                        e aguardar pela validação da conta.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- 3rd party libraries -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="../js/angular-local-storage.min.js"></script>
+    <script src="../js/loading-bar.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular-sanitize.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular.min.js'></script>
+    <script src="../js/angular-ui.min.js"></script>
+    <script src="../js/dirPaging.js"></script>
+    <script src="../js/ngDialog.min.js"></script>
+    <!-- Load app main script -->
+    <!--<script src="../app/app.js?v=2"></script>-->
+   
+    <script src="app/app.js"></script>
+    <!-- Load services -->
+    <script src="app/services/authInterceptorService.js?v=2"></script>
+    <script src="app/services/authService.js?v=2"></script>
+    <script src="app/services/ordersService.js?v=2"></script>
+    <script src="app/services/tokensManagerService.js?v=2"></script>
+    <script src="../app/services/customerService.js"></script>
+    <script src="../app/services/professionalService.js"></script>
+    <script src="../app/services/partnerService.js"></script>
+
+    <!-- Load controllers -->
+    <script src="app/controllers/indexController.js?v=2"></script>
+    <script src="app/controllers/homeController.js?v=2"></script>
+    <script src="app/controllers/loginController.js?v=2"></script>
+    <script src="app/controllers/signupController.js?v=2"></script>
+    <script src="app/controllers/ordersController.js?v=2"></script>
+    <script src="app/controllers/refreshController.js?v=2"></script>
+    <script src="app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="app/controllers/associateController.js?v=2"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+</body>
+
+
+</html>

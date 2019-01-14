@@ -1,0 +1,155 @@
+﻿
+<div class="row">
+    <!--main area-->
+   
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        <div class="main-header margintop_20">
+            <h2>My Schedules</h2>
+            <em>View your Schedules</em>
+        </div>
+        <!--paging-->
+        <div class="row">
+            <div class="col-lg-12 col-xs-12">
+                <div class="my-controller bg-success well">
+
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <label for="search">Search:</label>
+                            <div class="input-group input-group add-on">
+                                <input ng-model="q" id="search" class="form-control" placeholder="Filter text">
+
+                                <div class="input-group-btn">
+                                    <button class="btn btn-default" type="button"><i class="glyphicon glyphicon-search"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xs-6">
+                            <label for="search">items per page:</label>
+                            <input type="number" min="1" max="100" class="form-control" ng-model="pageSize">
+                        </div>
+                    </div>
+                    <br>
+
+                </div>
+
+            </div>
+        </div>
+        <!--//paging-->
+        <!--projects-->
+        <div class="row">
+
+            <div class="col-lg-12 col-md-12 col-sm-12 projects bg-info">
+
+
+                <div class="wrap container-fluid" dir-paginate="prop in ProposalSelectedForThisPro | orderBy:'createdOn':true | filter:q | itemsPerPage: pageSize">
+                    <div class="row">
+
+                        <div class="professionals col-lg-12 text-danger desktop">
+                            <div class="col-md-12 col-sm-12">
+                                <span class="date"><i>Submitted Date:</i> {{FormatDate(prop.createdOn)}}</span>
+                                <strong class="taskname" ng-repeat="service in Services | filter:{service_Id:prop.service_Id}" ng-hide="!isrowFirst(service,$index)"><i style="font-weight:normal">Title: </i>&nbsp;{{service.title}} &nbsp; Visit Value: R$ {{prop.visitValue}}</strong>
+                            </div>
+                        </div>
+
+                        <div class="professionals col-lg-12 text-danger mobile">
+                            <div class="col-md-12 col-xs-12">
+                                <strong class="text-left"></strong>
+                            </div>
+                            <div class="col-md-4 col-xs-4">
+                                <span class="date">{{FormatDate(prop.createdOn)}}</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <!--provides list-->
+                    <label class="label-default">Scedule:</label>
+                    <div class="providers col-lg-12" ng-repeat="schedule in Schedules | filter:{appointment_Id:prop.appointment_Id}" style="border-bottom:1px solid #fff" ng-hide="!isrowFirst(schedule,$index)">
+
+                        <div class="col-md-12 col-sm-12 col-xs-12  {{schedule.scheduled  ? 'bg-success': 'well'}} ">
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h5>Start Time</h5>
+                                <h5 class="text-success">{{schedule.startAt}}</h5>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h5>End Time</h5>
+                                <h5 class="text-success">{{schedule.entAt}}</h5>
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h5>Address:</h5>
+                                <!--<a href="" data-serviceid="{{schedule.service_Id}}" data-id="{{schedule.appointment_Id}}" ng-click="update($event.target)" class="btn btn-sm btn-default" ng-hide="schedule.scheduled">Confirm</a>
+                                <h5 class="text-success text-info">{{schedule.scheduled  ? "Confirmed" : "Pending"}}</h5>-->
+                            </div>
+                            <div class="col-md-3 col-sm-3 col-xs-3">
+                                <h5>Client</h5>
+                                <!--<div ng-repeat="service in Services | filter:{service_Id:prop.service_Id}">
+
+                    <div ng-repeat="cust in Customers | filter:{customer_Id:service.customer_Id}" ng-hide="!isrowFirst(cust,$index)">
+                        <h5 class=" text-success">
+                            <a href="" style="text-decoration:underline" data-id="cust.customer_Id">{{cust.name}} </a>
+                        </h5>
+
+                        <a class="btn btn-block btn-success btn-sm" href="" data-serviceproviderid="{{prop.serviceProvider_Id}}" data-serviceid="{{service.service_Id}}" data-customerid="{{cust.customer_Id}}" data-reviewtype="provider" ng-click="openReviewPopup($event.target)"><span class="glyphicon glyphicon-stats"></span>&nbsp; Submit Review</a>
+                    </div>
+                </div>-->
+                            </div>
+                        </div>
+                    </div>
+                    <hr />
+                    <!--//provides list-->
+                    <!--button-->
+
+                    <div class="clearfix"></div>
+
+
+                    <div class="col-md-6 col-sm-6 pull-left" ng-repeat="service in Services | filter:{service_Id:prop.service_Id}" ng-hide="!isrowFirst(service,$index)">
+                        <div class="col-md-6 col-sm-6" ng-repeat="address in Address | filter:{address_Id:service.address_Id}" ng-hide="!isrowFirst(address,$index)">
+                            <label class="label  margintop_20">
+                                <b>Street:{{address.street}}</b>
+                                <b>Zip:{{address.cep}}</b>
+                                <b>Neighbout</b>
+                            </label>
+                        </div>
+                    </div>
+
+                </div>
+
+        </div>
+    </div>
+                <!--//projects-->
+
+           
+        
+            <div class="other-controller">
+
+                <div class="text-center">
+
+                    <dir-pagination-controls boundary-links="true" on-page-change="pageChangeHandler(newPageNumber)" template-url="/app/views/dirPagination.html"></dir-pagination-controls>
+                </div>
+            </div>
+
+
+</div>
+    <!--end main area-->
+    <!--promotions-->
+   
+    <div class="col-md-4 col-sm-6">
+        <h3>Promotions</h3>
+        <div class="col-md-12 col-sm-12 margintop_10">
+            <p><b>Promotion Title</b></p>
+            <img src="../../../images/promotion.png" class="img-responsive" />
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+        <div class="col-md-12 col-sm-12 margintop_20">
+            <p><b>Promotion Title</b></p>
+            <p>About Promotion</p>
+
+        </div>
+    </div>
+    <!--end promotions-->
+</div>

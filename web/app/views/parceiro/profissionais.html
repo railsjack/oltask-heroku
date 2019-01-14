@@ -1,0 +1,110 @@
+﻿<div id="parceiroMainView"
+     data-role="view"
+     data-model="ParceiroProfissionaisModel"
+     data-init="ParceiroProfissionaisModel.init"
+     data-show="ParceiroProfissionaisModel.show"
+     data-title="Profissionais Favoritos"
+     data-layout="parceiro-default-layout">
+
+    <div class="container-fluid">
+        <div class="row" style="margin-top:5px;">
+            <div class="col-sm-12">
+                <button data-role="button" data-rel="modalview" data-bind="click: openDialog"
+                        class="btn rounded btn-block btn-orange text-medium" style="font-size:1.2em !important; min-height:35px !important;">
+                    <i class="fa fa-user-plus"></i>
+                    <b>Adicionar Profissional</b>
+                </button>
+            </div>
+        </div>
+
+        <div data-bind="visible: loaded">
+            <div data-bind="invisible: noData">
+                <div class="alert" role="alert" style="margin:10px 0 0 0;padding:0">
+                    <p><label><b>Conecte-se aos melhores profissionais de sua região</b></label></p>
+                    <p><label><i>Ofereça descontos e condições especiais para gerar novos negócios.</i></label></p>
+                </div>
+
+                <ul id="parceiro-profissionais-favoritos" data-role="listview" data-source="ParceiroProfissionaisModel.data" data-template="parceiro-profissionais-template" data-pull-to-refresh="true" data-auto-bind="false"></ul>
+
+            </div>
+        </div>
+
+        <div class="text-center" data-bind="visible: noData">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_alerta.png" alt="">
+            <label><b><i>Você não adicionou nenhum profissional.</i></b></label>
+        </div>
+
+        <div class="text-center" data-bind="visible: error">
+            <img height="150" style="display:block; margin:20px auto;" src="images/oltask_aplicativo_icon_erro.png" alt="">
+            <label><b><i>Houston, we have a problem. ):</i></b></label>
+        </div>
+
+    </div>
+
+</div>
+
+<div id="modalview-adicionarProfissionalFavorito" data-role="modalview" data-model="ParceiroProfissionaisModel"  style="width: 90%; display:none;" class="dialog">
+    <div data-role="header">
+        <div data-role="navbar">
+            <a data-bind="click: closeDialog" data-role="button" data-align="right" class="close-button">
+                <i class="fa fa-times"></i>
+            </a>
+        </div>
+    </div>
+
+    <div class="container-fluid" style="padding:10px 0 10px 0">
+        <div class="col-xs-12 table" style="margin:0">
+            <div class="table-cell text-center" style="padding-right: 20px">
+                <img height="100" src="images/oltask_aplicativo_add_profissional.png" alt="">
+            </div>
+            <div class="table-cell">
+                <label class="text-left"><i>Insira abaixo o email de login do profissional e em seguida confirme clicando em Adicionar Profissional</i></label>
+            </div>
+        </div>
+        <form id="alterarDadosConfirmacaoForm" data-role="validator">
+            <div class="col-xs-12" style="padding-top:20px">
+                <div class="form-group">
+                    <input type="text" data-bind="value: email" class="form-control" placeholder="Email" required>
+                </div>
+            </div>
+        </form>
+        <div class="col-xs-12">
+            <button class="btn btn-block btn-green" data-bind="click: adicionaProfissional"><b><i>Adicionar Profissional</i></b></button>
+        </div>
+    </div>
+</div>
+
+<script type="text/x-kendo-template" id="parceiro-profissionais-template">
+
+    <div class="item">
+        <div class="item-row pessoa">
+            <div class="table-cell">
+                <div class="thumbnail">
+                    <img src="#:data.image#" onerror="imageError(this)" />
+                </div>
+            </div>
+            <div class="nome table-cell">
+                #if (data.name) {#
+                <label>
+                    <b>#: name #</b>
+                </label>
+                #}#
+                #if (data.globalScore) {#
+                <div class="star-rating">
+                    <div class="rating-container rating-fa" data-content="">
+                        <div class="rating-stars" data-content="" style="width: #: globalScore/5 * 100  + '%' # ;"></div>
+                    </div>
+                </div>
+                #}#
+            </div>
+        </div>
+
+        #if (data.categorie) {#
+        <div class="item-row">
+            <label>Categoria: #: categorie #</label>
+        </div>
+        #}#
+
+    </div>
+
+</script>

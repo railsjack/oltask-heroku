@@ -1,0 +1,118 @@
+﻿<!DOCTYPE html>
+
+<html lang="pt-br" data-ng-app="AngularAuthApp">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Login</title>
+
+    <!-- CSS -->
+    <link href="../css/login.css" rel="stylesheet" />
+    <link href="../css/bootstrap-theme.min.css" rel="stylesheet" />
+    <link href="../css/bootstrap.css" rel="stylesheet" />
+    <link href="../css/font-awesome.min.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <!-- JS -->
+    <script src="../js/jquery.min.js">     </script>
+
+</head>
+
+<body ng-controller="associateController">
+
+    <header>
+        <div class="header">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 logo">
+                   <a href="/index.html" style="text-decoration:none"><img src="../images/logo/oltask_site_logo_top.png" alt="OLTask.com" /></a> 
+                </div>
+            </div>
+        </div>
+
+    </header>
+    
+    <div class="row">
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+        {{user}}
+        <div class="col-md-8">
+            <h3>Associate your {{registerData.provider}} Account</h3>
+            <hr />
+            <p class="text-success">You have successfully autheticated with <strong>{{registerData.provider}} </strong>. Please enter a user name below for this site and click the Register button to log in.</p>
+            <div class="row">
+                <div class="col-md-3">
+                    &nbsp;
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Username" ng-model="registerData.userName" required autofocus>
+                        <input type="text" class="form-control" placeholder="Full Name" ng-model="registerData.name" required autofocus>
+                        <input type="text" class="form-control" placeholder="your@email.com" ng-model="registerData.email" required autofocus>
+                        <input type="text" class="form-control" placeholder="123-4567" ng-model="registerData.phoneNumber" required autofocus>
+                        <select class="form-control" ng-model="registerData.role" required>
+                            <option value="3">Client</option>
+                            <option value="2">Professional</option>
+                            <option value="4">Partner</option>
+                        </select>
+                        <select class="form-control" ng-model="registerData.gender" required>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                        </select>
+                        <input type="text" class="form-control" placeholder="Neighborhood ID (Enter only number)" ng-model="registerData.neighborhoodId" required autofocus>
+
+                        <button class="btn btn-sm btn-info btn-block" type="button" style="margin-top:10px;" data-ng-click="registerExternal()">Register</button>
+                    </div>
+                    <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                        {{message}}
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            &nbsp;
+        </div>
+    </div>
+    
+
+    <script src="../js/bootstrap.min.js"></script>
+    <!-- 3rd party libraries -->
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
+    <script src="../js/angular-local-storage.min.js"></script>
+    <script src="../js/loading-bar.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular-sanitize.min.js'></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/textAngular/1.2.0/textAngular.min.js'></script>
+    <script src="../js/angular-ui.min.js"></script>
+    <script src="../js/dirPaging.js"></script>
+    <script src="../js/ngDialog.min.js"></script>
+    <!-- Load app main script -->
+    <!--<script src="../app/app.js?v=2"></script>-->
+    <script src="../js/app.js"></script>
+    <!-- Load services -->
+    <script src="../app/services/authInterceptorService.js?v=2"></script>
+    <script src="../app/services/authService.js?v=2"></script>
+    <script src="../app/services/ordersService.js?v=2"></script>
+    <script src="../app/services/tokensManagerService.js?v=2"></script>
+    <script src="../app/services/customerService.js"></script>
+    <script src="../app/services/professionalService.js"></script>
+    <script src="../app/services/partnerService.js"></script>
+
+    <!-- Load controllers -->
+    <script src="../app/controllers/indexController.js?v=2"></script>
+    <script src="../app/controllers/homeController.js?v=2"></script>
+    <script src="../app/controllers/loginController.js?v=2"></script>
+    <script src="../app/controllers/signupController.js?v=2"></script>
+    <script src="../app/controllers/ordersController.js?v=2"></script>
+    <script src="../app/controllers/refreshController.js?v=2"></script>
+    <script src="../app/controllers/tokensManagerController.js?v=2"></script>
+    <script src="../app/controllers/associateController.js?v=2"></script>
+    <!-- Load custom filters -->
+    <!-- Load custom directives -->
+</body>
+
+
+</html>

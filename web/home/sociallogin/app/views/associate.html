@@ -1,0 +1,44 @@
+﻿<div class="row">
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+    <div class="col-md-8">
+        <h3>Associate your {{registerData.provider}} Account</h3>
+        <hr />
+        <p class="text-success">You have successfully autheticated with <strong>{{registerData.provider}} </strong>. Please enter a user name below for this site and click the Register button to log in.</p>
+        <div class="row">
+            <div class="col-md-3">
+                &nbsp;
+            </div>
+            <div class="col-md-6">
+                <div class="form-group">
+                    <input type="text" class="form-control" placeholder="Username" data-ng-model="registerData.userName" required autofocus>
+                    <input type="text" class="form-control" placeholder="Full Name" data-ng-model="registerData.name" required autofocus>
+                    <input type="text" class="form-control" placeholder="your@email.com" data-ng-model="registerData.email" required autofocus>
+                    <input type="text" class="form-control" placeholder="123-4567" data-ng-model="registerData.phoneNumber" required autofocus>
+                    <select class="form-control" data-ng-model="registerData.role" required >
+                        <option value="2">Client</option>
+                        <option value="3">Professional</option>
+                        <option value="4">Partner</option>
+                    </select>
+                    <select class="form-control" data-ng-model="registerData.gender" required>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                    </select>
+                    <input type="text" class="form-control" placeholder="Neighborhood ID (Enter only number)" data-ng-model="registerData.neighborhoodId" required autofocus>
+
+                    <button class="btn btn-sm btn-info btn-block" type="button" style="margin-top:10px;" data-ng-click="registerExternal()">Register</button>
+                </div>
+                <div data-ng-hide="message == ''" data-ng-class="(savedSuccessfully) ? 'alert alert-success' : 'alert alert-danger'">
+                    {{message}}
+                </div>
+            </div>
+            <div class="col-md-3">
+                &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="col-md-2">
+        &nbsp;
+    </div>
+</div>

@@ -1,0 +1,83 @@
+﻿
+
+<div class="row">
+    <!--main area-->
+    <div class="col-md-6 col-sm-6 col-xs-12 bg-success" style="height:350px">
+       
+        <div class="bg-success" style="height:100%">
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <img src="Profile[0].photo" err-src="/images/nopic.png" class="img-circle img-responsive img-thumbnail" />
+            </div>
+            <!--//image-->
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <h3>{{Profile[0].name}}</h3>
+                <div id="pro_rating" ng-hide="type == 'c'">
+                    <div ng-init="vv=getReviewByProviderId(15);">
+                        <div ng-if="StarvaluePro[0].stars>0" ng-init="star=StarvaluePro[0].stars">
+                            <div class="star-rating" star-rating rating-value="star"
+                                 data-max="5"></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="cst_rating" ng-hide="type == 'p'">
+
+                        <div ng-init="vv=getReviewByCustomerId(15);">
+                            <div ng-if="StarvalueCst[0].stars>0" ng-init="star=StarvalueCst[0].stars">
+                                <div class="star-rating" star-rating rating-value="star"
+                                     data-max="5"></div>
+                            </div>
+                        </div>
+                </div>
+
+                <!--<div class="star-rating" star-rating rating-value="4"
+                     data-max="5"></div>-->
+            </div>
+            <!--name and stars-->
+            <div class="col-md-6 col-sm-6 col-xs-12" ng-hide="type == 'c'">
+                <h3>Category</h3>
+                {{category[0].categorie}}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        
+        <div id="cst_JobPosted" ng-hide="type == 'p'">
+
+            <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="JobPosted.length==0">
+                <div style="padding-left:5px"><span class="glyphicon glyphicon-list-alt"></span></div> <div style="border-right:1px solid #808080;"><h5>{{JobPosted.length}}</h5><p>Jobs Posted</p></div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="!(JobPosted.length==0)">
+                <div style="padding-left:5px"><span class="glyphicon glyphicon-list-alt"></span></div> <div style="border-right:1px solid #808080;"><p>New Customer</p></div>
+            </div>
+
+        </div>
+            
+
+        <div id="pro_JobCompleted" ng-hide="type == 'c'">
+
+            <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="TaskCompleted.length==0">
+                <div style="padding-left:5px"><span class="glyphicon glyphicon-list-alt"></span></div> <div style="border-right:1px solid #808080;"><h5>{{TaskCompleted.length}}</h5><p>Tasks completed</p></div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12" ng-hide="!(TaskCompleted.length==0)">
+                <div style="padding-left:5px"><span class="glyphicon glyphicon-list-alt"></span></div> <div style="border-right:1px solid #808080;"><p>New Professional</p></div>
+            </div>
+
+        </div>
+
+
+            <div class="col-md-12 col-sm-12 col-xs-12">
+
+                <div style="padding-left:5px"><span class="glyphicon glyphicon-map-marker"></span></div> <div style="border-right:1px solid #808080;"><p> {{address[0].street}}, {{neighbourhood[0].neighborhood1}}</p><p>{{address[0].cep}}</p></div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div style="padding-left:5px"><span class="glyphicon glyphicon-phone"></span></div> <div style="border-right:1px solid #808080;"><p>{{Profile[0].phone}}</p></div>
+            </div>
+            <div class="col-md-12 col-sm-12 col-xs-12">
+                <div style="padding-left:5px"><span class="glyphicon glyphicon-envelope"></span></div> <div style="border-right:1px solid #808080;"><p>{{Profile[0].email}}</p></div>
+            </div>
+        </div>
+            
+</div>
+
